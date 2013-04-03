@@ -1,0 +1,468 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E506291C170CACC300A25452 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E506291B170CACC300A25452 /* Cocoa.framework */; };
+		E5062926170CACC300A25452 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E5062924170CACC300A25452 /* InfoPlist.strings */; };
+		E5062928170CACC300A25452 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5062927170CACC300A25452 /* main.m */; };
+		E506292C170CACC300A25452 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = E506292A170CACC300A25452 /* Credits.rtf */; };
+		E506292F170CACC300A25452 /* QUAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E506292E170CACC300A25452 /* QUAppDelegate.m */; };
+		E5062932170CACC300A25452 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5062930170CACC300A25452 /* MainMenu.xib */; };
+		E506293A170CACC400A25452 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5062939170CACC400A25452 /* SenTestingKit.framework */; };
+		E506293B170CACC400A25452 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E506291B170CACC300A25452 /* Cocoa.framework */; };
+		E5062943170CACC400A25452 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E5062941170CACC400A25452 /* InfoPlist.strings */; };
+		E5062946170CACC400A25452 /* QueuedTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E5062945170CACC400A25452 /* QueuedTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E506293C170CACC400A25452 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E5062910170CACC300A25452 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E5062917170CACC300A25452;
+			remoteInfo = Queued;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E5062918170CACC300A25452 /* Queued.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Queued.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E506291B170CACC300A25452 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		E506291E170CACC300A25452 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		E506291F170CACC300A25452 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		E5062920170CACC300A25452 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E5062923170CACC300A25452 /* Queued-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Queued-Info.plist"; sourceTree = "<group>"; };
+		E5062925170CACC300A25452 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E5062927170CACC300A25452 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E5062929170CACC300A25452 /* Queued-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Queued-Prefix.pch"; sourceTree = "<group>"; };
+		E506292B170CACC300A25452 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		E506292D170CACC300A25452 /* QUAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QUAppDelegate.h; sourceTree = "<group>"; };
+		E506292E170CACC300A25452 /* QUAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QUAppDelegate.m; sourceTree = "<group>"; };
+		E5062931170CACC300A25452 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		E5062938170CACC400A25452 /* QueuedTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QueuedTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5062939170CACC400A25452 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		E5062940170CACC400A25452 /* QueuedTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "QueuedTests-Info.plist"; sourceTree = "<group>"; };
+		E5062942170CACC400A25452 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E5062944170CACC400A25452 /* QueuedTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QueuedTests.h; sourceTree = "<group>"; };
+		E5062945170CACC400A25452 /* QueuedTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QueuedTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E5062915170CACC300A25452 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E506291C170CACC300A25452 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E5062934170CACC400A25452 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E506293A170CACC400A25452 /* SenTestingKit.framework in Frameworks */,
+				E506293B170CACC400A25452 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E506290F170CACC300A25452 = {
+			isa = PBXGroup;
+			children = (
+				E5062921170CACC300A25452 /* Queued */,
+				E506293E170CACC400A25452 /* QueuedTests */,
+				E506291A170CACC300A25452 /* Frameworks */,
+				E5062919170CACC300A25452 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E5062919170CACC300A25452 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E5062918170CACC300A25452 /* Queued.app */,
+				E5062938170CACC400A25452 /* QueuedTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E506291A170CACC300A25452 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E506291B170CACC300A25452 /* Cocoa.framework */,
+				E5062939170CACC400A25452 /* SenTestingKit.framework */,
+				E506291D170CACC300A25452 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E506291D170CACC300A25452 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E506291E170CACC300A25452 /* AppKit.framework */,
+				E506291F170CACC300A25452 /* CoreData.framework */,
+				E5062920170CACC300A25452 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		E5062921170CACC300A25452 /* Queued */ = {
+			isa = PBXGroup;
+			children = (
+				E506292D170CACC300A25452 /* QUAppDelegate.h */,
+				E506292E170CACC300A25452 /* QUAppDelegate.m */,
+				E5062930170CACC300A25452 /* MainMenu.xib */,
+				E5062922170CACC300A25452 /* Supporting Files */,
+			);
+			path = Queued;
+			sourceTree = "<group>";
+		};
+		E5062922170CACC300A25452 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E5062923170CACC300A25452 /* Queued-Info.plist */,
+				E5062924170CACC300A25452 /* InfoPlist.strings */,
+				E5062927170CACC300A25452 /* main.m */,
+				E5062929170CACC300A25452 /* Queued-Prefix.pch */,
+				E506292A170CACC300A25452 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E506293E170CACC400A25452 /* QueuedTests */ = {
+			isa = PBXGroup;
+			children = (
+				E5062944170CACC400A25452 /* QueuedTests.h */,
+				E5062945170CACC400A25452 /* QueuedTests.m */,
+				E506293F170CACC400A25452 /* Supporting Files */,
+			);
+			path = QueuedTests;
+			sourceTree = "<group>";
+		};
+		E506293F170CACC400A25452 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E5062940170CACC400A25452 /* QueuedTests-Info.plist */,
+				E5062941170CACC400A25452 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E5062917170CACC300A25452 /* Queued */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E5062949170CACC400A25452 /* Build configuration list for PBXNativeTarget "Queued" */;
+			buildPhases = (
+				E5062914170CACC300A25452 /* Sources */,
+				E5062915170CACC300A25452 /* Frameworks */,
+				E5062916170CACC300A25452 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Queued;
+			productName = Queued;
+			productReference = E5062918170CACC300A25452 /* Queued.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E5062937170CACC400A25452 /* QueuedTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E506294C170CACC400A25452 /* Build configuration list for PBXNativeTarget "QueuedTests" */;
+			buildPhases = (
+				E5062933170CACC400A25452 /* Sources */,
+				E5062934170CACC400A25452 /* Frameworks */,
+				E5062935170CACC400A25452 /* Resources */,
+				E5062936170CACC400A25452 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E506293D170CACC400A25452 /* PBXTargetDependency */,
+			);
+			name = QueuedTests;
+			productName = QueuedTests;
+			productReference = E5062938170CACC400A25452 /* QueuedTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E5062910170CACC300A25452 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = QU;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Pawel Niewiadomski";
+			};
+			buildConfigurationList = E5062913170CACC300A25452 /* Build configuration list for PBXProject "Queued" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E506290F170CACC300A25452;
+			productRefGroup = E5062919170CACC300A25452 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E5062917170CACC300A25452 /* Queued */,
+				E5062937170CACC400A25452 /* QueuedTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E5062916170CACC300A25452 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5062926170CACC300A25452 /* InfoPlist.strings in Resources */,
+				E506292C170CACC300A25452 /* Credits.rtf in Resources */,
+				E5062932170CACC300A25452 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E5062935170CACC400A25452 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5062943170CACC400A25452 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E5062936170CACC400A25452 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E5062914170CACC300A25452 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5062928170CACC300A25452 /* main.m in Sources */,
+				E506292F170CACC300A25452 /* QUAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E5062933170CACC400A25452 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5062946170CACC400A25452 /* QueuedTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E506293D170CACC400A25452 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E5062917170CACC300A25452 /* Queued */;
+			targetProxy = E506293C170CACC400A25452 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E5062924170CACC300A25452 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E5062925170CACC300A25452 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		E506292A170CACC300A25452 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E506292B170CACC300A25452 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		E5062930170CACC300A25452 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E5062931170CACC300A25452 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		E5062941170CACC400A25452 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E5062942170CACC400A25452 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E5062947170CACC400A25452 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		E5062948170CACC400A25452 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		E506294A170CACC400A25452 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Queued/Queued-Prefix.pch";
+				INFOPLIST_FILE = "Queued/Queued-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E506294B170CACC400A25452 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Queued/Queued-Prefix.pch";
+				INFOPLIST_FILE = "Queued/Queued-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		E506294D170CACC400A25452 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Queued.app/Contents/MacOS/Queued";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Queued/Queued-Prefix.pch";
+				INFOPLIST_FILE = "QueuedTests/QueuedTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		E506294E170CACC400A25452 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Queued.app/Contents/MacOS/Queued";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Queued/Queued-Prefix.pch";
+				INFOPLIST_FILE = "QueuedTests/QueuedTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E5062913170CACC300A25452 /* Build configuration list for PBXProject "Queued" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E5062947170CACC400A25452 /* Debug */,
+				E5062948170CACC400A25452 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E5062949170CACC400A25452 /* Build configuration list for PBXNativeTarget "Queued" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E506294A170CACC400A25452 /* Debug */,
+				E506294B170CACC400A25452 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		E506294C170CACC400A25452 /* Build configuration list for PBXNativeTarget "QueuedTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E506294D170CACC400A25452 /* Debug */,
+				E506294E170CACC400A25452 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E5062910170CACC300A25452 /* Project object */;
+}
