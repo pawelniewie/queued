@@ -12,7 +12,16 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    // Insert code here to initialize your application
+    
 }
 
+- (void) awakeFromNib {
+    statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
+    [statusItem setMenu:self.statusMenu];
+    [statusItem setHighlightMode:YES];
+    NSImage *image = [[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Resources/icon" ofType:@"png"]];
+    assert(image != nil);
+    statusItem.image = image;
+    statusItem.alternateImage = image;
+}
 @end

@@ -8,8 +8,12 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface QUAppDelegate : NSObject <NSApplicationDelegate>
+@interface QUAppDelegate : NSObject <NSApplicationDelegate> {
+    @private
+    NSStatusItem * statusItem;
+}
 
 @property (assign) IBOutlet NSWindow *window;
+@property (assign) IBOutlet NSMenu *statusMenu;
 
 @end
