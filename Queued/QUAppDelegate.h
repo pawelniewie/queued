@@ -7,13 +7,15 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "PanelController.h"
 
-@interface QUAppDelegate : NSObject <NSApplicationDelegate> {
-    @private
-    NSStatusItem * statusItem;
-}
+@class MenubarController;
+@interface QUAppDelegate : NSObject <NSApplicationDelegate, PanelControllerDelegate>
 
-@property (assign) IBOutlet NSWindow *window;
-@property (assign) IBOutlet NSMenu *statusMenu;
+@property (nonatomic, strong) MenubarController *menubarController;
+@property (nonatomic, strong, readonly) PanelController *panelController;
+
+- (IBAction)togglePanel:(id)sender;
 
 @end
+
