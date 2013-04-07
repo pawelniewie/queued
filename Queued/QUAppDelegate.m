@@ -9,6 +9,7 @@
 #import "Buffered.h"
 #import "MenubarController.h"
 #import "QUAppDelegate.h"
+#import "QUSignInWindowController.h"
 
 @implementation QUAppDelegate
 
@@ -48,6 +49,12 @@ void *kContextActivePanel = &kContextActivePanel;
     self.menubarController = [MenubarController new];
     
     _buffered = [[Buffered alloc] initApplication:@"Queued" withId:@"51607a104dbf08a338000006" andSecret:@"18b6c94f175555674bfd5274c9a3f3a0"];
+    
+    if (![_buffered isSignedIn:YES]) {
+        signInWindow = [[QUSignInWindowController alloc] initWithWindowNibName:@"QUSignInWindowController"];
+        [signInWindow.window center];
+        [signInWindow showWindow:self];
+    }
 }
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender

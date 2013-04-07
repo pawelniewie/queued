@@ -29,6 +29,8 @@
 		E506296C17107B7700A25452 /* StatusHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = E506296817107B7700A25452 /* StatusHighlighted.png */; };
 		E506296D17107B7700A25452 /* StatusHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E506296917107B7700A25452 /* StatusHighlighted@2x.png */; };
 		E506296E17107B7700A25452 /* Status.png in Resources */ = {isa = PBXBuildFile; fileRef = E506296A17107B7700A25452 /* Status.png */; };
+		E50629751711756000A25452 /* QUSignInWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = E50629731711755F00A25452 /* QUSignInWindowController.m */; };
+		E50629761711756000A25452 /* QUSignInWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E50629741711756000A25452 /* QUSignInWindowController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +82,9 @@
 		E506296817107B7700A25452 /* StatusHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = StatusHighlighted.png; path = Queued/Resources/StatusHighlighted.png; sourceTree = "<group>"; };
 		E506296917107B7700A25452 /* StatusHighlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "StatusHighlighted@2x.png"; path = "Queued/Resources/StatusHighlighted@2x.png"; sourceTree = "<group>"; };
 		E506296A17107B7700A25452 /* Status.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Status.png; path = Queued/Resources/Status.png; sourceTree = "<group>"; };
+		E50629721711755F00A25452 /* QUSignInWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QUSignInWindowController.h; sourceTree = "<group>"; };
+		E50629731711755F00A25452 /* QUSignInWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QUSignInWindowController.m; sourceTree = "<group>"; };
+		E50629741711756000A25452 /* QUSignInWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QUSignInWindowController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +161,9 @@
 				E50629651710787B00A25452 /* Controllers */,
 				E506292D170CACC300A25452 /* QUAppDelegate.h */,
 				E506292E170CACC300A25452 /* QUAppDelegate.m */,
+				E50629721711755F00A25452 /* QUSignInWindowController.h */,
+				E50629731711755F00A25452 /* QUSignInWindowController.m */,
+				E50629741711756000A25452 /* QUSignInWindowController.xib */,
 				E5062930170CACC300A25452 /* MainMenu.xib */,
 				E5062922170CACC300A25452 /* Supporting Files */,
 			);
@@ -311,6 +319,7 @@
 				E506296C17107B7700A25452 /* StatusHighlighted.png in Resources */,
 				E506296D17107B7700A25452 /* StatusHighlighted@2x.png in Resources */,
 				E506296E17107B7700A25452 /* Status.png in Resources */,
+				E50629761711756000A25452 /* QUSignInWindowController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,6 +389,7 @@
 				E506295F1710783300A25452 /* Panel.m in Sources */,
 				E50629601710783300A25452 /* StatusItemView.m in Sources */,
 				E50629611710783300A25452 /* BackgroundView.m in Sources */,
+				E50629751711756000A25452 /* QUSignInWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,8 +9,12 @@
 #import <Cocoa/Cocoa.h>
 #import "PanelController.h"
 
-@class MenubarController, Buffered;
-@interface QUAppDelegate : NSObject <NSApplicationDelegate, PanelControllerDelegate>
+@class MenubarController, Buffered, QUSignInWindowController;
+
+@interface QUAppDelegate : NSObject <NSApplicationDelegate, PanelControllerDelegate> {
+@private
+    QUSignInWindowController *signInWindow;
+}
 
 @property (nonatomic, strong) MenubarController *menubarController;
 @property (nonatomic, strong, readonly) PanelController *panelController;
