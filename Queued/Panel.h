@@ -1,2 +1,3 @@
 @interface Panel : NSPanel
+
 @end

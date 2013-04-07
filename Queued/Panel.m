@@ -1,4 +1,5 @@
 #import "Panel.h"
+#import "QUAppDelegate.h"
 
 @implementation Panel
 

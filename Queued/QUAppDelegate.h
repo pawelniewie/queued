@@ -9,13 +9,16 @@
 #import <Cocoa/Cocoa.h>
 #import "PanelController.h"
 
-@class MenubarController;
+@class MenubarController, Buffered;
 @interface QUAppDelegate : NSObject <NSApplicationDelegate, PanelControllerDelegate>
 
 @property (nonatomic, strong) MenubarController *menubarController;
 @property (nonatomic, strong, readonly) PanelController *panelController;
+@property (nonatomic, strong, readonly) Buffered *buffered;
 
 - (IBAction)togglePanel:(id)sender;
+
++ (QUAppDelegate *) instance;
 
 @end
 

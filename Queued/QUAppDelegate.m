@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Pawel Niewiadomski. All rights reserved.
 //
 
+#import "Buffered.h"
 #import "MenubarController.h"
 #import "QUAppDelegate.h"
 
@@ -13,6 +14,10 @@
 
 @synthesize panelController = _panelController;
 @synthesize menubarController = _menubarController;
+
++ (QUAppDelegate *) instance {
+    return (QUAppDelegate *) [[NSApplication sharedApplication] delegate];
+}
 
 #pragma mark -
 
@@ -40,7 +45,9 @@ void *kContextActivePanel = &kContextActivePanel;
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
     // Install icon into the menu bar
-    self.menubarController = [[MenubarController alloc] init];
+    self.menubarController = [MenubarController new];
+    
+    _buffered = [[Buffered alloc] initApplication:@"Queued" withId:@"51607a104dbf08a338000006" andSecret:@"18b6c94f175555674bfd5274c9a3f3a0"];
 }
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender
