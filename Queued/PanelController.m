@@ -12,7 +12,7 @@
 
 #define SEARCH_INSET 17
 
-#define POPUP_HEIGHT 122
+#define POPUP_HEIGHT 600
 #define PANEL_WIDTH 280
 #define MENU_ANIMATION_DURATION .1
 
@@ -24,7 +24,7 @@
 
 - (id)initWithDelegate:(id<PanelControllerDelegate>)delegate
 {
-    self = [super initWithWindowNibName:@"Panel"];
+    self = [super initWithWindowNibName:@"PanelController"];
     if (self != nil)
     {
         _delegate = delegate;
@@ -35,6 +35,10 @@
 - (void)dealloc
 {
 //    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSControlTextDidChangeNotification object:self.searchField];
+}
+
+- (IBAction)performSignIn:(id) sender {
+    
 }
 
 #pragma mark -
@@ -58,14 +62,20 @@
     // Follow search string
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(runSearch) name:NSControlTextDidChangeNotification object:self.searchField];
     
-    _pendingUpdatesViewController = [[BUPendingUpdatesViewController alloc] initWithBuffered:[QUAppDelegate instance].buffered];
-
-    [_pendingUpdatesViewController.view setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [_pendingUpdates addSubview:_pendingUpdatesViewController.view];
+    if ([[QUAppDelegate instance].buffered isSignedIn:NO]) {
+        [self.signInButton setHidden:YES];
+        [self initializePendingUpdates];
+    }
 
 //    NSDictionary *views = @{@"view" : _pendingUpdatesViewController.view};
 //    [_pendingUpdates addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view]|" options:0 metrics:nil views:views]];
 //    [_pendingUpdates addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[view]|" options:0 metrics:nil views:views]];
+}
+
+- (void)initializePendingUpdates {
+    _pendingUpdatesViewController = [[BUPendingUpdatesViewController alloc] initWithBuffered:[QUAppDelegate instance].buffered];
+    [_pendingUpdatesViewController.view setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [_pendingUpdates addSubview:_pendingUpdatesViewController.view];
 }
 
 #pragma mark - Public accessors
@@ -109,20 +119,20 @@
 
 - (void)windowDidResize:(NSNotification *)notification
 {
-//    NSWindow *panel = [self window];
-//    NSRect statusRect = [self statusRectForWindow:panel];
-//    NSRect panelRect = [panel frame];
-//    
-//    CGFloat statusX = roundf(NSMidX(statusRect));
-//    CGFloat panelX = statusX - NSMinX(panelRect);
-//    
-//    self.backgroundView.arrowX = panelX;
-//    
+    NSWindow *panel = [self window];
+    NSRect statusRect = [self statusRectForWindow:panel];
+    NSRect panelRect = [panel frame];
+    
+    CGFloat statusX = roundf(NSMidX(statusRect));
+    CGFloat panelX = statusX - NSMinX(panelRect);
+    
+    self.backgroundView.arrowX = panelX;
+    
 //    NSRect searchRect = [self.searchField frame];
 //    searchRect.size.width = NSWidth([self.backgroundView bounds]) - SEARCH_INSET * 2;
 //    searchRect.origin.x = SEARCH_INSET;
 //    searchRect.origin.y = NSHeight([self.backgroundView bounds]) - ARROW_HEIGHT - SEARCH_INSET - NSHeight(searchRect);
-//    
+    
 //    if (NSIsEmptyRect(searchRect))
 //    {
 //        [self.searchField setHidden:YES];
@@ -132,13 +142,13 @@
 //        [self.searchField setFrame:searchRect];
 //        [self.searchField setHidden:NO];
 //    }
-//    
+    
 //    NSRect textRect = [self.textField frame];
 //    textRect.size.width = NSWidth([self.backgroundView bounds]) - SEARCH_INSET * 2;
 //    textRect.origin.x = SEARCH_INSET;
 //    textRect.size.height = NSHeight([self.backgroundView bounds]) - ARROW_HEIGHT - SEARCH_INSET * 3 - NSHeight(searchRect);
 //    textRect.origin.y = SEARCH_INSET;
-//    
+    
 //    if (NSIsEmptyRect(textRect))
 //    {
 //        [self.textField setHidden:YES];
@@ -228,7 +238,9 @@
     [[panel animator] setAlphaValue:1];
     [NSAnimationContext endGrouping];
     
-//    [panel performSelector:@selector(makeFirstResponder:) withObject:self.searchField afterDelay:openDuration];
+    if (![self.signInButton isHidden]) {
+        [panel performSelector:@selector(makeFirstResponder:) withObject:self.signInButton afterDelay:openDuration];
+    }
 }
 
 - (void)closePanel
@@ -239,7 +251,6 @@
     [NSAnimationContext endGrouping];
     
     dispatch_after(dispatch_walltime(NULL, NSEC_PER_SEC * CLOSE_DURATION * 2), dispatch_get_main_queue(), ^{
-        
         [self.window orderOut:nil];
     });
 }

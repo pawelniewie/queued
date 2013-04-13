@@ -11,10 +11,7 @@
 
 @class MenubarController, Buffered, QUSignInWindowController;
 
-@interface QUAppDelegate : NSObject <NSApplicationDelegate, PanelControllerDelegate> {
-@private
-    QUSignInWindowController *signInWindow;
-}
+@interface QUAppDelegate : NSObject <NSApplicationDelegate, PanelControllerDelegate>
 
 @property (nonatomic, strong) MenubarController *menubarController;
 @property (nonatomic, strong, readonly) PanelController *panelController;

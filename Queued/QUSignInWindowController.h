@@ -7,7 +7,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "GTMOAuth2WindowController.h"
 
-@interface QUSignInWindowController : NSWindowController
+@interface QUSignInWindowController : GTMOAuth2WindowController
+
++ (NSString *)authNibName;
 
 @end
