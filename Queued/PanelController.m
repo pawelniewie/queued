@@ -37,8 +37,15 @@
 //    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSControlTextDidChangeNotification object:self.searchField];
 }
 
+#pragma mark -
+#pragma mark Button handlers 
+
 - (IBAction)performSignIn:(id) sender {
-    
+    [self closePanel];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[QUAppDelegate instance] togglePanel:self];
+        [[QUAppDelegate instance] showSignInWindow];
+    });
 }
 
 #pragma mark -
@@ -62,7 +69,7 @@
     // Follow search string
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(runSearch) name:NSControlTextDidChangeNotification object:self.searchField];
     
-    if ([[QUAppDelegate instance].buffered isSignedIn:NO]) {
+    if ([QUAppDelegate instance].hasSignedIn) {
         [self.signInButton setHidden:YES];
         [self initializePendingUpdates];
     }

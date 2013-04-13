@@ -50,11 +50,26 @@ void *kContextActivePanel = &kContextActivePanel;
     
     _buffered = [[Buffered alloc] initApplication:@"Queued" withId:@"51607a104dbf08a338000006" andSecret:@"18b6c94f175555674bfd5274c9a3f3a0"];
     
-    if (![_buffered isSignedIn:YES]) {
-        [self.buffered signInSheetModalForWindow:nil withCompletionHandler:^(NSError *error) {
-                //
-        } withControllerClass:@"QUSignInWindowController"];
+    self.hasSignedIn = [_buffered isSignedIn:YES];
+    
+    if (!self.hasSignedIn) {
+        [self showSignInWindow];
     }
+}
+
+- (void) showSignInWindow {
+    @synchronized (self) {
+        if (self.hasSignInWindowOpen) {
+            [[NSRunningApplication currentApplication] activateWithOptions:NSApplicationActivateIgnoringOtherApps];
+            return;
+        }
+        self.hasSignInWindowOpen = YES;
+    }
+    
+    [self.buffered signInSheetModalForWindow:nil withCompletionHandler:^(NSError *error) {
+        self.hasSignInWindowOpen = NO;
+    } withControllerClass:@"QUSignInWindowController"];
+
 }
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender

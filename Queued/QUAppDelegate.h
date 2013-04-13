@@ -16,8 +16,11 @@
 @property (nonatomic, strong) MenubarController *menubarController;
 @property (nonatomic, strong, readonly) PanelController *panelController;
 @property (nonatomic, strong, readonly) Buffered *buffered;
+@property (assign) BOOL hasSignedIn;
+@property (assign) BOOL hasSignInWindowOpen;
 
 - (IBAction)togglePanel:(id)sender;
+- (void) showSignInWindow;
 
 + (QUAppDelegate *) instance;
 
