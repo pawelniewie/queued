@@ -28,12 +28,14 @@
     if (self != nil)
     {
         _delegate = delegate;
+        [[QUAppDelegate instance] addObserver:self forKeyPath:@"hasSignedIn" options:NSKeyValueObservingOptionNew context:nil];
     }
     return self;
 }
 
 - (void)dealloc
 {
+    [[QUAppDelegate instance] removeObserver:self forKeyPath:@"hasSignedIn"];
 //    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSControlTextDidChangeNotification object:self.searchField];
 }
 
@@ -70,7 +72,6 @@
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(runSearch) name:NSControlTextDidChangeNotification object:self.searchField];
     
     if ([QUAppDelegate instance].hasSignedIn) {
-        [self.signInButton setHidden:YES];
         [self initializePendingUpdates];
     }
 
@@ -80,6 +81,7 @@
 }
 
 - (void)initializePendingUpdates {
+    [self.signInButton setHidden:YES];
     _pendingUpdatesViewController = [[BUPendingUpdatesViewController alloc] initWithBuffered:[QUAppDelegate instance].buffered];
     [_pendingUpdatesViewController.view setTranslatesAutoresizingMaskIntoConstraints:NO];
     [_pendingUpdates addSubview:_pendingUpdatesViewController.view];
@@ -262,4 +264,13 @@
     });
 }
 
+#pragma mark -
+#pragma mark KVO
+- (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    NSLog(@"Changes to %@ %@", keyPath, change);
+    if ([@"hasSignedIn" isEqualToString:keyPath] && [[change objectForKey:NSKeyValueChangeNewKey] boolValue]) {
+        [self initializePendingUpdates];
+    }
+}
+#pragma mark -
 @end

@@ -28,6 +28,7 @@
 {
     [super windowDidLoad];
     [self.window center];
+    [self.window makeKeyAndOrderFront:self];
 }
 
 + (NSString *)authNibName {

@@ -48,6 +48,9 @@ void *kContextActivePanel = &kContextActivePanel;
     // Install icon into the menu bar
     self.menubarController = [MenubarController new];
     
+    _panelController = [[PanelController alloc] initWithDelegate:self];
+    [_panelController addObserver:self forKeyPath:@"hasActivePanel" options:0 context:kContextActivePanel];
+    
     _buffered = [[Buffered alloc] initApplication:@"Queued" withId:@"51607a104dbf08a338000006" andSecret:@"18b6c94f175555674bfd5274c9a3f3a0"];
     
     self.hasSignedIn = [_buffered isSignedIn:YES];
@@ -68,6 +71,17 @@ void *kContextActivePanel = &kContextActivePanel;
     
     [self.buffered signInSheetModalForWindow:nil withCompletionHandler:^(NSError *error) {
         self.hasSignInWindowOpen = NO;
+        if (error != nil) {
+            if (error.code != kGTMOAuth2ErrorWindowClosed) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    NSAlert *alert = [NSAlert alertWithError:error];
+                    [alert.window setTitle:@"Signing In to Buffer Failed"];
+                    [alert runModal];
+                });
+            }
+        } else {
+            self.hasSignedIn = YES;
+        }
     } withControllerClass:@"QUSignInWindowController"];
 
 }
@@ -85,17 +99,6 @@ void *kContextActivePanel = &kContextActivePanel;
 {
     self.menubarController.hasActiveIcon = !self.menubarController.hasActiveIcon;
     self.panelController.hasActivePanel = self.menubarController.hasActiveIcon;
-}
-
-#pragma mark - Public accessors
-
-- (PanelController *)panelController
-{
-    if (_panelController == nil) {
-        _panelController = [[PanelController alloc] initWithDelegate:self];
-        [_panelController addObserver:self forKeyPath:@"hasActivePanel" options:0 context:kContextActivePanel];
-    }
-    return _panelController;
 }
 
 #pragma mark - PanelControllerDelegate
