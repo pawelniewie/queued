@@ -71,20 +71,23 @@
     // Follow search string
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(runSearch) name:NSControlTextDidChangeNotification object:self.searchField];
     
+    [_pendingUpdates addSubview:_pendingUpdatesViewController.view];
+    
+    NSDictionary *views = @{@"view" : _pendingUpdatesViewController.view};
+    [_pendingUpdates addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view]|" options:0 metrics:nil views:views]];
+    [_pendingUpdates addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[view]|" options:0 metrics:nil views:views]];
+    
     if ([QUAppDelegate instance].hasSignedIn) {
         [self initializePendingUpdates];
     }
-
-//    NSDictionary *views = @{@"view" : _pendingUpdatesViewController.view};
-//    [_pendingUpdates addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view]|" options:0 metrics:nil views:views]];
-//    [_pendingUpdates addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[view]|" options:0 metrics:nil views:views]];
 }
 
 - (void)initializePendingUpdates {
     [self.signInButton setHidden:YES];
-    _pendingUpdatesViewController = [[BUPendingUpdatesViewController alloc] initWithBuffered:[QUAppDelegate instance].buffered];
-    [_pendingUpdatesViewController.view setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [_pendingUpdates addSubview:_pendingUpdatesViewController.view];
+    if (_pendingUpdatesViewController == nil) {
+        _pendingUpdatesViewController = [[BUPendingUpdatesViewController alloc] initWithBuffered:[QUAppDelegate instance].buffered];
+        [_pendingUpdatesViewController.view setTranslatesAutoresizingMaskIntoConstraints:NO];
+    }
 }
 
 #pragma mark - Public accessors
@@ -167,6 +170,13 @@
 //        [self.textField setFrame:textRect];
 //        [self.textField setHidden:NO];
 //    }
+    
+    NSRect updatesRect = [self.pendingUpdates frame];
+    updatesRect.size.width = NSWidth([self.backgroundView bounds]);
+    updatesRect.origin.x = 0;
+    updatesRect.size.height = NSHeight([self.backgroundView bounds]);
+    updatesRect.origin.y = 0;
+    [self.pendingUpdates setFrame:updatesRect];
 }
 
 #pragma mark - Keyboard
