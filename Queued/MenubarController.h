@@ -7,6 +7,9 @@
 @interface MenubarController : NSObject {
 @private
     StatusItemView *_statusItemView;
+    NSImage *emptyQueue;
+    NSImage *fullQueue;
+    NSMutableDictionary *emptyProfiles;
 }
 
 @property (nonatomic) BOOL hasActiveIcon;
