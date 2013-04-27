@@ -16,6 +16,8 @@
     self = [super init];
     if (self != nil)
     {
+        [[NSBundle mainBundle] loadNibNamed:@"MenubarController" owner:self topLevelObjects:nil];
+         
         emptyProfiles = [NSMutableDictionary new];
         
         // Load images
@@ -28,6 +30,7 @@
         _statusItemView.image = emptyQueue;
         _statusItemView.alternateImage = [NSImage imageNamed:@"StatusInverted"];
         _statusItemView.action = @selector(togglePanel:);
+        _statusItemView.menu = self.menu;
 
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(profilesLoaded:) name:BUProfilesLoadedNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pendingUpdatesLoaded:) name:BUPendingUpdatesLoadedNotification object:nil];

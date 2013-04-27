@@ -33,6 +33,7 @@
 		E55FBF111722D5C000AEC024 /* StatusRed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E55FBF0D1722D5C000AEC024 /* StatusRed@2x.png */; };
 		E55FBF141722D66800AEC024 /* StatusInverted.png in Resources */ = {isa = PBXBuildFile; fileRef = E55FBF121722D66800AEC024 /* StatusInverted.png */; };
 		E55FBF151722D66800AEC024 /* StatusInverted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E55FBF131722D66800AEC024 /* StatusInverted@2x.png */; };
+		E55FBF17172733A600AEC024 /* MenubarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E55FBF16172733A600AEC024 /* MenubarController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		E55FBF0D1722D5C000AEC024 /* StatusRed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "StatusRed@2x.png"; path = "Queued/Resources/StatusRed@2x.png"; sourceTree = "<group>"; };
 		E55FBF121722D66800AEC024 /* StatusInverted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = StatusInverted.png; path = Queued/Resources/StatusInverted.png; sourceTree = "<group>"; };
 		E55FBF131722D66800AEC024 /* StatusInverted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "StatusInverted@2x.png"; path = "Queued/Resources/StatusInverted@2x.png"; sourceTree = "<group>"; };
+		E55FBF16172733A600AEC024 /* MenubarController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenubarController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +228,7 @@
 			children = (
 				E5062953171077F500A25452 /* MenubarController.h */,
 				E5062954171077F500A25452 /* MenubarController.m */,
+				E55FBF16172733A600AEC024 /* MenubarController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				E55FBF111722D5C000AEC024 /* StatusRed@2x.png in Resources */,
 				E55FBF141722D66800AEC024 /* StatusInverted.png in Resources */,
 				E55FBF151722D66800AEC024 /* StatusInverted@2x.png in Resources */,
+				E55FBF17172733A600AEC024 /* MenubarController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

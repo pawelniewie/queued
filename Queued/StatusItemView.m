@@ -2,13 +2,6 @@
 
 @implementation StatusItemView
 
-@synthesize statusItem = _statusItem;
-@synthesize image = _image;
-@synthesize alternateImage = _alternateImage;
-@synthesize isHighlighted = _isHighlighted;
-@synthesize action = _action;
-@synthesize target = _target;
-
 #pragma mark -
 
 - (id)initWithStatusItem:(NSStatusItem *)statusItem
@@ -48,6 +41,23 @@
 - (void)mouseDown:(NSEvent *)theEvent
 {
     [NSApp sendAction:self.action to:self.target from:self];
+}
+
+- (void)rightMouseDown:(NSEvent *)theEvent {
+    [self.menu setDelegate:self];
+    [_statusItem popUpStatusItemMenu:self.menu];
+    [self setNeedsDisplay:YES];
+}
+
+- (void) menuWillOpen:(NSMenu *) menu {
+    _isHighlighted = YES;
+    [self setNeedsDisplay:YES];
+}
+
+- (void)menuDidClose:(NSMenu *)menu {
+    _isHighlighted = NO;
+    [menu setDelegate:nil];
+    [self setNeedsDisplay:YES];
 }
 
 #pragma mark -
