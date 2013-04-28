@@ -101,6 +101,25 @@ void *kContextActivePanel = &kContextActivePanel;
     self.panelController.hasActivePanel = self.menubarController.hasActiveIcon;
 }
 
+- (IBAction)sendFeedback:(id)sender {
+    // This line defines our entire mailto link. Notice that the link is formed
+    // like a standard GET query might be formed, with each parameter, subject
+    // and body, follow the email address with a ? and are separated by a &.
+    // I use the %@ formatting string to add the contents of the lastResult and
+    // songData objects to the body of the message. You should change these to
+    // whatever information you want to include in the body.
+    NSString* mailtoLink = @"mailto:pawelniewiadomski@me.com?subject=Queued Feedback&body=If it's a bug report please write as much details as you can think of (how to reproduce the bug).\n\n\nThanks for contributing!\n";
+                           
+    // This creates a URL string by adding percent escapes. Since the URL is
+    // just being used locally, I don't know if this is always necessary,
+    // however I thought it would be a good idea to stick to standards.
+    NSURL* url = [NSURL URLWithString:(NSString*)
+         CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)mailtoLink,
+             NULL, NULL, kCFStringEncodingUTF8))];
+    
+    [[NSWorkspace sharedWorkspace] openURL:url];
+}
+
 #pragma mark - PanelControllerDelegate
 
 - (StatusItemView *)statusItemViewForPanelController:(PanelController *)controller

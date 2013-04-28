@@ -44,6 +44,9 @@
 }
 
 - (void)rightMouseDown:(NSEvent *)theEvent {
+    if (_isHighlighted) {
+        [NSApp sendAction:self.action to:self.target from:self];
+    }
     [self.menu setDelegate:self];
     [_statusItem popUpStatusItemMenu:self.menu];
     [self setNeedsDisplay:YES];
