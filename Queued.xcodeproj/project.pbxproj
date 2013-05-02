@@ -272,6 +272,7 @@
 				E5062914170CACC300A25452 /* Sources */,
 				E5062915170CACC300A25452 /* Frameworks */,
 				E5062916170CACC300A25452 /* Resources */,
+				E55359621732F5460087973E /* Set Build Versions */,
 				233303D341144BF49F6CCE01 /* Copy Pods Resources */,
 				E553595D1732A2CC0087973E /* CopyFiles */,
 			);
@@ -403,6 +404,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		E55359621732F5460087973E /* Set Build Versions */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Set Build Versions";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/xcode-git-version.sh\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

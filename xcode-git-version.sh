@@ -9,7 +9,7 @@
 set -o errexit
 set -o nounset
 
-INFO_PLIST="${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Info"
+INFO_PLIST="${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}"
 
 # Get git tag and hash in the FulLVersion
 FULL_VERSION=$(git --git-dir="${PROJECT_DIR}/.git" --work-tree="${PROJECT_DIR}/" describe --dirty | sed -e 's/^v//' -e 's/g//')

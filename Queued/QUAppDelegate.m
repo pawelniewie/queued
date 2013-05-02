@@ -108,7 +108,7 @@ void *kContextActivePanel = &kContextActivePanel;
     // I use the %@ formatting string to add the contents of the lastResult and
     // songData objects to the body of the message. You should change these to
     // whatever information you want to include in the body.
-    NSString* mailtoLink = @"mailto:pawelniewiadomski@me.com?subject=Queued Feedback&body=If it's a bug report please write as much details as you can think of (how to reproduce the bug).\n\n\nThanks for contributing!\n";
+    NSString* mailtoLink = [NSString stringWithFormat:@"mailto:pawelniewiadomski@me.com?subject=Queued Feedback&body=If it's a bug report please write as much details as you can think of (how to reproduce the bug).\n\nThanks for contributing!\n\nThe version is %@\n", [[[NSBundle mainBundle] infoDictionary] objectForKey:@"FullVersion"]];
                            
     // This creates a URL string by adding percent escapes. Since the URL is
     // just being used locally, I don't know if this is always necessary,
