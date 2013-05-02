@@ -27,8 +27,7 @@
 		E50629631710784000A25452 /* PanelController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E50629621710784000A25452 /* PanelController.xib */; };
 		E50629751711756000A25452 /* QUSignInWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = E50629731711755F00A25452 /* QUSignInWindowController.m */; };
 		E50629761711756000A25452 /* QUSignInWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E50629741711756000A25452 /* QUSignInWindowController.xib */; };
-		E553595C1732A2560087973E /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E553595B1732A2560087973E /* Sparkle.framework */; };
-		E553595E1732A2E60087973E /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E553595B1732A2560087973E /* Sparkle.framework */; };
+		E55359601732E3C80087973E /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E553595F1732E3C80087973E /* Sparkle.framework */; };
 		E55FBF0E1722D5C000AEC024 /* StatusGreen.png in Resources */ = {isa = PBXBuildFile; fileRef = E55FBF0A1722D5C000AEC024 /* StatusGreen.png */; };
 		E55FBF0F1722D5C000AEC024 /* StatusGreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E55FBF0B1722D5C000AEC024 /* StatusGreen@2x.png */; };
 		E55FBF101722D5C000AEC024 /* StatusRed.png in Resources */ = {isa = PBXBuildFile; fileRef = E55FBF0C1722D5C000AEC024 /* StatusRed.png */; };
@@ -55,7 +54,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E553595E1732A2E60087973E /* Sparkle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,7 +97,7 @@
 		E50629721711755F00A25452 /* QUSignInWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QUSignInWindowController.h; sourceTree = "<group>"; };
 		E50629731711755F00A25452 /* QUSignInWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QUSignInWindowController.m; sourceTree = "<group>"; };
 		E50629741711756000A25452 /* QUSignInWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QUSignInWindowController.xib; sourceTree = "<group>"; };
-		E553595B1732A2560087973E /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
+		E553595F1732E3C80087973E /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		E55FBF0A1722D5C000AEC024 /* StatusGreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = StatusGreen.png; path = Queued/Resources/StatusGreen.png; sourceTree = "<group>"; };
 		E55FBF0B1722D5C000AEC024 /* StatusGreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "StatusGreen@2x.png"; path = "Queued/Resources/StatusGreen@2x.png"; sourceTree = "<group>"; };
 		E55FBF0C1722D5C000AEC024 /* StatusRed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = StatusRed.png; path = Queued/Resources/StatusRed.png; sourceTree = "<group>"; };
@@ -116,7 +114,7 @@
 			files = (
 				E506291C170CACC300A25452 /* Cocoa.framework in Frameworks */,
 				7498224BF6FD46EDA10835DE /* libPods.a in Frameworks */,
-				E553595C1732A2560087973E /* Sparkle.framework in Frameworks */,
+				E55359601732E3C80087973E /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,7 +156,7 @@
 		E506291A170CACC300A25452 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E553595B1732A2560087973E /* Sparkle.framework */,
+				E553595F1732E3C80087973E /* Sparkle.framework */,
 				E506291B170CACC300A25452 /* Cocoa.framework */,
 				E5062939170CACC400A25452 /* SenTestingKit.framework */,
 				E506291D170CACC300A25452 /* Other Frameworks */,
