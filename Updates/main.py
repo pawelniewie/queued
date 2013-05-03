@@ -15,11 +15,14 @@
 # limitations under the License.
 #
 import webapp2
+import os
 
 class MainHandler(webapp2.RequestHandler):
-    def get(self):
-        self.response.write('Hello world!')
+	def get(self):
+		appcast = os.path.join(os.path.dirname(__file__), 'appcast.xml')
+		self.response.headers['Content-Type'] = 'application/rss+xml'
+		self.response.write(file(appcast,'rb').read())
 
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)
+	('/', MainHandler)
 ], debug=True)
