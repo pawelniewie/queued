@@ -38,5 +38,9 @@
 	<string>http://queuedupdates.appspot.com/updates.xml</string>
 	<key>SUEnableSystemProfiling</key>
 	<true/>
+	<key>SUEnableAutomaticChecks</key>
+	<true/>
+	<key>SUShowReleaseNotes</key>
+	<true/>
 </dict>
 </plist>

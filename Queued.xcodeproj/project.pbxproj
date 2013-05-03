@@ -554,6 +554,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 06B06D02289C4589BA52ACB5 /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Developer ID Application: Pawel Niewiadomski (JA5W62VHS5)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -563,6 +564,7 @@
 				GCC_PREFIX_HEADER = "Queued/Queued-Prefix.pch";
 				INFOPLIST_FILE = "Queued/Queued-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -571,6 +573,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 06B06D02289C4589BA52ACB5 /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Developer ID Application: Pawel Niewiadomski (JA5W62VHS5)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -580,6 +583,7 @@
 				GCC_PREFIX_HEADER = "Queued/Queued-Prefix.pch";
 				INFOPLIST_FILE = "Queued/Queued-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
