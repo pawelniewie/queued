@@ -17,12 +17,13 @@
 import webapp2
 import os
 
-class MainHandler(webapp2.RequestHandler):
+class UpdatesHandler(webapp2.RequestHandler):
 	def get(self):
 		appcast = os.path.join(os.path.dirname(__file__), 'appcast.xml')
 		self.response.headers['Content-Type'] = 'application/rss+xml'
 		self.response.write(file(appcast,'rb').read())
 
 app = webapp2.WSGIApplication([
-	('/', MainHandler)
+	webapp2.Route('/', handler = webapp2.RedirectHandler, defaults = {'_uri' : 'http://pawelniewiadomski.com/queued'}),
+	('/updates.xml', UpdatesHandler)
 ], debug=True)
