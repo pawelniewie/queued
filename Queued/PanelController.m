@@ -1,5 +1,5 @@
 #import "Buffered.h"
-#import "BUPendingUpdatesViewController.h"
+#import "QUPendingUpdatesViewController.h"
 
 #import "QUAppDelegate.h"
 #import "PanelController.h"
@@ -85,7 +85,7 @@
 - (void)initializePendingUpdates {
     [self.signInButton setHidden:YES];
     if (_pendingUpdatesViewController == nil) {
-        _pendingUpdatesViewController = [[BUPendingUpdatesViewController alloc] initWithBuffered:[QUAppDelegate instance].buffered];
+        _pendingUpdatesViewController = [[QUPendingUpdatesViewController alloc] initWithBuffered:[QUAppDelegate instance].buffered];
         [_pendingUpdatesViewController.view setTranslatesAutoresizingMaskIntoConstraints:NO];
     }
 }

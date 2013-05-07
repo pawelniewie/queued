@@ -1,7 +1,7 @@
 #import "BackgroundView.h"
 #import "StatusItemView.h"
 
-@class PanelController, BUPendingUpdatesViewController;
+@class PanelController, QUPendingUpdatesViewController;
 
 @protocol PanelControllerDelegate <NSObject>
 
@@ -15,7 +15,7 @@
 
 @interface PanelController : NSWindowController <NSWindowDelegate> {
 @private
-    BUPendingUpdatesViewController *_pendingUpdatesViewController;
+    QUPendingUpdatesViewController *_pendingUpdatesViewController;
     BOOL _hasActivePanel;
 }
 
