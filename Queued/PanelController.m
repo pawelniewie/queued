@@ -85,7 +85,7 @@
 - (void)initializePendingUpdates {
     [self.signInButton setHidden:YES];
     if (_pendingUpdatesViewController == nil) {
-        _pendingUpdatesViewController = [[QUPendingUpdatesViewController alloc] initWithBuffered:[QUAppDelegate instance].buffered];
+        _pendingUpdatesViewController = [[QUPendingUpdatesViewController alloc] initWithBuffered:[QUAppDelegate instance].buffered andProfilesMonitor:[[QUAppDelegate instance] profilesMonitor]];
         [_pendingUpdatesViewController.view setTranslatesAutoresizingMaskIntoConstraints:NO];
     }
 }

@@ -7,13 +7,11 @@
 //
 
 
-#import "Buffered.h"
-#import "Model.h"
-#import "BUPendingTableCellView.h"
-#import "QUPendingUpdatesViewController.h"
+#import <Buffered.h>
+#import <BUPendingTableCellView.h>
+#import <BUPendingUpdatesViewController.h>
 
-NSString *const BUPendingUpdatesLoadedNotification = @"BUPendingUpdatesLoadedNotification";
-NSString *const BUProfilesLoadedNotification = @"BUProfilesLoadedNotification";
+#import "QUPendingUpdatesViewController.h"
 
 @interface QUPendingUpdatesViewController ()
 
@@ -23,7 +21,7 @@ NSString *const BUProfilesLoadedNotification = @"BUProfilesLoadedNotification";
 
 static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
 
-- (id)initWithBuffered:(Buffered *)buffered
+- (id)initWithBuffered:(Buffered *)buffered andProfilesMonitor: (BUProfilesMonitor *) profilesMonitor
 {
     self = [super initWithNibName:@"QUPendingUpdatesViewController" bundle:[self bufferedBundle]];
     if (self) {
@@ -32,6 +30,7 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
         _profiles = [NSArrayController new];
         _updates = [NSMutableDictionary new];
         _buffered = buffered;
+        _profilesMonitor = profilesMonitor;
         
         QUPendingUpdatesViewController * __weak noRetain = self; // http://stackoverflow.com/questions/7853915/how-do-i-avoid-capturing-self-in-blocks-when-implementing-an-api
         _updatesHandler = ^(NSString *profileId, NSArray *pending, NSError *error) {
@@ -47,6 +46,10 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
     return self;
 }
 
+- (void) dealloc {
+    [_profilesMonitor removeObserver:self forKeyPath:@"profiles"];
+}
+
 - (void) loadView {
     [super loadView];
     
@@ -54,16 +57,18 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
     
     [self.progress startAnimation:self];
     
+    [_profilesMonitor addObserver:self forKeyPath:@"profiles" options:NSKeyValueObservingOptionNew context:nil];
+    
     if (![_buffered isSignedIn:YES]) {
         [_buffered signInSheetModalForWindow:self.view.window withCompletionHandler:^(NSError *error) {
             if (error != nil) {
                 [self reportError:error];
             } else {
-                [self performSelectorOnMainThread:@selector(loadProfiles) withObject:nil waitUntilDone:NO];
+                [_profilesMonitor refresh];
             }
         }];
     } else {
-        [self performSelectorOnMainThread:@selector(loadProfiles) withObject:nil waitUntilDone:NO];
+        [_profilesMonitor refresh];
     }
 }
 
@@ -84,23 +89,6 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
     }
 }
 
-/*
- * Temporary solution just to make it work. This timer and whole quering logic will be moved to a separate class.
- */
-- (void) loadProfiles {
-    [_buffered profiles:^(NSArray *profiles, NSError *error) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:BUProfilesLoadedNotification object:profiles userInfo:nil];
-        if (profiles != nil) {
-            [self performSelectorOnMainThread:@selector(updateProfiles:) withObject:profiles waitUntilDone:NO];
-            if (updateTimer == nil) {
-                updateTimer = [NSTimer scheduledTimerWithTimeInterval:30.0 target:self selector:@selector(loadProfiles) userInfo:nil repeats:YES];
-            }
-        } else {
-            [self performSelectorOnMainThread:@selector(reportError:) withObject:error waitUntilDone:NO];
-        }
-    }];
-}
-
 - (void) reportError: (NSError *) error {
     [self.progress stopAnimation:self];
     [self.progress setHidden:YES];
@@ -118,7 +106,7 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
     [self.profiles setContent:profiles];
     
     for (Profile *profile in profiles) {
-        [self.buffered pendingUpdatesForProfile:profile.id withCompletionHandler:_updatesHandler];
+        [_buffered pendingUpdatesForProfile:profile.id withCompletionHandler:_updatesHandler];
     }
 }
 
@@ -153,6 +141,11 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
         // Note that KVO notifications may be sent from a background thread (in this case, we know they will be)
         // We should only update the UI on the main thread, and in addition, we use NSRunLoopCommonModes to make sure the UI updates when a modal window is up.
         [self performSelectorOnMainThread:@selector(_reloadRowForEntity:) withObject:object waitUntilDone:NO modes:[NSArray arrayWithObject:NSRunLoopCommonModes]];
+    } else if ([@"profiles" isEqualToString:keyPath]) {
+        NSArray * profiles = [change objectForKey:NSKeyValueChangeNewKey];
+        if (profiles != nil) {
+            [self performSelectorOnMainThread:@selector(updateProfiles:) withObject:profiles waitUntilDone:NO];
+        }
     }
 }
 #pragma mark -
@@ -328,7 +321,7 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
 		[self.updatesContent setSelectionIndexes:rowIndexes];
 		[self.updatesTable reloadData];
         NSDictionary * updatedProfile = [self updatesForRow:row];
-        [[self buffered] reorderPendingUpdatesForProfile:[[updatedProfile allKeys] objectAtIndex:0] withOrder:[[updatedProfile allValues] objectAtIndex:0] withCompletionHandler:_updatesHandler];
+        [_buffered reorderPendingUpdatesForProfile:[[updatedProfile allKeys] objectAtIndex:0] withOrder:[[updatedProfile allValues] objectAtIndex:0] withCompletionHandler:_updatesHandler];
 		return YES;
     }
 	

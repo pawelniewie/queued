@@ -7,23 +7,12 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
-@class Buffered;
-
-/*
- * They will be moved to a separate class in the future.
- */
-FOUNDATION_EXPORT NSString *const BUPendingUpdatesLoadedNotification;
-FOUNDATION_EXPORT NSString *const BUProfilesLoadedNotification;
-
-@protocol BUPendingUpdatesDelegate <NSObject>
-
-- (void) reportError: (NSError*) error;
-
-@end
+#import <BUProfilesMonitor.h>
 
 @interface QUPendingUpdatesViewController : NSViewController<NSTableViewDataSource, NSTabViewDelegate> {
 @private
+    Buffered __weak *_buffered;
+    BUProfilesMonitor __weak *_profilesMonitor;
     NSMutableArray *_observedVisibleItems;
     UpdatesCompletionHandler _updatesHandler;
     NSTimer *updateTimer;
@@ -32,13 +21,12 @@ FOUNDATION_EXPORT NSString *const BUProfilesLoadedNotification;
 @property (weak) IBOutlet NSProgressIndicator *progress;
 @property (weak) IBOutlet NSTableView *updatesTable;
 
-@property (weak) Buffered *buffered;
 @property (strong) NSArrayController *profiles;
 @property (strong) NSMutableDictionary *updates;
 @property (strong) NSArrayController *updatesContent;
-@property (weak) id<BUPendingUpdatesDelegate> delegate;
+@property (weak) id<BUErrorDelegate> delegate;
 
-- (id) initWithBuffered: (Buffered *) buffered;
+- (id) initWithBuffered: (Buffered *) buffered andProfilesMonitor: (BUProfilesMonitor *) profilesMonitor;
 - (void) loadProfiles;
 - (void) stopTimer;
 
