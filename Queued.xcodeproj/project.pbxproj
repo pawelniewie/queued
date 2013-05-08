@@ -38,6 +38,7 @@
 		E5A79F8B17399525006DDA1E /* QUPendingUpdatesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5A79F8917399525006DDA1E /* QUPendingUpdatesViewController.xib */; };
 		E5A79F8E173AD7CD006DDA1E /* StatusBlack.png in Resources */ = {isa = PBXBuildFile; fileRef = E5A79F8C173AD7CD006DDA1E /* StatusBlack.png */; };
 		E5A79F8F173AD7CD006DDA1E /* StatusBlack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5A79F8D173AD7CD006DDA1E /* StatusBlack@2x.png */; };
+		E5A79F92173AD8A0006DDA1E /* QUPendingTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A79F91173AD8A0006DDA1E /* QUPendingTableCellView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +113,8 @@
 		E5A79F8917399525006DDA1E /* QUPendingUpdatesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QUPendingUpdatesViewController.xib; sourceTree = "<group>"; };
 		E5A79F8C173AD7CD006DDA1E /* StatusBlack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = StatusBlack.png; path = Queued/Resources/StatusBlack.png; sourceTree = "<group>"; };
 		E5A79F8D173AD7CD006DDA1E /* StatusBlack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "StatusBlack@2x.png"; path = "Queued/Resources/StatusBlack@2x.png"; sourceTree = "<group>"; };
+		E5A79F90173AD8A0006DDA1E /* QUPendingTableCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QUPendingTableCellView.h; sourceTree = "<group>"; };
+		E5A79F91173AD8A0006DDA1E /* QUPendingTableCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QUPendingTableCellView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +199,8 @@
 				E5A79F8717399525006DDA1E /* QUPendingUpdatesViewController.h */,
 				E5A79F8817399525006DDA1E /* QUPendingUpdatesViewController.m */,
 				E5A79F8917399525006DDA1E /* QUPendingUpdatesViewController.xib */,
+				E5A79F90173AD8A0006DDA1E /* QUPendingTableCellView.h */,
+				E5A79F91173AD8A0006DDA1E /* QUPendingTableCellView.m */,
 				E5062930170CACC300A25452 /* MainMenu.xib */,
 				E5062922170CACC300A25452 /* Supporting Files */,
 			);
@@ -446,6 +451,7 @@
 				E50629611710783300A25452 /* BackgroundView.m in Sources */,
 				E50629751711756000A25452 /* QUSignInWindowController.m in Sources */,
 				E5A79F8A17399525006DDA1E /* QUPendingUpdatesViewController.m in Sources */,
+				E5A79F92173AD8A0006DDA1E /* QUPendingTableCellView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

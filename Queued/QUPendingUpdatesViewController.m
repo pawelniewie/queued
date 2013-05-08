@@ -8,7 +8,7 @@
 
 
 #import <Buffered.h>
-#import <BUPendingTableCellView.h>
+#import <QUPendingTableCellView.h>
 #import <BUPendingUpdatesViewController.h>
 
 #import "QUPendingUpdatesViewController.h"
@@ -164,7 +164,7 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
     NSInteger row = [self.updatesContent.arrangedObjects indexOfObject:object];
     if (row != NSNotFound) {
         Profile *entity = [self profileEntityForRow:row];
-        BUPendingTableCellView *cellView = [self.updatesTable viewAtColumn:0 row:row makeIfNecessary:NO];
+        QUPendingTableCellView *cellView = [self.updatesTable viewAtColumn:0 row:row makeIfNecessary:NO];
         if (cellView) {
             // Fade the imageView in, and fade the progress indicator out
             [NSAnimationContext beginGrouping];
@@ -173,7 +173,7 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
             cellView.imageView.image = [self resizeImage:entity.avatarImage size:[cellView.imageView bounds].size];
             [cellView.imageView setHidden:NO];
             [[cellView.imageView animator] setAlphaValue:1.0];
-            [cellView.progressIndicator setHidden:YES];
+            [cellView.avatarLoadingIndicator setHidden:YES];
             [NSAnimationContext endGrouping];
         }
     }
@@ -188,7 +188,7 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
         
         return cell;
     } else {
-        BUPendingTableCellView *cell = [tableView makeViewWithIdentifier:@"Profile" owner:self];
+        QUPendingTableCellView *cell = [tableView makeViewWithIdentifier:@"Profile" owner:self];
         Profile *profile = (Profile *) entity;
         
         cell.textField.stringValue = [profile.json objectForKey:@"formatted_username"];
@@ -205,11 +205,11 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
         
         // Hide/show progress based on the thumbnail image being loaded or not.
         if (profile.avatarImage == nil) {
-            [cell.progressIndicator setHidden:NO];
-            [cell.progressIndicator startAnimation:nil];
+            [cell.avatarLoadingIndicator setHidden:NO];
+            [cell.avatarLoadingIndicator startAnimation:nil];
             [cell.imageView setHidden:YES];
         } else {
-            [cell.progressIndicator setHidden:YES];
+            [cell.avatarLoadingIndicator setHidden:YES];
             [cell.imageView setImage:[self resizeImage:profile.avatarImage size:[cell.imageView bounds].size]];
         }
         
@@ -244,7 +244,7 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
 
 - (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {
     if ([self isProfileEntity:[self entityForRow:row]]) {
-        return 50;
+        return 30;
     } else {
         return 30;
     }
