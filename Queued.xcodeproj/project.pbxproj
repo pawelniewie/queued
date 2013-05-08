@@ -30,14 +30,14 @@
 		E55359601732E3C80087973E /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E553595F1732E3C80087973E /* Sparkle.framework */; };
 		E55FBF0E1722D5C000AEC024 /* StatusGreen.png in Resources */ = {isa = PBXBuildFile; fileRef = E55FBF0A1722D5C000AEC024 /* StatusGreen.png */; };
 		E55FBF0F1722D5C000AEC024 /* StatusGreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E55FBF0B1722D5C000AEC024 /* StatusGreen@2x.png */; };
-		E55FBF101722D5C000AEC024 /* StatusRed.png in Resources */ = {isa = PBXBuildFile; fileRef = E55FBF0C1722D5C000AEC024 /* StatusRed.png */; };
-		E55FBF111722D5C000AEC024 /* StatusRed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E55FBF0D1722D5C000AEC024 /* StatusRed@2x.png */; };
 		E55FBF141722D66800AEC024 /* StatusInverted.png in Resources */ = {isa = PBXBuildFile; fileRef = E55FBF121722D66800AEC024 /* StatusInverted.png */; };
 		E55FBF151722D66800AEC024 /* StatusInverted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E55FBF131722D66800AEC024 /* StatusInverted@2x.png */; };
 		E55FBF17172733A600AEC024 /* MenubarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E55FBF16172733A600AEC024 /* MenubarController.xib */; };
 		E5A79F7E17343628006DDA1E /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E553595F1732E3C80087973E /* Sparkle.framework */; };
 		E5A79F8A17399525006DDA1E /* QUPendingUpdatesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A79F8817399525006DDA1E /* QUPendingUpdatesViewController.m */; };
 		E5A79F8B17399525006DDA1E /* QUPendingUpdatesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5A79F8917399525006DDA1E /* QUPendingUpdatesViewController.xib */; };
+		E5A79F8E173AD7CD006DDA1E /* StatusBlack.png in Resources */ = {isa = PBXBuildFile; fileRef = E5A79F8C173AD7CD006DDA1E /* StatusBlack.png */; };
+		E5A79F8F173AD7CD006DDA1E /* StatusBlack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5A79F8D173AD7CD006DDA1E /* StatusBlack@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,14 +104,14 @@
 		E553595F1732E3C80087973E /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		E55FBF0A1722D5C000AEC024 /* StatusGreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = StatusGreen.png; path = Queued/Resources/StatusGreen.png; sourceTree = "<group>"; };
 		E55FBF0B1722D5C000AEC024 /* StatusGreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "StatusGreen@2x.png"; path = "Queued/Resources/StatusGreen@2x.png"; sourceTree = "<group>"; };
-		E55FBF0C1722D5C000AEC024 /* StatusRed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = StatusRed.png; path = Queued/Resources/StatusRed.png; sourceTree = "<group>"; };
-		E55FBF0D1722D5C000AEC024 /* StatusRed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "StatusRed@2x.png"; path = "Queued/Resources/StatusRed@2x.png"; sourceTree = "<group>"; };
 		E55FBF121722D66800AEC024 /* StatusInverted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = StatusInverted.png; path = Queued/Resources/StatusInverted.png; sourceTree = "<group>"; };
 		E55FBF131722D66800AEC024 /* StatusInverted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "StatusInverted@2x.png"; path = "Queued/Resources/StatusInverted@2x.png"; sourceTree = "<group>"; };
 		E55FBF16172733A600AEC024 /* MenubarController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenubarController.xib; sourceTree = "<group>"; };
 		E5A79F8717399525006DDA1E /* QUPendingUpdatesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QUPendingUpdatesViewController.h; sourceTree = "<group>"; };
 		E5A79F8817399525006DDA1E /* QUPendingUpdatesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QUPendingUpdatesViewController.m; sourceTree = "<group>"; };
 		E5A79F8917399525006DDA1E /* QUPendingUpdatesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QUPendingUpdatesViewController.xib; sourceTree = "<group>"; };
+		E5A79F8C173AD7CD006DDA1E /* StatusBlack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = StatusBlack.png; path = Queued/Resources/StatusBlack.png; sourceTree = "<group>"; };
+		E5A79F8D173AD7CD006DDA1E /* StatusBlack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "StatusBlack@2x.png"; path = "Queued/Resources/StatusBlack@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -262,12 +262,12 @@
 		E506296617107B6300A25452 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E5A79F8C173AD7CD006DDA1E /* StatusBlack.png */,
+				E5A79F8D173AD7CD006DDA1E /* StatusBlack@2x.png */,
 				E55FBF121722D66800AEC024 /* StatusInverted.png */,
 				E55FBF131722D66800AEC024 /* StatusInverted@2x.png */,
 				E55FBF0A1722D5C000AEC024 /* StatusGreen.png */,
 				E55FBF0B1722D5C000AEC024 /* StatusGreen@2x.png */,
-				E55FBF0C1722D5C000AEC024 /* StatusRed.png */,
-				E55FBF0D1722D5C000AEC024 /* StatusRed@2x.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -355,12 +355,12 @@
 				E50629761711756000A25452 /* QUSignInWindowController.xib in Resources */,
 				E55FBF0E1722D5C000AEC024 /* StatusGreen.png in Resources */,
 				E55FBF0F1722D5C000AEC024 /* StatusGreen@2x.png in Resources */,
-				E55FBF101722D5C000AEC024 /* StatusRed.png in Resources */,
-				E55FBF111722D5C000AEC024 /* StatusRed@2x.png in Resources */,
 				E55FBF141722D66800AEC024 /* StatusInverted.png in Resources */,
 				E55FBF151722D66800AEC024 /* StatusInverted@2x.png in Resources */,
 				E55FBF17172733A600AEC024 /* MenubarController.xib in Resources */,
 				E5A79F8B17399525006DDA1E /* QUPendingUpdatesViewController.xib in Resources */,
+				E5A79F8E173AD7CD006DDA1E /* StatusBlack.png in Resources */,
+				E5A79F8F173AD7CD006DDA1E /* StatusBlack@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

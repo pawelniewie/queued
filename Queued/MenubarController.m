@@ -21,7 +21,7 @@
         emptyProfiles = [NSMutableDictionary new];
         
         // Load images
-        emptyQueue = [NSImage imageNamed:@"StatusRed"];
+        emptyQueue = [NSImage imageNamed:@"StatusBlack"];
         fullQueue = [NSImage imageNamed:@"StatusGreen"];
         
         // Install status item into the menu bar
