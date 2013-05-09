@@ -27,7 +27,6 @@
 @property (weak) id<BUErrorDelegate> delegate;
 
 - (id) initWithBuffered: (Buffered *) buffered andProfilesMonitor: (BUProfilesMonitor *) profilesMonitor;
-- (void) loadProfiles;
 - (void) stopTimer;
 
 @end

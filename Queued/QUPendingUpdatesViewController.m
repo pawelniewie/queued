@@ -12,6 +12,7 @@
 #import <BUPendingUpdatesViewController.h>
 
 #import "QUPendingUpdatesViewController.h"
+#import "QUPendingUpdatesRowView.h"
 
 @interface QUPendingUpdatesViewController ()
 
@@ -150,15 +151,22 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
 }
 #pragma mark -
 #pragma mark NSTableView
-//- (void)tableView:(NSTableView *)tableView didRemoveRowView:(ATObjectTableRowView *)rowView forRow:(NSInteger)row {
-// Stop observing visible things
-//    ATDesktopImageEntity *imageEntity = rowView.objectValue;
-//    NSInteger index = imageEntity ? [_observedVisibleItems indexOfObject:imageEntity] : NSNotFound;
-//    if (index != NSNotFound) {
-//        [imageEntity removeObserver:self forKeyPath:ATEntityPropertyNamedThumbnailImage];
-//        [_observedVisibleItems removeObjectAtIndex:index];
-//    }
-//}
+- (void)tableView:(NSTableView *)tableView didRemoveRowView:(QUPendingUpdatesRowView *)rowView forRow:(NSInteger)row {
+    // Stop observing visible things
+    NSObject *entity = [rowView objectValue];
+    NSInteger index = entity ? [_observedVisibleItems indexOfObject:entity] : NSNotFound;
+    if (index != NSNotFound) {
+        [entity removeObserver:self forKeyPath:@"avatarImage"];
+        [_observedVisibleItems removeObjectAtIndex:index];
+    }
+}
+
+- (NSTableRowView *)tableView:(NSTableView *)tableView rowViewForRow:(NSInteger)row {
+    // Make the row view keep track of our main model object
+    QUPendingUpdatesRowView *result = [[QUPendingUpdatesRowView alloc] initWithFrame:NSMakeRect(0, 0, 100, 100)];
+    result.objectValue = [self.updatesContent.arrangedObjects objectAtIndex:row];
+    return result;
+}
 
 - (void)_reloadRowForEntity:(id)object {
     NSInteger row = [self.updatesContent.arrangedObjects indexOfObject:object];
