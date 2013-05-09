@@ -10,6 +10,7 @@
 #import <Buffered.h>
 #import <QUPendingTableCellView.h>
 #import <BUPendingUpdatesViewController.h>
+#import <BUPendingUpdatesMonitor.h>
 
 #import "QUPendingUpdatesViewController.h"
 #import "QUPendingUpdatesRowView.h"
@@ -32,6 +33,7 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
         _updates = [NSMutableDictionary new];
         _buffered = buffered;
         _profilesMonitor = profilesMonitor;
+        _observedVisibleItems = [NSMutableArray new];
         
         QUPendingUpdatesViewController * __weak noRetain = self; // http://stackoverflow.com/questions/7853915/how-do-i-avoid-capturing-self-in-blocks-when-implementing-an-api
         _updatesHandler = ^(NSString *profileId, NSArray *pending, NSError *error) {
@@ -159,6 +161,10 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
         [entity removeObserver:self forKeyPath:@"avatarImage"];
         [_observedVisibleItems removeObjectAtIndex:index];
     }
+    if ([self isProfileEntity:entity]) {
+        Profile *profile = (Profile *) entity;
+        [profile.updatesMonitor stopPoolling];
+    }
 }
 
 - (NSTableRowView *)tableView:(NSTableView *)tableView rowViewForRow:(NSInteger)row {
@@ -174,15 +180,7 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
         Profile *entity = [self profileEntityForRow:row];
         QUPendingTableCellView *cellView = [self.updatesTable viewAtColumn:0 row:row makeIfNecessary:NO];
         if (cellView) {
-            // Fade the imageView in, and fade the progress indicator out
-            [NSAnimationContext beginGrouping];
-            [[NSAnimationContext currentContext] setDuration:0.8];
-            [cellView.imageView setAlphaValue:0];
             cellView.imageView.image = [self resizeImage:entity.avatarImage size:[cellView.imageView bounds].size];
-            [cellView.imageView setHidden:NO];
-            [[cellView.imageView animator] setAlphaValue:1.0];
-            [cellView.avatarLoadingIndicator setHidden:YES];
-            [NSAnimationContext endGrouping];
         }
     }
 }
@@ -198,13 +196,9 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
     } else {
         QUPendingTableCellView *cell = [tableView makeViewWithIdentifier:@"Profile" owner:self];
         Profile *profile = (Profile *) entity;
-        
-        cell.textField.stringValue = [profile.json objectForKey:@"formatted_username"];
+        cell.objectValue = entity;
         
         // Use KVO to observe for changes of the thumbnail image
-        if (_observedVisibleItems == nil) {
-            _observedVisibleItems = [NSMutableArray new];
-        }
         if (![_observedVisibleItems containsObject:entity]) {
             [profile addObserver:self forKeyPath:@"avatarImage" options:0 context:NULL];
             [profile loadAvatar];
@@ -212,15 +206,9 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
         }
         
         // Hide/show progress based on the thumbnail image being loaded or not.
-        if (profile.avatarImage == nil) {
-            [cell.avatarLoadingIndicator setHidden:NO];
-            [cell.avatarLoadingIndicator startAnimation:nil];
-            [cell.imageView setHidden:YES];
-        } else {
-            [cell.avatarLoadingIndicator setHidden:YES];
+        if (profile.avatarImage != nil) {
             [cell.imageView setImage:[self resizeImage:profile.avatarImage size:[cell.imageView bounds].size]];
         }
-        
         return cell;
     }
 }
