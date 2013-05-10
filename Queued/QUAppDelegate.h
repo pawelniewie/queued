@@ -22,6 +22,7 @@
 @property (assign) BOOL hasSignInWindowOpen;
 
 - (IBAction)togglePanel:(id)sender;
+- (IBAction)reloadPendingUpdates:(id)sender;
 - (void) showSignInWindow;
 
 + (QUAppDelegate *) instance;

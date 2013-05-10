@@ -196,19 +196,19 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
     } else {
         QUPendingTableCellView *cell = [tableView makeViewWithIdentifier:@"Profile" owner:self];
         Profile *profile = (Profile *) entity;
-        cell.objectValue = entity;
-        
-        // Use KVO to observe for changes of the thumbnail image
-        if (![_observedVisibleItems containsObject:entity]) {
+
+        if (profile.avatarImage != nil) {
+            [cell.imageView setImage:[self resizeImage:profile.avatarImage size:[cell.imageView bounds].size]];
+        } else if (![_observedVisibleItems containsObject:entity]) {
+            // Use KVO to observe for changes of the thumbnail image
             [profile addObserver:self forKeyPath:@"avatarImage" options:0 context:NULL];
             [profile loadAvatar];
             [_observedVisibleItems addObject:entity];
         }
         
-        // Hide/show progress based on the thumbnail image being loaded or not.
-        if (profile.avatarImage != nil) {
-            [cell.imageView setImage:[self resizeImage:profile.avatarImage size:[cell.imageView bounds].size]];
-        }
+        [profile.updatesMonitor refresh];
+        [profile.updatesMonitor startPoolingWithInterval:30];
+        
         return cell;
     }
 }
@@ -248,6 +248,13 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
     return [self.updatesContent.arrangedObjects count];
+}
+
+- (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
+    if (tableView == self.updatesTable) {
+        return [self.updatesContent.arrangedObjects objectAtIndex:row];
+    }
+    return nil;
 }
 #pragma mark -
 #pragma mark Drag and Drop

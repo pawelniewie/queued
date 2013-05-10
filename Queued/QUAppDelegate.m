@@ -8,6 +8,7 @@
 
 #import <Buffered.h>
 #import <BUProfilesMonitor.h>
+#import <BUPendingUpdatesMonitor.h>
 
 #import "MenubarController.h"
 #import "QUAppDelegate.h"
@@ -148,6 +149,12 @@ void *kContextActivePanel = &kContextActivePanel;
 - (StatusItemView *)statusItemViewForPanelController:(PanelController *)controller
 {
     return self.menubarController.statusItemView;
+}
+
+- (IBAction)reloadPendingUpdates:(id)sender {
+    [self.profilesMonitor.profiles enumerateObjectsUsingBlock:^(Profile* obj, NSUInteger idx, BOOL *stop) {
+        [obj.updatesMonitor refresh];
+    }];
 }
 
 @end

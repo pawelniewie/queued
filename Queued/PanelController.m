@@ -36,7 +36,6 @@
 - (void)dealloc
 {
     [[QUAppDelegate instance] removeObserver:self forKeyPath:@"hasSignedIn"];
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSControlTextDidChangeNotification object:self.searchField];
 }
 
 #pragma mark -
@@ -68,15 +67,13 @@
     panelRect.size.height = POPUP_HEIGHT;
     [[self window] setFrame:panelRect display:NO];
     
-    // Follow search string
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(runSearch) name:NSControlTextDidChangeNotification object:self.searchField];
-    
     [_pendingUpdates addSubview:_pendingUpdatesViewController.view];
     
     NSDictionary *views = @{@"view" : _pendingUpdatesViewController.view};
     [_pendingUpdates addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view]|" options:0 metrics:nil views:views]];
     [_pendingUpdates addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[view]|" options:0 metrics:nil views:views]];
-    
+
+    [self.reloadButton setEnabled:NO];
     if ([QUAppDelegate instance].hasSignedIn) {
         [self initializePendingUpdates];
     }
@@ -84,6 +81,8 @@
 
 - (void)initializePendingUpdates {
     [self.signInButton setHidden:YES];
+    [self.reloadButton setEnabled:YES];
+    
     if (_pendingUpdatesViewController == nil) {
         _pendingUpdatesViewController = [[QUPendingUpdatesViewController alloc] initWithBuffered:[QUAppDelegate instance].buffered andProfilesMonitor:[[QUAppDelegate instance] profilesMonitor]];
         [_pendingUpdatesViewController.view setTranslatesAutoresizingMaskIntoConstraints:NO];
