@@ -138,6 +138,8 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
         [self.profiles setContent:profiles];
         
         [self performSelectorOnMainThread:@selector(updateTable) withObject:nil waitUntilDone:NO];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:BUProfilesLoadedNotification object:profiles userInfo:nil];
 
         [profiles enumerateObjectsUsingBlock:^(Profile* obj, NSUInteger idx, BOOL *stop) {
             NSInteger index = obj ? [_observedVisibleItems indexOfObject:obj] : NSNotFound;
@@ -145,6 +147,9 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
                 [_observedVisibleItems addObject:obj];
                 [obj.updatesMonitor addObserver:self forKeyPath:@"pendingUpdates" options:NSKeyValueObservingOptionNew context:(__bridge void *)(obj.id)];
                 [obj addObserver:self forKeyPath:@"avatarImage" options:NSKeyValueObservingOptionNew context:(__bridge void *)(obj.id)];
+                
+                [obj.updatesMonitor refresh];
+                [obj.updatesMonitor startPoolingWithInterval:30];
             }
         }];
     } else if ([@"pendingUpdates" isEqualToString:keyPath]) {
@@ -207,10 +212,6 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
             // KVO will update the avatar when it's loaded
             [profile loadAvatar];
         }
-        
-        [profile.updatesMonitor refresh];
-        [profile.updatesMonitor startPoolingWithInterval:30];
-        
         return cell;
     }
 }
