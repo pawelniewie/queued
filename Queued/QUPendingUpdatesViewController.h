@@ -15,7 +15,6 @@
     BUProfilesMonitor __weak *_profilesMonitor;
     NSMutableArray *_observedVisibleItems;
     UpdatesCompletionHandler _updatesHandler;
-    NSTimer *updateTimer;
 }
 
 @property (weak) IBOutlet NSProgressIndicator *progress;
@@ -27,6 +26,5 @@
 @property (weak) id<BUErrorDelegate> delegate;
 
 - (id) initWithBuffered: (Buffered *) buffered andProfilesMonitor: (BUProfilesMonitor *) profilesMonitor;
-- (void) stopTimer;
 
 @end

@@ -50,6 +50,9 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
 }
 
 - (void) dealloc {
+    [_profilesMonitor.profiles enumerateObjectsUsingBlock:^(Profile* obj, NSUInteger idx, BOOL *stop) {
+        [obj.updatesMonitor removeObserver:self forKeyPath:@"pendingUpdates"];
+    }];
     [_profilesMonitor removeObserver:self forKeyPath:@"profiles"];
 }
 
@@ -85,13 +88,6 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
 #endif
 }
 
-- (void) stopTimer {
-    if (updateTimer != nil) {
-        [updateTimer invalidate];
-        updateTimer = nil;
-    }
-}
-
 - (void) reportError: (NSError *) error {
     [self.progress stopAnimation:self];
     [self.progress setHidden:YES];
@@ -99,17 +95,6 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
         [self.delegate reportError:error];
     } else {
         NSLog(@"Error updating pending updates %@", error);
-    }
-}
-
-- (void) updateProfiles: (NSArray *) profiles {
-    [self.progress stopAnimation:self];
-    [self.progress setHidden:YES];
-    
-    [self.profiles setContent:profiles];
-    
-    for (Profile *profile in profiles) {
-        [_buffered pendingUpdatesForProfile:profile.id withCompletionHandler:_updatesHandler];
     }
 }
 
@@ -146,24 +131,43 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
         [self performSelectorOnMainThread:@selector(_reloadRowForEntity:) withObject:object waitUntilDone:NO modes:[NSArray arrayWithObject:NSRunLoopCommonModes]];
     } else if ([@"profiles" isEqualToString:keyPath]) {
         NSArray * profiles = [change objectForKey:NSKeyValueChangeNewKey];
-        if (profiles != nil) {
-            [self performSelectorOnMainThread:@selector(updateProfiles:) withObject:profiles waitUntilDone:NO];
-        }
+        
+        [self.progress stopAnimation:self];
+        [self.progress setHidden:YES];
+        
+        [self.profiles setContent:profiles];
+        
+        [self performSelectorOnMainThread:@selector(updateTable) withObject:nil waitUntilDone:NO];
+
+        [profiles enumerateObjectsUsingBlock:^(Profile* obj, NSUInteger idx, BOOL *stop) {
+            NSInteger index = obj ? [_observedVisibleItems indexOfObject:obj] : NSNotFound;
+            if (index == NSNotFound) {
+                [_observedVisibleItems addObject:obj];
+                [obj.updatesMonitor addObserver:self forKeyPath:@"pendingUpdates" options:NSKeyValueObservingOptionNew context:(__bridge void *)(obj.id)];
+                [obj addObserver:self forKeyPath:@"avatarImage" options:NSKeyValueObservingOptionNew context:(__bridge void *)(obj.id)];
+            }
+        }];
+    } else if ([@"pendingUpdates" isEqualToString:keyPath]) {
+        NSArray * updates = [change objectForKey:NSKeyValueChangeNewKey];
+        _updatesHandler((__bridge NSString*) context, updates, nil);
     }
 }
 #pragma mark -
 #pragma mark NSTableView
 - (void)tableView:(NSTableView *)tableView didRemoveRowView:(QUPendingUpdatesRowView *)rowView forRow:(NSInteger)row {
-    // Stop observing visible things
-    NSObject *entity = [rowView objectValue];
-    NSInteger index = entity ? [_observedVisibleItems indexOfObject:entity] : NSNotFound;
-    if (index != NSNotFound) {
-        [entity removeObserver:self forKeyPath:@"avatarImage"];
-        [_observedVisibleItems removeObjectAtIndex:index];
-    }
-    if ([self isProfileEntity:entity]) {
-        Profile *profile = (Profile *) entity;
-        [profile.updatesMonitor stopPoolling];
+    if (tableView == self.updatesTable) {
+        // Stop observing visible things
+        NSObject *entity = [rowView objectValue];
+        NSInteger index = entity ? [_observedVisibleItems indexOfObject:entity] : NSNotFound;
+        if (index != NSNotFound) {
+            [entity removeObserver:self forKeyPath:@"avatarImage"];
+            [((Profile *)entity).updatesMonitor removeObserver:self forKeyPath:@"pendingUpdates"];
+            [_observedVisibleItems removeObjectAtIndex:index];
+        }
+        if ([self isProfileEntity:entity]) {
+            Profile *profile = (Profile *) entity;
+            [profile.updatesMonitor stopPoolling];
+        }
     }
 }
 
@@ -199,11 +203,9 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
 
         if (profile.avatarImage != nil) {
             [cell.imageView setImage:[self resizeImage:profile.avatarImage size:[cell.imageView bounds].size]];
-        } else if (![_observedVisibleItems containsObject:entity]) {
-            // Use KVO to observe for changes of the thumbnail image
-            [profile addObserver:self forKeyPath:@"avatarImage" options:0 context:NULL];
+        } else {
+            // KVO will update the avatar when it's loaded
             [profile loadAvatar];
-            [_observedVisibleItems addObject:entity];
         }
         
         [profile.updatesMonitor refresh];
