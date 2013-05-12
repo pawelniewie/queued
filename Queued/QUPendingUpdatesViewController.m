@@ -138,20 +138,6 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
         [self.profiles setContent:profiles];
         
         [self performSelectorOnMainThread:@selector(updateTable) withObject:nil waitUntilDone:NO];
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:BUProfilesLoadedNotification object:profiles userInfo:nil];
-
-        [profiles enumerateObjectsUsingBlock:^(Profile* obj, NSUInteger idx, BOOL *stop) {
-            NSInteger index = obj ? [_observedVisibleItems indexOfObject:obj] : NSNotFound;
-            if (index == NSNotFound) {
-                [_observedVisibleItems addObject:obj];
-                [obj.updatesMonitor addObserver:self forKeyPath:@"pendingUpdates" options:NSKeyValueObservingOptionNew context:(__bridge void *)(obj.id)];
-                [obj addObserver:self forKeyPath:@"avatarImage" options:NSKeyValueObservingOptionNew context:(__bridge void *)(obj.id)];
-                
-                [obj.updatesMonitor refresh];
-                [obj.updatesMonitor startPoolingWithInterval:30];
-            }
-        }];
     } else if ([@"pendingUpdates" isEqualToString:keyPath]) {
         NSArray * updates = [change objectForKey:NSKeyValueChangeNewKey];
         _updatesHandler((__bridge NSString*) context, updates, nil);
@@ -205,6 +191,14 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
     } else {
         QUPendingTableCellView *cell = [tableView makeViewWithIdentifier:@"Profile" owner:self];
         Profile *profile = (Profile *) entity;
+
+        NSInteger index = profile ? [_observedVisibleItems indexOfObject:profile] : NSNotFound;
+        if (index == NSNotFound) {
+            [profile.updatesMonitor addObserver:self forKeyPath:@"pendingUpdates" options:NSKeyValueObservingOptionNew context:(__bridge void *)(profile.id)];
+            [profile addObserver:self forKeyPath:@"avatarImage" options:NSKeyValueObservingOptionNew context:nil];
+            
+            [_observedVisibleItems addObject:profile];
+        }
 
         if (profile.avatarImage != nil) {
             [cell.imageView setImage:[self resizeImage:profile.avatarImage size:[cell.imageView bounds].size]];

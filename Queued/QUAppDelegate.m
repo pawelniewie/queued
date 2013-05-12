@@ -9,6 +9,7 @@
 #import <Buffered.h>
 #import <BUProfilesMonitor.h>
 #import <BUPendingUpdatesMonitor.h>
+#import <BUPendingUpdatesViewController.h>
 
 #import "MenubarController.h"
 #import "QUAppDelegate.h"
@@ -41,6 +42,14 @@ void *kContextActivePanel = &kContextActivePanel;
     }
     else if ([@"profiles" isEqualToString:keyPath]) {
         NSLog(@"Profiles were updated %@", change);
+        NSArray *profiles = [change objectForKey:NSKeyValueChangeNewKey];
+        [profiles enumerateObjectsUsingBlock:^(Profile *profile, NSUInteger idx, BOOL *stop) {
+            if (!profile.updatesMonitor.isPooling) {
+                [profile.updatesMonitor refresh];
+                [profile.updatesMonitor startPoolingWithInterval:30];
+            }
+        }];
+        [[NSNotificationCenter defaultCenter] postNotificationName:BUProfilesLoadedNotification object:profiles userInfo:nil];
     }
     else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
