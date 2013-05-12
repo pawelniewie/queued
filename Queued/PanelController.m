@@ -7,14 +7,8 @@
 #import "StatusItemView.h"
 #import "MenubarController.h"
 
-#define OPEN_DURATION .15
-#define CLOSE_DURATION .1
-
-#define SEARCH_INSET 17
-
 #define POPUP_HEIGHT 600
 #define PANEL_WIDTH 450
-#define MENU_ANIMATION_DURATION .1
 
 #pragma mark -
 
@@ -139,37 +133,6 @@
     
     self.backgroundView.arrowX = panelX;
     
-//    NSRect searchRect = [self.searchField frame];
-//    searchRect.size.width = NSWidth([self.backgroundView bounds]) - SEARCH_INSET * 2;
-//    searchRect.origin.x = SEARCH_INSET;
-//    searchRect.origin.y = NSHeight([self.backgroundView bounds]) - ARROW_HEIGHT - SEARCH_INSET - NSHeight(searchRect);
-    
-//    if (NSIsEmptyRect(searchRect))
-//    {
-//        [self.searchField setHidden:YES];
-//    }
-//    else
-//    {
-//        [self.searchField setFrame:searchRect];
-//        [self.searchField setHidden:NO];
-//    }
-    
-//    NSRect textRect = [self.textField frame];
-//    textRect.size.width = NSWidth([self.backgroundView bounds]) - SEARCH_INSET * 2;
-//    textRect.origin.x = SEARCH_INSET;
-//    textRect.size.height = NSHeight([self.backgroundView bounds]) - ARROW_HEIGHT - SEARCH_INSET * 3 - NSHeight(searchRect);
-//    textRect.origin.y = SEARCH_INSET;
-    
-//    if (NSIsEmptyRect(textRect))
-//    {
-//        [self.textField setHidden:YES];
-//    }
-//    else
-//    {
-//        [self.textField setFrame:textRect];
-//        [self.textField setHidden:NO];
-//    }
-    
     NSRect updatesRect = [self.pendingUpdates frame];
     updatesRect.size.width = NSWidth([self.backgroundView bounds]);
     updatesRect.origin.x = 0;
@@ -228,49 +191,18 @@
         panelRect.origin.x -= NSMaxX(panelRect) - (NSMaxX(screenRect) - ARROW_HEIGHT);
     
     [NSApp activateIgnoringOtherApps:NO];
-    [panel setAlphaValue:0];
-    [panel setFrame:statusRect display:YES];
+    [panel setAlphaValue:1];
+    [panel setFrame:panelRect display:YES];
     [panel makeKeyAndOrderFront:nil];
     
-    NSTimeInterval openDuration = OPEN_DURATION;
-    
-    NSEvent *currentEvent = [NSApp currentEvent];
-    if ([currentEvent type] == NSLeftMouseDown)
-    {
-        NSUInteger clearFlags = ([currentEvent modifierFlags] & NSDeviceIndependentModifierFlagsMask);
-        BOOL shiftPressed = (clearFlags == NSShiftKeyMask);
-        BOOL shiftOptionPressed = (clearFlags == (NSShiftKeyMask | NSAlternateKeyMask));
-        if (shiftPressed || shiftOptionPressed)
-        {
-            openDuration *= 10;
-            
-            if (shiftOptionPressed)
-                NSLog(@"Icon is at %@\n\tMenu is on screen %@\n\tWill be animated to %@",
-                      NSStringFromRect(statusRect), NSStringFromRect(screenRect), NSStringFromRect(panelRect));
-        }
-    }
-    
-    [NSAnimationContext beginGrouping];
-    [[NSAnimationContext currentContext] setDuration:openDuration];
-    [[panel animator] setFrame:panelRect display:YES];
-    [[panel animator] setAlphaValue:1];
-    [NSAnimationContext endGrouping];
-    
     if (![self.signInButton isHidden]) {
-        [panel performSelector:@selector(makeFirstResponder:) withObject:self.signInButton afterDelay:openDuration];
+        [panel performSelector:@selector(makeFirstResponder:) withObject:self.signInButton afterDelay:0];
     }
 }
 
 - (void)closePanel
 {
-    [NSAnimationContext beginGrouping];
-    [[NSAnimationContext currentContext] setDuration:CLOSE_DURATION];
-    [[[self window] animator] setAlphaValue:0];
-    [NSAnimationContext endGrouping];
-    
-    dispatch_after(dispatch_walltime(NULL, NSEC_PER_SEC * CLOSE_DURATION * 2), dispatch_get_main_queue(), ^{
-        [self.window orderOut:nil];
-    });
+    [self.window orderOut:nil];
 }
 
 #pragma mark -
