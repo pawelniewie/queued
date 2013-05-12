@@ -137,6 +137,12 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
         
         [self.profiles setContent:profiles];
         
+//        [profiles enumerateObjectsUsingBlock:^(Profile* obj, NSUInteger idx, BOOL *stop) {
+//            if (obj.updatesMonitor.pendingUpdates != nil) {
+//                [self.updates setObject:obj.updatesMonitor.pendingUpdates forKey:obj.id];
+//            }
+//        }];
+        
         [self performSelectorOnMainThread:@selector(updateTable) withObject:nil waitUntilDone:NO];
     } else if ([@"pendingUpdates" isEqualToString:keyPath]) {
         NSArray * updates = [change objectForKey:NSKeyValueChangeNewKey];
@@ -145,6 +151,22 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
 }
 #pragma mark -
 #pragma mark NSTableView
+- (void)tableViewSelectionDidChange: (NSNotification *) notification {
+    if (notification.object == self.updatesTable) {
+        __block BOOL updateSelected = NO;
+        [self.updatesTable.selectedRowIndexes enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
+            if([self isProfileEntity:[self entityForRow:idx]]) {
+                *stop = YES;
+                updateSelected = NO;
+            } else {
+                updateSelected = YES;
+            }
+        }];
+        
+        [self.removeButton setEnabled:updateSelected];
+    }
+}
+
 - (void)tableView:(NSTableView *)tableView didRemoveRowView:(QUPendingUpdatesRowView *)rowView forRow:(NSInteger)row {
     if (tableView == self.updatesTable) {
         // Stop observing visible things
@@ -429,6 +451,23 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
 		
 		thisIndex = [indexSet indexLessThanIndex:thisIndex];
     }
+}
+#pragma mark -
+#pragma mark Actions
+-(IBAction)removeSelectedUpdates:(id)sender {
+    [self.updatesTable.selectedRowIndexes enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
+        id update = [self entityForRow:idx];
+        if (![self isProfileEntity:update]) {
+            [_buffered removeUpdate:update withCompletionHandler:^(NSString *profileId) {
+                [self.profiles.arrangedObjects enumerateObjectsUsingBlock:^(Profile* obj, NSUInteger idx, BOOL *stop) {
+                    if ([profileId isEqualToString:obj.id]) {
+                        [obj.updatesMonitor refresh];
+                        *stop = YES;
+                    }
+                }];
+            }];
+        }
+    }];
 }
 #pragma mark -
 @end

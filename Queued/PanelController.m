@@ -67,7 +67,6 @@
     [_pendingUpdates addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view]|" options:0 metrics:nil views:views]];
     [_pendingUpdates addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[view]|" options:0 metrics:nil views:views]];
 
-    [self.reloadButton setEnabled:NO];
     if ([QUAppDelegate instance].hasSignedIn) {
         [self initializePendingUpdates];
     }
@@ -75,7 +74,6 @@
 
 - (void)initializePendingUpdates {
     [self.signInButton setHidden:YES];
-    [self.reloadButton setEnabled:YES];
     
     if (_pendingUpdatesViewController == nil) {
         _pendingUpdatesViewController = [[QUPendingUpdatesViewController alloc] initWithBuffered:[QUAppDelegate instance].buffered andProfilesMonitor:[[QUAppDelegate instance] profilesMonitor]];

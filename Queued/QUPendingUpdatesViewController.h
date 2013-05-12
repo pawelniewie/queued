@@ -19,6 +19,8 @@
 
 @property (weak) IBOutlet NSProgressIndicator *progress;
 @property (weak) IBOutlet NSTableView *updatesTable;
+@property (nonatomic, unsafe_unretained) IBOutlet NSButton *reloadButton;
+@property (nonatomic, unsafe_unretained) IBOutlet NSButton *removeButton;
 
 @property (strong) NSArrayController *profiles;
 @property (strong) NSMutableDictionary *updates;
