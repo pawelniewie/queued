@@ -39,8 +39,10 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
         _updatesHandler = ^(NSString *profileId, NSArray *pending, NSError *error) {
             [[NSNotificationCenter defaultCenter] postNotificationName:BUPendingUpdatesLoadedNotification object:pending userInfo:@{ @"profileId" : profileId }];
             if (pending != nil) {
-                NSMutableArray *copy = [NSMutableArray arrayWithArray:pending];
-                [noRetain.updates setObject:copy forKey:profileId];
+                @synchronized(noRetain) {
+                    NSMutableArray *copy = [NSMutableArray arrayWithArray:pending];
+                    [noRetain.updates setObject:copy forKey:profileId];
+                }
                 [noRetain performSelectorOnMainThread:@selector(updateTable) withObject:nil waitUntilDone:NO];
             }
         };
@@ -130,18 +132,20 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
         // We should only update the UI on the main thread, and in addition, we use NSRunLoopCommonModes to make sure the UI updates when a modal window is up.
         [self performSelectorOnMainThread:@selector(_reloadRowForEntity:) withObject:object waitUntilDone:NO modes:[NSArray arrayWithObject:NSRunLoopCommonModes]];
     } else if ([@"profiles" isEqualToString:keyPath]) {
-        NSArray * profiles = [change objectForKey:NSKeyValueChangeNewKey];
+        @synchronized(self) {
+            NSArray * profiles = [change objectForKey:NSKeyValueChangeNewKey];
         
-        [self.progress stopAnimation:self];
-        [self.progress setHidden:YES];
+            [self.progress stopAnimation:self];
+            [self.progress setHidden:YES];
         
-        [self.profiles setContent:profiles];
+            [self.profiles setContent:profiles];
         
 //        [profiles enumerateObjectsUsingBlock:^(Profile* obj, NSUInteger idx, BOOL *stop) {
 //            if (obj.updatesMonitor.pendingUpdates != nil) {
 //                [self.updates setObject:obj.updatesMonitor.pendingUpdates forKey:obj.id];
 //            }
 //        }];
+        }
         
         [self performSelectorOnMainThread:@selector(updateTable) withObject:nil waitUntilDone:NO];
     } else if ([@"pendingUpdates" isEqualToString:keyPath]) {
