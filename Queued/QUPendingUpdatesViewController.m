@@ -71,12 +71,8 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
         [_buffered signInSheetModalForWindow:self.view.window withCompletionHandler:^(NSError *error) {
             if (error != nil) {
                 [self reportError:error];
-            } else {
-                [_profilesMonitor refresh];
             }
         }];
-    } else {
-        [_profilesMonitor refresh];
     }
 }
 
@@ -140,11 +136,19 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
         
             [self.profiles setContent:profiles];
         
-//        [profiles enumerateObjectsUsingBlock:^(Profile* obj, NSUInteger idx, BOOL *stop) {
-//            if (obj.updatesMonitor.pendingUpdates != nil) {
-//                [self.updates setObject:obj.updatesMonitor.pendingUpdates forKey:obj.id];
-//            }
-//        }];
+            [profiles enumerateObjectsUsingBlock:^(Profile* profile, NSUInteger idx, BOOL *stop) {
+                NSInteger index = profile ? [_observedVisibleItems indexOfObject:profile] : NSNotFound;
+                if (index == NSNotFound) {
+                    [profile.updatesMonitor addObserver:self forKeyPath:@"pendingUpdates" options:NSKeyValueObservingOptionNew context:(__bridge void *)(profile.id)];
+                    [profile addObserver:self forKeyPath:@"avatarImage" options:NSKeyValueObservingOptionNew context:nil];
+                    
+                    [_observedVisibleItems addObject:profile];
+                }
+
+                if (profile.updatesMonitor.pendingUpdates != nil) {
+                    [self.updates setObject:profile.updatesMonitor.pendingUpdates forKey:profile.id];
+                }
+            }];
         }
         
         [self performSelectorOnMainThread:@selector(updateTable) withObject:nil waitUntilDone:NO];
@@ -171,22 +175,22 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
     }
 }
 
-- (void)tableView:(NSTableView *)tableView didRemoveRowView:(QUPendingUpdatesRowView *)rowView forRow:(NSInteger)row {
-    if (tableView == self.updatesTable) {
-        // Stop observing visible things
-        NSObject *entity = [rowView objectValue];
-        NSInteger index = entity ? [_observedVisibleItems indexOfObject:entity] : NSNotFound;
-        if (index != NSNotFound) {
-            [entity removeObserver:self forKeyPath:@"avatarImage"];
-            [((Profile *)entity).updatesMonitor removeObserver:self forKeyPath:@"pendingUpdates"];
-            [_observedVisibleItems removeObjectAtIndex:index];
-        }
-        if ([self isProfileEntity:entity]) {
-            Profile *profile = (Profile *) entity;
-            [profile.updatesMonitor stopPoolling];
-        }
-    }
-}
+//- (void)tableView:(NSTableView *)tableView didRemoveRowView:(QUPendingUpdatesRowView *)rowView forRow:(NSInteger)row {
+//    if (tableView == self.updatesTable) {
+//        // Stop observing visible things
+//        NSObject *entity = [rowView objectValue];
+//        NSInteger index = entity ? [_observedVisibleItems indexOfObject:entity] : NSNotFound;
+//        if (index != NSNotFound) {
+//            [entity removeObserver:self forKeyPath:@"avatarImage"];
+//            [((Profile *)entity).updatesMonitor removeObserver:self forKeyPath:@"pendingUpdates"];
+//            [_observedVisibleItems removeObjectAtIndex:index];
+//        }
+//        if ([self isProfileEntity:entity]) {
+//            Profile *profile = (Profile *) entity;
+//            [profile.updatesMonitor stopPoolling];
+//        }
+//    }
+//}
 
 - (NSTableRowView *)tableView:(NSTableView *)tableView rowViewForRow:(NSInteger)row {
     // Make the row view keep track of our main model object
@@ -209,23 +213,12 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
     NSDictionary *entity = [self entityForRow:row];
     if (![self isProfileEntity:entity]) {
-        NSTableCellView *cell = [tableView makeViewWithIdentifier:@"Update" owner:self];
-        
-        cell.textField.stringValue = [entity objectForKey:@"text"];
-        
+        QUUpdateTableCellView *cell = [tableView makeViewWithIdentifier:@"Update" owner:self];
         return cell;
     } else {
         QUPendingTableCellView *cell = [tableView makeViewWithIdentifier:@"Profile" owner:self];
         Profile *profile = (Profile *) entity;
-
-        NSInteger index = profile ? [_observedVisibleItems indexOfObject:profile] : NSNotFound;
-        if (index == NSNotFound) {
-            [profile.updatesMonitor addObserver:self forKeyPath:@"pendingUpdates" options:NSKeyValueObservingOptionNew context:(__bridge void *)(profile.id)];
-            [profile addObserver:self forKeyPath:@"avatarImage" options:NSKeyValueObservingOptionNew context:nil];
-            
-            [_observedVisibleItems addObject:profile];
-        }
-
+        
         if (profile.avatarImage != nil) {
             [cell.imageView setImage:[self resizeImage:profile.avatarImage size:[cell.imageView bounds].size]];
         } else {

@@ -14,3 +14,9 @@
 @property (assign) IBOutlet NSProgressIndicator *inProgressIndicator;
 
 @end
+
+@interface QUUpdateTableCellView : NSTableCellView
+
+@property (assign) IBOutlet NSTextField *dayText;
+
+@end

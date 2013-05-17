@@ -11,3 +11,7 @@
 @implementation QUPendingTableCellView
 
 @end
+
+@implementation QUUpdateTableCellView
+
+@end
