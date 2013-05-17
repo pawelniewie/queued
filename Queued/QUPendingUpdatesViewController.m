@@ -163,7 +163,8 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
     if (notification.object == self.updatesTable) {
         __block BOOL updateSelected = NO;
         [self.updatesTable.selectedRowIndexes enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
-            if([self isProfileEntity:[self entityForRow:idx]]) {
+            QUPendingUpdatesRowView *rowView = [self.updatesTable rowViewAtRow:idx makeIfNecessary:NO];
+            if(rowView == nil || [self isProfileEntity:rowView.objectValue]) {
                 *stop = YES;
                 updateSelected = NO;
             } else {
@@ -277,7 +278,8 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
 - (BOOL)tableView:(NSTableView *)tv writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard*)pboard
 {
     if ([rowIndexes indexPassingTest:^BOOL(NSUInteger idx, BOOL *stop) {
-        return [self isProfileEntity:[self entityForRow:idx]];
+        QUPendingUpdatesRowView *rowView = [self.updatesTable rowViewAtRow:idx makeIfNecessary:NO];
+        return rowView != nil && [self isProfileEntity:rowView.objectValue];
     }] == NSNotFound) {
         // Copy the row numbers to the pasteboard.
         NSData *zNSIndexSetData = [NSKeyedArchiver archivedDataWithRootObject:rowIndexes];
@@ -452,18 +454,23 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
 #pragma mark -
 #pragma mark Actions
 -(IBAction)removeSelectedUpdates:(id)sender {
+    NSMutableArray *updatesToRemove = [NSMutableArray new];
     [self.updatesTable.selectedRowIndexes enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
-        id update = [self entityForRow:idx];
-        if (![self isProfileEntity:update]) {
-            [_buffered removeUpdate:update withCompletionHandler:^(NSString *profileId) {
-                [self.profiles.arrangedObjects enumerateObjectsUsingBlock:^(Profile* obj, NSUInteger idx, BOOL *stop) {
-                    if ([profileId isEqualToString:obj.id]) {
-                        [obj.updatesMonitor refresh];
-                        *stop = YES;
-                    }
-                }];
-            }];
+        QUPendingUpdatesRowView *rowView = [self.updatesTable rowViewAtRow:idx makeIfNecessary:NO];
+        if (rowView != nil && ![self isProfileEntity:rowView.objectValue]) {
+            [updatesToRemove addObject:rowView.objectValue];
         }
+    }];
+    
+    [updatesToRemove enumerateObjectsUsingBlock:^(NSDictionary *update, NSUInteger idx, BOOL *stop) {
+        [_buffered removeUpdate:update withCompletionHandler:^(NSString *profileId) {
+            [self.profiles.arrangedObjects enumerateObjectsUsingBlock:^(Profile* obj, NSUInteger idx, BOOL *stop) {
+                if ([profileId isEqualToString:obj.id]) {
+                    [obj.updatesMonitor refresh];
+                    *stop = YES;
+                }
+            }];
+        }];
     }];
 }
 #pragma mark -
