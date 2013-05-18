@@ -104,7 +104,9 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
         [newContent addObjectsFromArray:updates];
     }
     self.updatesContent.content = newContent;
+    NSIndexSet *selectedRows = [self.updatesTable selectedRowIndexes];
     [self.updatesTable reloadData];
+    [self.updatesTable selectRowIndexes:selectedRows byExtendingSelection:NO];
 }
 
 - (NSDictionary *) entityForRow: (NSInteger) row {
@@ -215,7 +217,9 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
     NSDictionary *entity = [self entityForRow:row];
     if (![self isProfileEntity:entity]) {
         QUUpdateTableCellView *cell = [tableView makeViewWithIdentifier:@"Update" owner:self];
+        
         [cell.dayText setToolTip:[NSString stringWithFormat:@"%@ at %@", [entity objectForKey:@"day"], [entity objectForKey:@"due_time"]]];
+        
         return cell;
     } else {
         QUPendingTableCellView *cell = [tableView makeViewWithIdentifier:@"Profile" owner:self];
