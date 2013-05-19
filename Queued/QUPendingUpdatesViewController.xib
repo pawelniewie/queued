@@ -1183,7 +1183,7 @@
 								<float key="scoringTypeFloat">29</float>
 								<int key="contentType">3</int>
 							</object>
-							<object class="IBNSLayoutConstraint" id="1061420165">
+							<object class="IBNSLayoutConstraint" id="689373175">
 								<reference key="firstItem" ref="431966818"/>
 								<int key="firstAttribute">6</int>
 								<int key="relation">0</int>
@@ -1741,7 +1741,7 @@
 						<reference key="object" ref="784694449"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="481714244"/>
-							<object class="IBNSLayoutConstraint" id="23896029">
+							<object class="IBNSLayoutConstraint" id="607335172">
 								<reference key="firstItem" ref="784694449"/>
 								<int key="firstAttribute">7</int>
 								<int key="relation">0</int>
@@ -1820,12 +1820,12 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">422</int>
-						<reference key="object" ref="1061420165"/>
+						<reference key="object" ref="689373175"/>
 						<reference key="parent" ref="431966818"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">424</int>
-						<reference key="object" ref="23896029"/>
+						<reference key="object" ref="607335172"/>
 						<reference key="parent" ref="784694449"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -1870,7 +1870,7 @@
 					<reference ref="623730295"/>
 					<reference ref="918765475"/>
 					<reference ref="351285582"/>
-					<reference ref="1061420165"/>
+					<reference ref="689373175"/>
 					<reference ref="143384033"/>
 					<reference ref="1050780190"/>
 				</array>
@@ -1950,7 +1950,7 @@
 				<string key="347.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="348.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<array class="NSMutableArray" key="349.IBNSViewMetadataConstraints">
-					<reference ref="23896029"/>
+					<reference ref="607335172"/>
 				</array>
 				<boolean value="NO" key="349.IBNSViewMetadataTranslatesAutoresizingMaskIntoConstraints"/>
 				<string key="349.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -2006,7 +2006,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">508</int>
+			<int key="maxID">526</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2083,20 +2083,6 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">QUPendingUpdatesViewController</string>
 					<string key="superclassName">NSViewController</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="removeSelectedUpdates:">id</string>
-						<string key="updateOperationButtonClicked:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="removeSelectedUpdates:">
-							<string key="name">removeSelectedUpdates:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="updateOperationButtonClicked:">
-							<string key="name">updateOperationButtonClicked:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="progress">NSProgressIndicator</string>
 						<string key="reloadButton">NSButton</string>
