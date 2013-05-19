@@ -15,6 +15,7 @@
     BUProfilesMonitor __weak *_profilesMonitor;
     NSMutableArray *_observedVisibleItems;
     UpdatesCompletionHandler _updatesHandler;
+    RemoveCompletionHandler _removeHandler;
 }
 
 @property (weak) IBOutlet NSProgressIndicator *progress;

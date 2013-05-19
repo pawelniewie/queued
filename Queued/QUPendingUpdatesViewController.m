@@ -46,6 +46,15 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
                 [noRetain performSelectorOnMainThread:@selector(updateTable) withObject:nil waitUntilDone:NO];
             }
         };
+        
+        _removeHandler = ^(NSString *profileId) {
+            [noRetain.profiles.arrangedObjects enumerateObjectsUsingBlock:^(Profile* obj, NSUInteger idx, BOOL *stop) {
+                if ([profileId isEqualToString:obj.id]) {
+                    [obj.updatesMonitor refresh];
+                    *stop = YES;
+                }
+            }];
+        };
     }
     
     return self;
@@ -460,7 +469,8 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
 #pragma mark Actions
 -(IBAction)removeSelectedUpdates:(id)sender {
     NSMutableArray *updatesToRemove = [NSMutableArray new];
-    [self.updatesTable.selectedRowIndexes enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
+    NSIndexSet *rowsToRemove = self.updatesTable.selectedRowIndexes;
+    [rowsToRemove enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
         QUPendingUpdatesRowView *rowView = [self.updatesTable rowViewAtRow:idx makeIfNecessary:NO];
         if (rowView != nil && ![self isProfileEntity:rowView.objectValue]) {
             [updatesToRemove addObject:rowView.objectValue];
@@ -468,15 +478,22 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
     }];
     
     [updatesToRemove enumerateObjectsUsingBlock:^(NSDictionary *update, NSUInteger idx, BOOL *stop) {
-        [_buffered removeUpdate:update withCompletionHandler:^(NSString *profileId) {
-            [self.profiles.arrangedObjects enumerateObjectsUsingBlock:^(Profile* obj, NSUInteger idx, BOOL *stop) {
-                if ([profileId isEqualToString:obj.id]) {
-                    [obj.updatesMonitor refresh];
-                    *stop = YES;
-                }
-            }];
-        }];
+        [_buffered removeUpdate:update withCompletionHandler:_removeHandler];
     }];
+}
+-(IBAction)updateOperationButtonClicked:(id)sender {
+    NSInteger row = [self.updatesTable rowForView:sender];
+    NSInteger col = [self.updatesTable columnForView:sender];
+    QUPendingUpdatesRowView *rowView = [self.updatesTable rowViewAtRow:row makeIfNecessary:NO];
+    QUUpdateTableCellView *cellView = [self.updatesTable viewAtColumn:col row:row makeIfNecessary:NO];
+    if (rowView != nil && cellView != nil) {
+        NSDictionary *update = rowView.objectValue;
+        if (cellView.removeButton == sender) {
+            [_buffered removeUpdate:update withCompletionHandler:_removeHandler];
+        } else if (cellView.publishButton == sender) {
+            [_buffered shareUpdate:update withCompletionHandler:_removeHandler];
+        }
+    }
 }
 #pragma mark -
 @end

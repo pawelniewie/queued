@@ -22,6 +22,7 @@
 
 @property (assign) IBOutlet NSTextField *dayText;
 @property (assign) IBOutlet NSButton *removeButton;
+@property (assign) IBOutlet NSButton *publishButton;
 @property (assign, readonly) BOOL mouseInside;
 
 @end
