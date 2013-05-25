@@ -33,6 +33,8 @@
 		E55FBF141722D66800AEC024 /* StatusInverted.png in Resources */ = {isa = PBXBuildFile; fileRef = E55FBF121722D66800AEC024 /* StatusInverted.png */; };
 		E55FBF151722D66800AEC024 /* StatusInverted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E55FBF131722D66800AEC024 /* StatusInverted@2x.png */; };
 		E55FBF17172733A600AEC024 /* MenubarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E55FBF16172733A600AEC024 /* MenubarController.xib */; };
+		E57D72A2174D727200F3F335 /* LaunchAtLoginHelperApp.app in Copy LaunchAtLoginHelperApp */ = {isa = PBXBuildFile; fileRef = E57D72A0174D71E400F3F335 /* LaunchAtLoginHelperApp.app */; };
+		E57D72A4174D72F700F3F335 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E57D72A3174D72F700F3F335 /* ServiceManagement.framework */; };
 		E5A79F7E17343628006DDA1E /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E553595F1732E3C80087973E /* Sparkle.framework */; };
 		E5A79F8A17399525006DDA1E /* QUPendingUpdatesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A79F8817399525006DDA1E /* QUPendingUpdatesViewController.m */; };
 		E5A79F8B17399525006DDA1E /* QUPendingUpdatesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5A79F8917399525006DDA1E /* QUPendingUpdatesViewController.xib */; };
@@ -50,6 +52,13 @@
 			remoteGlobalIDString = E5062917170CACC300A25452;
 			remoteInfo = Queued;
 		};
+		E57D729F174D71E400F3F335 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E57D729B174D71E300F3F335 /* LaunchAtLoginHelperApp.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2247EC0115A2300E00A5C034;
+			remoteInfo = LaunchAtLoginHelperApp;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -61,6 +70,17 @@
 			files = (
 				E5A79F7E17343628006DDA1E /* Sparkle.framework in CopyFiles */,
 			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E57D72A1174D725100F3F335 /* Copy LaunchAtLoginHelperApp */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LoginItems;
+			dstSubfolderSpec = 1;
+			files = (
+				E57D72A2174D727200F3F335 /* LaunchAtLoginHelperApp.app in Copy LaunchAtLoginHelperApp */,
+			);
+			name = "Copy LaunchAtLoginHelperApp";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -109,6 +129,8 @@
 		E55FBF121722D66800AEC024 /* StatusInverted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = StatusInverted.png; path = Queued/Resources/StatusInverted.png; sourceTree = "<group>"; };
 		E55FBF131722D66800AEC024 /* StatusInverted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "StatusInverted@2x.png"; path = "Queued/Resources/StatusInverted@2x.png"; sourceTree = "<group>"; };
 		E55FBF16172733A600AEC024 /* MenubarController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenubarController.xib; sourceTree = "<group>"; };
+		E57D729B174D71E300F3F335 /* LaunchAtLoginHelperApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = LaunchAtLoginHelperApp.xcodeproj; sourceTree = "<group>"; };
+		E57D72A3174D72F700F3F335 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		E5A79F8717399525006DDA1E /* QUPendingUpdatesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QUPendingUpdatesViewController.h; sourceTree = "<group>"; };
 		E5A79F8817399525006DDA1E /* QUPendingUpdatesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QUPendingUpdatesViewController.m; sourceTree = "<group>"; };
 		E5A79F8917399525006DDA1E /* QUPendingUpdatesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QUPendingUpdatesViewController.xib; sourceTree = "<group>"; };
@@ -125,6 +147,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E57D72A4174D72F700F3F335 /* ServiceManagement.framework in Frameworks */,
 				E506291C170CACC300A25452 /* Cocoa.framework in Frameworks */,
 				7498224BF6FD46EDA10835DE /* libPods.a in Frameworks */,
 				E55359601732E3C80087973E /* Sparkle.framework in Frameworks */,
@@ -147,6 +170,7 @@
 		E506290F170CACC300A25452 = {
 			isa = PBXGroup;
 			children = (
+				E57D729B174D71E300F3F335 /* LaunchAtLoginHelperApp.xcodeproj */,
 				E506296617107B6300A25452 /* Resources */,
 				E5062921170CACC300A25452 /* Queued */,
 				E506293E170CACC400A25452 /* QueuedTests */,
@@ -169,6 +193,7 @@
 		E506291A170CACC300A25452 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E57D72A3174D72F700F3F335 /* ServiceManagement.framework */,
 				E553595F1732E3C80087973E /* Sparkle.framework */,
 				E506291B170CACC300A25452 /* Cocoa.framework */,
 				E5062939170CACC400A25452 /* SenTestingKit.framework */,
@@ -276,6 +301,14 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		E57D729C174D71E300F3F335 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E57D72A0174D71E400F3F335 /* LaunchAtLoginHelperApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		E5A79F96173AE314006DDA1E /* Pending Updates Table */ = {
 			isa = PBXGroup;
 			children = (
@@ -303,6 +336,7 @@
 				E55359621732F5460087973E /* Set Build Versions */,
 				233303D341144BF49F6CCE01 /* Copy Pods Resources */,
 				E553595D1732A2CC0087973E /* CopyFiles */,
+				E57D72A1174D725100F3F335 /* Copy LaunchAtLoginHelperApp */,
 			);
 			buildRules = (
 			);
@@ -353,6 +387,12 @@
 			mainGroup = E506290F170CACC300A25452;
 			productRefGroup = E5062919170CACC300A25452 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = E57D729C174D71E300F3F335 /* Products */;
+					ProjectRef = E57D729B174D71E300F3F335 /* LaunchAtLoginHelperApp.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				E5062917170CACC300A25452 /* Queued */,
@@ -360,6 +400,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		E57D72A0174D71E400F3F335 /* LaunchAtLoginHelperApp.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = LaunchAtLoginHelperApp.app;
+			remoteRef = E57D729F174D71E400F3F335 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		E5062916170CACC300A25452 /* Resources */ = {

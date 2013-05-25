@@ -10,6 +10,7 @@
 #import <BUProfilesMonitor.h>
 #import <BUPendingUpdatesMonitor.h>
 #import <BUPendingUpdatesViewController.h>
+#import <ServiceManagement/ServiceManagement.h>
 
 #import "MenubarController.h"
 #import "QUAppDelegate.h"
@@ -32,7 +33,35 @@
 }
 
 #pragma mark -
-
+#pragma mark Start At Login
+-(IBAction)toggleLaunchAtLogin:(id)sender
+{
+    int clickedSegment = [sender selectedSegment];
+    if (clickedSegment == 0) { // ON
+        // Turn on launch at login
+        if (!SMLoginItemSetEnabled ((__bridge CFStringRef)@"ccom.pawelniewiadomski.LaunchAtLoginHelperApp", YES)) {
+            NSAlert *alert = [NSAlert alertWithMessageText:@"An error ocurred"
+                                             defaultButton:@"OK"
+                                           alternateButton:nil
+                                               otherButton:nil
+                                 informativeTextWithFormat:@"Couldn't add Helper App to launch at login item list."];
+            [alert runModal];
+        }
+    }
+    if (clickedSegment == 1) { // OFF
+        // Turn off launch at login
+        if (!SMLoginItemSetEnabled ((__bridge CFStringRef)@"com.pawelniewiadomski.LaunchAtLoginHelperApp", NO)) {
+            NSAlert *alert = [NSAlert alertWithMessageText:@"An error ocurred"
+                                             defaultButton:@"OK"
+                                           alternateButton:nil
+                                               otherButton:nil
+                                 informativeTextWithFormat:@"Couldn't remove Helper App from launch at login item list."];
+            [alert runModal];
+        }
+    }
+}
+#pragma mark -
+#pragma mark KVO
 void *kContextActivePanel = &kContextActivePanel;
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context

@@ -24,6 +24,7 @@
 - (IBAction)togglePanel:(id)sender;
 - (IBAction)reloadPendingUpdates:(id)sender;
 - (void) showSignInWindow;
+-(IBAction)toggleLaunchAtLogin:(id)sender;
 
 + (QUAppDelegate *) instance;
 
