@@ -11,6 +11,8 @@
 
 @class MenubarController, Buffered, QUSignInWindowController, BUProfilesMonitor;
 
+FOUNDATION_EXPORT NSString *const QULaunchAtLoginEnabledKey;
+
 @interface QUAppDelegate : NSObject <NSApplicationDelegate, PanelControllerDelegate>
 
 @property (nonatomic, strong) MenubarController *menubarController;
@@ -20,6 +22,7 @@
 
 @property (assign) BOOL hasSignedIn;
 @property (assign) BOOL hasSignInWindowOpen;
+@property (assign) BOOL isLaunchAtLoginEnabled;
 
 - (IBAction)togglePanel:(id)sender;
 - (IBAction)reloadPendingUpdates:(id)sender;

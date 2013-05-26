@@ -16,6 +16,8 @@
 #import "QUAppDelegate.h"
 #import "QUSignInWindowController.h"
 
+NSString *const QULaunchAtLoginEnabledKey = @"com.pawelniewiadomski.Queued.QULaunchAtLoginEnabledKey";
+
 @implementation QUAppDelegate
 
 @synthesize hasSignedIn = _hasSignedIn;
@@ -34,30 +36,22 @@
 
 #pragma mark -
 #pragma mark Start At Login
--(IBAction)toggleLaunchAtLogin:(id)sender
+-(IBAction)toggleLaunchAtLogin:(NSMenuItem *)sender
 {
-    int clickedSegment = [sender selectedSegment];
-    if (clickedSegment == 0) { // ON
-        // Turn on launch at login
-        if (!SMLoginItemSetEnabled ((__bridge CFStringRef)@"ccom.pawelniewiadomski.LaunchAtLoginHelperApp", YES)) {
-            NSAlert *alert = [NSAlert alertWithMessageText:@"An error ocurred"
-                                             defaultButton:@"OK"
-                                           alternateButton:nil
-                                               otherButton:nil
-                                 informativeTextWithFormat:@"Couldn't add Helper App to launch at login item list."];
-            [alert runModal];
-        }
-    }
-    if (clickedSegment == 1) { // OFF
-        // Turn off launch at login
-        if (!SMLoginItemSetEnabled ((__bridge CFStringRef)@"com.pawelniewiadomski.LaunchAtLoginHelperApp", NO)) {
-            NSAlert *alert = [NSAlert alertWithMessageText:@"An error ocurred"
-                                             defaultButton:@"OK"
-                                           alternateButton:nil
-                                               otherButton:nil
-                                 informativeTextWithFormat:@"Couldn't remove Helper App from launch at login item list."];
-            [alert runModal];
-        }
+    BOOL shouldLaunchAtLoginBeEnabled = !self.isLaunchAtLoginEnabled;
+    NSString *const potentialError = shouldLaunchAtLoginBeEnabled ? @"Couldn't add Helper App to launch at login item list." : @"Couldn't remove Helper App from launch at login item list.";
+
+    // Turn on launch at login
+    if (!SMLoginItemSetEnabled ((__bridge CFStringRef)@"ccom.pawelniewiadomski.LaunchAtLoginHelperApp", shouldLaunchAtLoginBeEnabled)) {
+        NSAlert *alert = [NSAlert alertWithMessageText:@"An error ocurred"
+                                         defaultButton:@"OK"
+                                       alternateButton:nil
+                                           otherButton:nil
+                             informativeTextWithFormat:potentialError];
+        [alert runModal];
+    } else {
+        [[NSUserDefaults standardUserDefaults] setBool:shouldLaunchAtLoginBeEnabled forKey:QULaunchAtLoginEnabledKey];
+        self.isLaunchAtLoginEnabled = shouldLaunchAtLoginBeEnabled;
     }
 }
 #pragma mark -
@@ -100,6 +94,7 @@ void *kContextActivePanel = &kContextActivePanel;
     [_profilesMonitor addObserver:self forKeyPath:@"profiles" options:NSKeyValueObservingOptionNew context:nil];
     
     self.hasSignedIn = [_buffered isSignedIn:YES];
+    self.isLaunchAtLoginEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:QULaunchAtLoginEnabledKey];
     
     if (!self.hasSignedIn) {
         [self showSignInWindow];

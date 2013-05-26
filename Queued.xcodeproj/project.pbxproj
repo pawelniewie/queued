@@ -314,9 +314,9 @@
 			children = (
 				E5A79F8717399525006DDA1E /* QUPendingUpdatesViewController.h */,
 				E5A79F8817399525006DDA1E /* QUPendingUpdatesViewController.m */,
+				E5A79F8917399525006DDA1E /* QUPendingUpdatesViewController.xib */,
 				E5A79F93173AE30D006DDA1E /* QUPendingUpdatesRowView.h */,
 				E5A79F94173AE30D006DDA1E /* QUPendingUpdatesRowView.m */,
-				E5A79F8917399525006DDA1E /* QUPendingUpdatesViewController.xib */,
 				E5A79F90173AD8A0006DDA1E /* QUPendingTableCellView.h */,
 				E5A79F91173AD8A0006DDA1E /* QUPendingTableCellView.m */,
 			);
