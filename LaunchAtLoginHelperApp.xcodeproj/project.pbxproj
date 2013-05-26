@@ -16,7 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2247EC0115A2300E00A5C034 /* LaunchAtLoginHelperApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LaunchAtLoginHelperApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2247EC0115A2300E00A5C034 /* LaunchAtLoginHelperApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = LaunchAtLoginHelperApp.app; path = "Queued Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2247EC0515A2300E00A5C034 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		2247EC0815A2300E00A5C034 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		2247EC0915A2300E00A5C034 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -107,9 +107,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2247EC0015A2300E00A5C034 /* LaunchAtLoginHelperApp */ = {
+		2247EC0015A2300E00A5C034 /* Queued Helper */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2247EC1F15A2300F00A5C034 /* Build configuration list for PBXNativeTarget "LaunchAtLoginHelperApp" */;
+			buildConfigurationList = 2247EC1F15A2300F00A5C034 /* Build configuration list for PBXNativeTarget "Queued Helper" */;
 			buildPhases = (
 				2247EBFD15A2300E00A5C034 /* Sources */,
 				2247EBFE15A2300E00A5C034 /* Frameworks */,
@@ -119,7 +119,7 @@
 			);
 			dependencies = (
 			);
-			name = LaunchAtLoginHelperApp;
+			name = "Queued Helper";
 			productName = LaunchAtLoginHelperApp;
 			productReference = 2247EC0115A2300E00A5C034 /* LaunchAtLoginHelperApp.app */;
 			productType = "com.apple.product-type.application";
@@ -131,7 +131,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = TS;
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Tim Schröder";
 			};
 			buildConfigurationList = 2247EBFB15A2300E00A5C034 /* Build configuration list for PBXProject "LaunchAtLoginHelperApp" */;
@@ -146,7 +146,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2247EC0015A2300E00A5C034 /* LaunchAtLoginHelperApp */,
+				2247EC0015A2300E00A5C034 /* Queued Helper */,
 			);
 		};
 /* End PBXProject section */
@@ -210,6 +210,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -237,6 +241,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -294,7 +302,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2247EC1F15A2300F00A5C034 /* Build configuration list for PBXNativeTarget "LaunchAtLoginHelperApp" */ = {
+		2247EC1F15A2300F00A5C034 /* Build configuration list for PBXNativeTarget "Queued Helper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2247EC2015A2300F00A5C034 /* Debug */,

@@ -16,8 +16,6 @@
 #import "QUAppDelegate.h"
 #import "QUSignInWindowController.h"
 
-NSString *const QULaunchAtLoginEnabledKey = @"com.pawelniewiadomski.Queued.QULaunchAtLoginEnabledKey";
-
 @implementation QUAppDelegate
 
 @synthesize hasSignedIn = _hasSignedIn;
@@ -36,23 +34,28 @@ NSString *const QULaunchAtLoginEnabledKey = @"com.pawelniewiadomski.Queued.QULau
 
 #pragma mark -
 #pragma mark Start At Login
+-(BOOL)isLaunchAtLoginEnabled {
+    NSDictionary *dict = (NSDictionary*) CFBridgingRelease(SMJobCopyDictionary(kSMDomainUserLaunchd,
+                                                            CFSTR("com.pawelniewiadomski.Queued-Helper")));
+    return (dict != NULL);
+}
+
 -(IBAction)toggleLaunchAtLogin:(NSMenuItem *)sender
 {
     BOOL shouldLaunchAtLoginBeEnabled = !self.isLaunchAtLoginEnabled;
     NSString *const potentialError = shouldLaunchAtLoginBeEnabled ? @"Couldn't add Helper App to launch at login item list." : @"Couldn't remove Helper App from launch at login item list.";
 
     // Turn on launch at login
-    if (!SMLoginItemSetEnabled ((__bridge CFStringRef)@"ccom.pawelniewiadomski.LaunchAtLoginHelperApp", shouldLaunchAtLoginBeEnabled)) {
+    [self willChangeValueForKey:@"isLaunchAtLoginEnabled"];
+    if (!SMLoginItemSetEnabled ((__bridge CFStringRef)@"com.pawelniewiadomski.Queued-Helper", shouldLaunchAtLoginBeEnabled)) {
         NSAlert *alert = [NSAlert alertWithMessageText:@"An error ocurred"
                                          defaultButton:@"OK"
                                        alternateButton:nil
                                            otherButton:nil
                              informativeTextWithFormat:potentialError];
         [alert runModal];
-    } else {
-        [[NSUserDefaults standardUserDefaults] setBool:shouldLaunchAtLoginBeEnabled forKey:QULaunchAtLoginEnabledKey];
-        self.isLaunchAtLoginEnabled = shouldLaunchAtLoginBeEnabled;
     }
+    [self didChangeValueForKey:@"isLaunchAtLoginEnabled"];
 }
 #pragma mark -
 #pragma mark KVO
@@ -94,7 +97,6 @@ void *kContextActivePanel = &kContextActivePanel;
     [_profilesMonitor addObserver:self forKeyPath:@"profiles" options:NSKeyValueObservingOptionNew context:nil];
     
     self.hasSignedIn = [_buffered isSignedIn:YES];
-    self.isLaunchAtLoginEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:QULaunchAtLoginEnabledKey];
     
     if (!self.hasSignedIn) {
         [self showSignInWindow];
