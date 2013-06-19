@@ -16,7 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2247EC0115A2300E00A5C034 /* LaunchAtLoginHelperApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = LaunchAtLoginHelperApp.app; path = "Queued Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2247EC0115A2300E00A5C034 /* Queued Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Queued Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2247EC0515A2300E00A5C034 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		2247EC0815A2300E00A5C034 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		2247EC0915A2300E00A5C034 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -56,7 +56,7 @@
 		2247EC0215A2300E00A5C034 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2247EC0115A2300E00A5C034 /* LaunchAtLoginHelperApp.app */,
+				2247EC0115A2300E00A5C034 /* Queued Helper.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -121,7 +121,7 @@
 			);
 			name = "Queued Helper";
 			productName = LaunchAtLoginHelperApp;
-			productReference = 2247EC0115A2300E00A5C034 /* LaunchAtLoginHelperApp.app */;
+			productReference = 2247EC0115A2300E00A5C034 /* Queued Helper.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */

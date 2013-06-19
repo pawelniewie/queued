@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		26C1F1A2D6C04E8B829ACEB3 /* libPods-QueuedTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB75A76F3BE4481AA7F86492 /* libPods-QueuedTests.a */; };
 		7498224BF6FD46EDA10835DE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 69B5A34BEE184D338F9F560C /* libPods.a */; };
+		E50573131772541700392726 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E50573121772541700392726 /* Sparkle.framework */; };
+		E50573141772544400392726 /* Sparkle.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = E50573121772541700392726 /* Sparkle.framework */; };
 		E506291C170CACC300A25452 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E506291B170CACC300A25452 /* Cocoa.framework */; };
 		E5062926170CACC300A25452 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E5062924170CACC300A25452 /* InfoPlist.strings */; };
 		E5062928170CACC300A25452 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5062927170CACC300A25452 /* main.m */; };
@@ -27,15 +29,13 @@
 		E50629631710784000A25452 /* PanelController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E50629621710784000A25452 /* PanelController.xib */; };
 		E50629751711756000A25452 /* QUSignInWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = E50629731711755F00A25452 /* QUSignInWindowController.m */; };
 		E50629761711756000A25452 /* QUSignInWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E50629741711756000A25452 /* QUSignInWindowController.xib */; };
-		E55359601732E3C80087973E /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E553595F1732E3C80087973E /* Sparkle.framework */; };
 		E55FBF0E1722D5C000AEC024 /* StatusGreen.png in Resources */ = {isa = PBXBuildFile; fileRef = E55FBF0A1722D5C000AEC024 /* StatusGreen.png */; };
 		E55FBF0F1722D5C000AEC024 /* StatusGreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E55FBF0B1722D5C000AEC024 /* StatusGreen@2x.png */; };
 		E55FBF141722D66800AEC024 /* StatusInverted.png in Resources */ = {isa = PBXBuildFile; fileRef = E55FBF121722D66800AEC024 /* StatusInverted.png */; };
 		E55FBF151722D66800AEC024 /* StatusInverted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E55FBF131722D66800AEC024 /* StatusInverted@2x.png */; };
 		E55FBF17172733A600AEC024 /* MenubarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E55FBF16172733A600AEC024 /* MenubarController.xib */; };
-		E57D72A2174D727200F3F335 /* LaunchAtLoginHelperApp.app in Copy LaunchAtLoginHelperApp */ = {isa = PBXBuildFile; fileRef = E57D72A0174D71E400F3F335 /* LaunchAtLoginHelperApp.app */; };
+		E57D72A2174D727200F3F335 /* Queued Helper.app in Copy LaunchAtLoginHelperApp */ = {isa = PBXBuildFile; fileRef = E57D72A0174D71E400F3F335 /* Queued Helper.app */; };
 		E57D72A4174D72F700F3F335 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E57D72A3174D72F700F3F335 /* ServiceManagement.framework */; };
-		E5A79F7E17343628006DDA1E /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E553595F1732E3C80087973E /* Sparkle.framework */; };
 		E5A79F8A17399525006DDA1E /* QUPendingUpdatesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A79F8817399525006DDA1E /* QUPendingUpdatesViewController.m */; };
 		E5A79F8B17399525006DDA1E /* QUPendingUpdatesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5A79F8917399525006DDA1E /* QUPendingUpdatesViewController.xib */; };
 		E5A79F8E173AD7CD006DDA1E /* StatusBlack.png in Resources */ = {isa = PBXBuildFile; fileRef = E5A79F8C173AD7CD006DDA1E /* StatusBlack.png */; };
@@ -62,14 +62,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		E553595D1732A2CC0087973E /* CopyFiles */ = {
+		E553595D1732A2CC0087973E /* Copy Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E5A79F7E17343628006DDA1E /* Sparkle.framework in CopyFiles */,
+				E50573141772544400392726 /* Sparkle.framework in Copy Frameworks */,
 			);
+			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		E57D72A1174D725100F3F335 /* Copy LaunchAtLoginHelperApp */ = {
@@ -78,7 +79,7 @@
 			dstPath = Contents/Library/LoginItems;
 			dstSubfolderSpec = 1;
 			files = (
-				E57D72A2174D727200F3F335 /* LaunchAtLoginHelperApp.app in Copy LaunchAtLoginHelperApp */,
+				E57D72A2174D727200F3F335 /* Queued Helper.app in Copy LaunchAtLoginHelperApp */,
 			);
 			name = "Copy LaunchAtLoginHelperApp";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -90,6 +91,7 @@
 		69B5A34BEE184D338F9F560C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB75A76F3BE4481AA7F86492 /* libPods-QueuedTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QueuedTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B61CDDC0E3FA46D88F66B8CA /* Pods-QueuedTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QueuedTests.xcconfig"; path = "Pods/Pods-QueuedTests.xcconfig"; sourceTree = SOURCE_ROOT; };
+		E50573121772541700392726 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		E5062918170CACC300A25452 /* Queued.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Queued.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E506291B170CACC300A25452 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		E506291E170CACC300A25452 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -123,7 +125,6 @@
 		E50629721711755F00A25452 /* QUSignInWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QUSignInWindowController.h; sourceTree = "<group>"; };
 		E50629731711755F00A25452 /* QUSignInWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QUSignInWindowController.m; sourceTree = "<group>"; };
 		E50629741711756000A25452 /* QUSignInWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QUSignInWindowController.xib; sourceTree = "<group>"; };
-		E553595F1732E3C80087973E /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		E55FBF0A1722D5C000AEC024 /* StatusGreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = StatusGreen.png; path = Queued/Resources/StatusGreen.png; sourceTree = "<group>"; };
 		E55FBF0B1722D5C000AEC024 /* StatusGreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "StatusGreen@2x.png"; path = "Queued/Resources/StatusGreen@2x.png"; sourceTree = "<group>"; };
 		E55FBF121722D66800AEC024 /* StatusInverted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = StatusInverted.png; path = Queued/Resources/StatusInverted.png; sourceTree = "<group>"; };
@@ -150,7 +151,7 @@
 				E57D72A4174D72F700F3F335 /* ServiceManagement.framework in Frameworks */,
 				E506291C170CACC300A25452 /* Cocoa.framework in Frameworks */,
 				7498224BF6FD46EDA10835DE /* libPods.a in Frameworks */,
-				E55359601732E3C80087973E /* Sparkle.framework in Frameworks */,
+				E50573131772541700392726 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,8 +194,8 @@
 		E506291A170CACC300A25452 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E50573121772541700392726 /* Sparkle.framework */,
 				E57D72A3174D72F700F3F335 /* ServiceManagement.framework */,
-				E553595F1732E3C80087973E /* Sparkle.framework */,
 				E506291B170CACC300A25452 /* Cocoa.framework */,
 				E5062939170CACC400A25452 /* SenTestingKit.framework */,
 				E506291D170CACC300A25452 /* Other Frameworks */,
@@ -304,7 +305,7 @@
 		E57D729C174D71E300F3F335 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E57D72A0174D71E400F3F335 /* LaunchAtLoginHelperApp.app */,
+				E57D72A0174D71E400F3F335 /* Queued Helper.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -335,7 +336,7 @@
 				E5062916170CACC300A25452 /* Resources */,
 				E55359621732F5460087973E /* Set Build Versions */,
 				233303D341144BF49F6CCE01 /* Copy Pods Resources */,
-				E553595D1732A2CC0087973E /* CopyFiles */,
+				E553595D1732A2CC0087973E /* Copy Frameworks */,
 				E57D72A1174D725100F3F335 /* Copy LaunchAtLoginHelperApp */,
 			);
 			buildRules = (
@@ -374,7 +375,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = QU;
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Pawel Niewiadomski";
 			};
 			buildConfigurationList = E5062913170CACC300A25452 /* Build configuration list for PBXProject "Queued" */;
@@ -402,10 +403,10 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		E57D72A0174D71E400F3F335 /* LaunchAtLoginHelperApp.app */ = {
+		E57D72A0174D71E400F3F335 /* Queued Helper.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
-			path = LaunchAtLoginHelperApp.app;
+			path = "Queued Helper.app";
 			remoteRef = E57D729F174D71E400F3F335 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -577,7 +578,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -610,7 +610,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
