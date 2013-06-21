@@ -133,9 +133,7 @@
     
     NSRect updatesRect = [self.pendingUpdates frame];
     updatesRect.size.width = NSWidth([self.backgroundView bounds]);
-    updatesRect.origin.x = 0;
     updatesRect.size.height = NSHeight([self.backgroundView bounds]);
-    updatesRect.origin.y = 0;
     [self.pendingUpdates setFrame:updatesRect];
 }
 
