@@ -5,6 +5,22 @@
 	<description>Buffer helper for your Mac OS X</description>
 	<language>en</language>
 	<item>
+		<title>Version 0.5</title>
+		<description><![CDATA[
+			<h2>Feedback needed</h2>
+			<p>
+				Do you feel this app should have additonal features? Do you miss anything when working with Buffer? <a href="mailto:ver4@pawelniewiadomski.com">Let me know!</a>.
+			</p>
+			<h2>Bugs</h2>
+			<ul>
+				<li>Fixed layout glitch on OS X Maverick</li>
+			</ul>
+			]]></description>
+		<sparkle:minimumSystemVersion>10.8.0</sparkle:minimumSystemVersion>
+		<pubDate>Fri, 21 Jun 2013 22:43:15 CEST</pubDate>
+		<enclosure url="http://queuedupdates.appspot.com/binaries/Queued-0.5.zip" sparkle:version="50" sparkle:shortVersionString="0.5" length="3004619" type="application/octet-stream"/>
+	</item>
+	<item>
 		<title>Version 0.4</title>
 		<description><![CDATA[
 			<h2>New features</h2>
