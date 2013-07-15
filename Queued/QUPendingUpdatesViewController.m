@@ -38,15 +38,18 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
 
         [[QUAppDelegate instance] addObserver:self forKeyPath:@"isLaunchAtLoginEnabled" options:NSKeyValueObservingOptionNew context:nil];
         
-        QUPendingUpdatesViewController * __weak noRetain = self; // http://stackoverflow.com/questions/7853915/how-do-i-avoid-capturing-self-in-blocks-when-implementing-an-api
+        __weak QUPendingUpdatesViewController * noRetain = self; // http://stackoverflow.com/questions/7853915/how-do-i-avoid-capturing-self-in-blocks-when-implementing-an-api
         _updatesHandler = ^(NSString *profileId, NSArray *pending, NSError *error) {
-            [[NSNotificationCenter defaultCenter] postNotificationName:BUPendingUpdatesLoadedNotification object:pending userInfo:@{ @"profileId" : profileId }];
-            if (pending != nil) {
-                @synchronized(noRetain) {
-                    NSMutableArray *copy = [NSMutableArray arrayWithArray:pending];
-                    [noRetain.updates setObject:copy forKey:profileId];
+            QUPendingUpdatesViewController *updatesViewController = noRetain;
+            if (updatesViewController != nil) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:BUPendingUpdatesLoadedNotification object:pending userInfo:@{ @"profileId" : profileId }];
+                if (pending != nil) {
+                    @synchronized(updatesViewController) {
+                        NSMutableArray *copy = [NSMutableArray arrayWithArray:pending];
+                        [updatesViewController.updates setObject:copy forKey:profileId];
+                    }
+                    [updatesViewController performSelectorOnMainThread:@selector(updateTable) withObject:nil waitUntilDone:NO];
                 }
-                [noRetain performSelectorOnMainThread:@selector(updateTable) withObject:nil waitUntilDone:NO];
             }
         };
         

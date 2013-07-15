@@ -96,7 +96,6 @@
 						<string key="NSFrame">{{436, -3}, {47, 26}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSPopUpButtonCell" key="NSCell" id="783716544">
@@ -604,6 +603,14 @@
 						<reference key="destination" ref="235224412"/>
 					</object>
 					<int key="connectionID">591</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">postUpdate:</string>
+						<reference key="source" ref="1003"/>
+						<reference key="destination" ref="624885138"/>
+					</object>
+					<int key="connectionID">606</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -2427,7 +2434,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">605</int>
+			<int key="maxID">606</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2469,18 +2476,28 @@
 					<string key="className">QUAppDelegate</string>
 					<string key="superclassName">NSObject</string>
 					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="postUpdate:">id</string>
 						<string key="reloadPendingUpdates:">id</string>
-						<string key="toggleLaunchAtLogin:">id</string>
+						<string key="sendFeedback:">id</string>
+						<string key="toggleLaunchAtLogin:">NSMenuItem</string>
 						<string key="togglePanel:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="postUpdate:">
+							<string key="name">postUpdate:</string>
+							<string key="candidateClassName">id</string>
+						</object>
 						<object class="IBActionInfo" key="reloadPendingUpdates:">
 							<string key="name">reloadPendingUpdates:</string>
 							<string key="candidateClassName">id</string>
 						</object>
+						<object class="IBActionInfo" key="sendFeedback:">
+							<string key="name">sendFeedback:</string>
+							<string key="candidateClassName">id</string>
+						</object>
 						<object class="IBActionInfo" key="toggleLaunchAtLogin:">
 							<string key="name">toggleLaunchAtLogin:</string>
-							<string key="candidateClassName">id</string>
+							<string key="candidateClassName">NSMenuItem</string>
 						</object>
 						<object class="IBActionInfo" key="togglePanel:">
 							<string key="name">togglePanel:</string>
@@ -2517,6 +2534,20 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">QUPendingUpdatesViewController</string>
 					<string key="superclassName">NSViewController</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="removeSelectedUpdates:">id</string>
+						<string key="updateOperationButtonClicked:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="removeSelectedUpdates:">
+							<string key="name">removeSelectedUpdates:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="updateOperationButtonClicked:">
+							<string key="name">updateOperationButtonClicked:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="launchAtLoginMenuItem">NSMenuItem</string>
 						<string key="progress">NSProgressIndicator</string>

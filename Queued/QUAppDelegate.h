@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "PanelController.h"
 
-@class MenubarController, Buffered, QUSignInWindowController, BUProfilesMonitor;
+@class MenubarController, Buffered, QUSignInWindowController, BUProfilesMonitor, QUPostUpdateWindowController;
 
 @interface QUAppDelegate : NSObject <NSApplicationDelegate, PanelControllerDelegate>
 
@@ -17,6 +17,7 @@
 @property (nonatomic, strong, readonly) PanelController *panelController;
 @property (nonatomic, strong, readonly) Buffered *buffered;
 @property (nonatomic, strong, readonly) BUProfilesMonitor *profilesMonitor;
+@property (nonatomic, strong, readonly) QUPostUpdateWindowController *postUpdateWindow;
 
 @property (assign) BOOL hasSignedIn;
 @property (assign) BOOL hasSignInWindowOpen;

@@ -15,6 +15,7 @@
 #import "MenubarController.h"
 #import "QUAppDelegate.h"
 #import "QUSignInWindowController.h"
+#import "QUPostUpdateWindowController.h"
 
 @implementation QUAppDelegate
 
@@ -153,6 +154,16 @@ void *kContextActivePanel = &kContextActivePanel;
 }
 
 #pragma mark - Actions
+
+- (IBAction)postUpdate:(id)sender
+{
+    if (_postUpdateWindow == nil) {
+        _postUpdateWindow = [[QUPostUpdateWindowController alloc] initWithWindowNibName:@"QUPostUpdateWindowController"];
+    }
+    if (![_postUpdateWindow.window isVisible]) {
+        [_postUpdateWindow.window makeKeyWindow];
+    }
+}
 
 - (IBAction)togglePanel:(id)sender
 {

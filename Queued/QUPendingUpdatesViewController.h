@@ -11,8 +11,8 @@
 
 @interface QUPendingUpdatesViewController : NSViewController<NSTableViewDataSource, NSTabViewDelegate> {
 @private
-    Buffered __weak *_buffered;
-    BUProfilesMonitor __weak *_profilesMonitor;
+    __weak Buffered *_buffered;
+    __weak BUProfilesMonitor  *_profilesMonitor;
     NSMutableArray *_observedVisibleItems;
     UpdatesCompletionHandler _updatesHandler;
     RemoveCompletionHandler _removeHandler;
