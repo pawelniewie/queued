@@ -158,10 +158,11 @@ void *kContextActivePanel = &kContextActivePanel;
 - (IBAction)postUpdate:(id)sender
 {
     if (_postUpdateWindow == nil) {
-        _postUpdateWindow = [[QUPostUpdateWindowController alloc] initWithWindowNibName:@"QUPostUpdateWindowController"];
+        _postUpdateWindow = [[QUPostUpdateWindowController alloc] initWithBuffered:self.buffered andProfilesMonitor:self.profilesMonitor];
     }
     if (![_postUpdateWindow.window isVisible]) {
-        [_postUpdateWindow.window makeKeyWindow];
+        [_postUpdateWindow.window center];
+        [_postUpdateWindow.window makeKeyAndOrderFront:self];
     }
 }
 

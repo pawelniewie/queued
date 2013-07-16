@@ -8,6 +8,21 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface QUPostUpdateWindowController : NSWindowController
+@class Buffered, BUProfilesMonitor;
+
+@interface QUPostUpdateWindowController : NSWindowController<NSCollectionViewDelegate> {
+@private
+    __weak Buffered *_buffered;
+    __weak BUProfilesMonitor  *_profilesMonitor;
+}
+
+@property (weak) IBOutlet NSButton *sendButton;
+@property (unsafe_unretained) IBOutlet NSTextView *text;
+@property (strong) IBOutlet NSArrayController *profiles;
+
+- (IBAction)cancel:(id)sender;
+- (IBAction)send:(id)sender;
+
+- (instancetype) initWithBuffered: (Buffered *) buffered andProfilesMonitor: (BUProfilesMonitor *) profilesMonitor;
 
 @end
