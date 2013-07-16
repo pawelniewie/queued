@@ -129,18 +129,18 @@ Gw
                 <outlet property="delegate" destination="-2" id="4"/>
             </connections>
         </window>
-        <collectionViewItem id="TpE-bp-psU">
+        <collectionViewItem id="TpE-bp-psU" customClass="QUProfilesCollectionViewItem">
             <connections>
                 <outlet property="imageView" destination="Uyo-uE-NdK" id="Uwv-Nu-Exs"/>
                 <outlet property="view" destination="uXW-xw-vsw" id="wbw-RK-ADD"/>
             </connections>
         </collectionViewItem>
-        <view id="uXW-xw-vsw">
-            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+        <view id="uXW-xw-vsw" customClass="QUProfileView">
+            <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uyo-uE-NdK">
-                    <rect key="frame" x="-3" y="-3" width="36" height="36"/>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Uyo-uE-NdK" customClass="QUSelectableImageView">
+                    <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="vPA-Hf-IfP"/>
                     <connections>
@@ -148,6 +148,12 @@ Gw
                     </connections>
                 </imageView>
             </subviews>
+            <constraints>
+                <constraint firstItem="Uyo-uE-NdK" firstAttribute="centerX" secondItem="uXW-xw-vsw" secondAttribute="centerX" id="92Q-wO-WQ2"/>
+                <constraint firstItem="Uyo-uE-NdK" firstAttribute="top" secondItem="uXW-xw-vsw" secondAttribute="top" constant="3" id="IGP-Gg-UEN"/>
+                <constraint firstItem="Uyo-uE-NdK" firstAttribute="leading" secondItem="uXW-xw-vsw" secondAttribute="leading" constant="3" id="ayF-Ss-nzI"/>
+                <constraint firstItem="Uyo-uE-NdK" firstAttribute="centerY" secondItem="uXW-xw-vsw" secondAttribute="centerY" id="crV-xH-Bav"/>
+            </constraints>
         </view>
         <arrayController objectClassName="Profile" editable="NO" id="zqv-Jh-Lu1">
             <declaredKeys>
@@ -161,22 +167,8 @@ Gw
         <userDefaultsController id="LIt-LU-SES"/>
     </objects>
     <classes>
-        <class className="NSCollectionViewItem">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSCollectionViewItem.h"/>
-            <relationships>
-                <relationship kind="outlet" name="imageView" candidateClass="NSImageView"/>
-                <relationship kind="outlet" name="textField" candidateClass="NSTextField"/>
-            </relationships>
-        </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="NSTextView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSTextView.h"/>
-            <relationships>
-                <relationship kind="action" name="orderFrontSharingServicePicker:"/>
-                <relationship kind="action" name="toggleQuickLookPreviewPanel:"/>
-            </relationships>
         </class>
         <class className="QUPostUpdateWindowController" superclassName="NSWindowController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/QUPostUpdateWindowController.h"/>
@@ -187,6 +179,15 @@ Gw
                 <relationship kind="outlet" name="sendButton" candidateClass="NSButton"/>
                 <relationship kind="outlet" name="text" candidateClass="NSTextView"/>
             </relationships>
+        </class>
+        <class className="QUProfileView" superclassName="NSView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/QUProfileView.h"/>
+        </class>
+        <class className="QUProfilesCollectionViewItem" superclassName="NSCollectionViewItem">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/QUProfilesCollectionViewItem.h"/>
+        </class>
+        <class className="QUSelectableImageView" superclassName="NSImageView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/QUSelectableImageView.h"/>
         </class>
     </classes>
 </document>
