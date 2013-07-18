@@ -55,6 +55,16 @@
 }
 
 - (IBAction)send:(id)sender {
+    [self.sendButton setEnabled:NO];
+    NSArray *profiles = [self.profiles.arrangedObjects objectsAtIndexes: [self.profilesCollectionView selectionIndexes]];
+    [_buffered createUpdate:[BUNewUpdate updateWithText:self.text.string andProfiles:profiles] withCompletionHandler:^(NSError *error) {
+        [self.sendButton setEnabled:YES];
+        if (error == nil) {
+            self.text.string = @"";
+            [self.profilesCollectionView setSelectionIndexes:[NSIndexSet indexSet]];
+            [self.window orderOut:self];
+        }
+    }];
 }
 
 #pragma mark -

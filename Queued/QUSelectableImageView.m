@@ -16,7 +16,7 @@
     [NSBezierPath setDefaultLineWidth:4.0];
     if (self.isSelected) {
         [super drawRect:dirtyRect];
-        [NSBezierPath strokeRect:dirtyRect]; // will give a 2 pixel wide border
+        [NSBezierPath strokeRect:NSInsetRect(dirtyRect, 2, 2)]; // will give a 2 pixel wide border
     } else {
         [NSBezierPath fillRect:dirtyRect];
         [super drawRect:dirtyRect];

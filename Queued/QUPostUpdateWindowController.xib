@@ -10,6 +10,7 @@
             <connections>
                 <action selector="cancel:" destination="41" id="95"/>
                 <action selector="send:" destination="37" id="96"/>
+                <outlet property="profilesCollectionView" destination="J3h-I6-gKN" id="bmd-CK-iue"/>
                 <outlet property="sendButton" destination="37" id="94"/>
                 <outlet property="text" destination="103" id="Eqh-PV-iyO"/>
                 <outlet property="window" destination="1" id="3"/>
@@ -145,6 +146,7 @@ Gw
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="vPA-Hf-IfP"/>
                     <connections>
                         <binding destination="TpE-bp-psU" name="value" keyPath="representedObject.avatarImage" id="LvN-dJ-4SP"/>
+                        <binding destination="TpE-bp-psU" name="toolTip" keyPath="representedObject.json.formatted_username" id="4H1-m3-D4a"/>
                     </connections>
                 </imageView>
             </subviews>
@@ -167,8 +169,22 @@ Gw
         <userDefaultsController id="LIt-LU-SES"/>
     </objects>
     <classes>
+        <class className="NSCollectionViewItem">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSCollectionViewItem.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imageView" candidateClass="NSImageView"/>
+                <relationship kind="outlet" name="textField" candidateClass="NSTextField"/>
+            </relationships>
+        </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="NSTextView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSTextView.h"/>
+            <relationships>
+                <relationship kind="action" name="orderFrontSharingServicePicker:"/>
+                <relationship kind="action" name="toggleQuickLookPreviewPanel:"/>
+            </relationships>
         </class>
         <class className="QUPostUpdateWindowController" superclassName="NSWindowController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/QUPostUpdateWindowController.h"/>
@@ -176,6 +192,7 @@ Gw
                 <relationship kind="action" name="cancel:"/>
                 <relationship kind="action" name="send:"/>
                 <relationship kind="outlet" name="profiles" candidateClass="NSArrayController"/>
+                <relationship kind="outlet" name="profilesCollectionView" candidateClass="NSCollectionView"/>
                 <relationship kind="outlet" name="sendButton" candidateClass="NSButton"/>
                 <relationship kind="outlet" name="text" candidateClass="NSTextView"/>
             </relationships>

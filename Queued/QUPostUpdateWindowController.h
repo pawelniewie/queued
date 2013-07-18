@@ -19,6 +19,7 @@
 @property (weak) IBOutlet NSButton *sendButton;
 @property (unsafe_unretained) IBOutlet NSTextView *text;
 @property (strong) IBOutlet NSArrayController *profiles;
+@property (weak) IBOutlet NSCollectionView *profilesCollectionView;
 
 - (IBAction)cancel:(id)sender;
 - (IBAction)send:(id)sender;
