@@ -39,8 +39,7 @@
 
 - (void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self forKeyPath:QUProfilesLoadedNotification];
-    [[NSNotificationCenter defaultCenter] removeObserver:self forKeyPath:QUPendingUpdatesLoadedNotification];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [[NSStatusBar systemStatusBar] removeStatusItem:self.statusItem];
 }
 
