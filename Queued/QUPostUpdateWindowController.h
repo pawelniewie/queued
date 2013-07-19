@@ -17,9 +17,12 @@
 }
 
 @property (weak) IBOutlet NSButton *sendButton;
+@property (weak) IBOutlet NSButton *cancelButton;
 @property (unsafe_unretained) IBOutlet NSTextView *text;
 @property (strong) IBOutlet NSArrayController *profiles;
 @property (weak) IBOutlet NSCollectionView *profilesCollectionView;
+@property (assign) BOOL twitterSelected;
+@property (weak) IBOutlet NSProgressIndicator *sendingProgressIndicator;
 
 - (IBAction)cancel:(id)sender;
 - (IBAction)send:(id)sender;

@@ -148,7 +148,7 @@
 
 - (NSRect)statusRectForWindow:(NSWindow *)window
 {
-    NSRect screenRect = [[[NSScreen screens] objectAtIndex:0] frame];
+    NSRect screenRect = [[NSScreen screens][0] frame];
     NSRect statusRect = NSZeroRect;
     
     StatusItemView *statusItemView = nil;
@@ -175,7 +175,7 @@
 {
     NSWindow *panel = [self window];
     
-    NSRect screenRect = [[[NSScreen screens] objectAtIndex:0] frame];
+    NSRect screenRect = [[NSScreen screens][0] frame];
     NSRect statusRect = [self statusRectForWindow:panel];
 
     NSRect panelRect = [panel frame];
@@ -205,7 +205,7 @@
 #pragma mark KVO
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     NSLog(@"Changes to %@ %@", keyPath, change);
-    if ([@"hasSignedIn" isEqualToString:keyPath] && [[change objectForKey:NSKeyValueChangeNewKey] boolValue]) {
+    if ([@"hasSignedIn" isEqualToString:keyPath] && [change[NSKeyValueChangeNewKey] boolValue]) {
         [self initializePendingUpdates];
     }
 }

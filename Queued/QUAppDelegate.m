@@ -9,13 +9,13 @@
 #import <Buffered.h>
 #import <BUProfilesMonitor.h>
 #import <BUPendingUpdatesMonitor.h>
-#import <BUPendingUpdatesViewController.h>
 #import <ServiceManagement/ServiceManagement.h>
 
 #import "MenubarController.h"
 #import "QUAppDelegate.h"
 #import "QUSignInWindowController.h"
 #import "QUPostUpdateWindowController.h"
+#import "QUPendingUpdatesViewController.h"
 
 @implementation QUAppDelegate
 
@@ -69,14 +69,14 @@ void *kContextActivePanel = &kContextActivePanel;
     }
     else if ([@"profiles" isEqualToString:keyPath]) {
         NSLog(@"Profiles were updated %@", change);
-        NSArray *profiles = [change objectForKey:NSKeyValueChangeNewKey];
-        [profiles enumerateObjectsUsingBlock:^(Profile *profile, NSUInteger idx, BOOL *stop) {
+        NSArray *profiles = change[NSKeyValueChangeNewKey];
+        [profiles enumerateObjectsUsingBlock:^(BUProfile *profile, NSUInteger idx, BOOL *stop) {
             if (!profile.updatesMonitor.isPooling) {
                 [profile.updatesMonitor refresh];
                 [profile.updatesMonitor startPoolingWithInterval:30];
             }
         }];
-        [[NSNotificationCenter defaultCenter] postNotificationName:BUProfilesLoadedNotification object:profiles userInfo:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:QUProfilesLoadedNotification object:profiles userInfo:nil];
     }
     else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
@@ -179,7 +179,7 @@ void *kContextActivePanel = &kContextActivePanel;
     // I use the %@ formatting string to add the contents of the lastResult and
     // songData objects to the body of the message. You should change these to
     // whatever information you want to include in the body.
-    NSString* mailtoLink = [NSString stringWithFormat:@"mailto:pawelniewiadomski@me.com?subject=Queued Feedback&body=If it's a bug report please write as much details as you can think of (how to reproduce the bug).\n\nThanks for contributing!\n\nThe version is %@\n", [[[NSBundle mainBundle] infoDictionary] objectForKey:@"FullVersion"]];
+    NSString* mailtoLink = [NSString stringWithFormat:@"mailto:pawelniewiadomski@me.com?subject=Queued Feedback&body=If it's a bug report please write as much details as you can think of (how to reproduce the bug).\n\nThanks for contributing!\n\nThe version is %@\n", [[NSBundle mainBundle] infoDictionary][@"FullVersion"]];
                            
     // This creates a URL string by adding percent escapes. Since the URL is
     // just being used locally, I don't know if this is always necessary,
@@ -199,7 +199,7 @@ void *kContextActivePanel = &kContextActivePanel;
 }
 
 - (IBAction)reloadPendingUpdates:(id)sender {
-    [self.profilesMonitor.profiles enumerateObjectsUsingBlock:^(Profile* obj, NSUInteger idx, BOOL *stop) {
+    [self.profilesMonitor.profiles enumerateObjectsUsingBlock:^(BUProfile* obj, NSUInteger idx, BOOL *stop) {
         [obj.updatesMonitor refresh];
     }];
 }

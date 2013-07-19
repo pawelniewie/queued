@@ -1,9 +1,9 @@
 #import <Buffered.h>
 #import <Model.h>
-#import <BUPendingUpdatesViewController.h>
 
 #import "MenubarController.h"
 #import "StatusItemView.h"
+#import "QUPendingUpdatesViewController.h"
 
 @implementation MenubarController
 
@@ -31,16 +31,16 @@
         _statusItemView.alternateImage = [NSImage imageNamed:@"StatusInverted"];
         _statusItemView.action = @selector(togglePanel:);
 
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(profilesLoaded:) name:BUProfilesLoadedNotification object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pendingUpdatesLoaded:) name:BUPendingUpdatesLoadedNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(profilesLoaded:) name:QUProfilesLoadedNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pendingUpdatesLoaded:) name:QUPendingUpdatesLoadedNotification object:nil];
     }
     return self;
 }
 
 - (void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self forKeyPath:BUProfilesLoadedNotification];
-    [[NSNotificationCenter defaultCenter] removeObserver:self forKeyPath:BUPendingUpdatesLoadedNotification];
+    [[NSNotificationCenter defaultCenter] removeObserver:self forKeyPath:QUProfilesLoadedNotification];
+    [[NSNotificationCenter defaultCenter] removeObserver:self forKeyPath:QUPendingUpdatesLoadedNotification];
     [[NSStatusBar systemStatusBar] removeStatusItem:self.statusItem];
 }
 
@@ -59,11 +59,12 @@
     NSMutableDictionary *newProfiles = [NSMutableDictionary new];
     if (profiles != nil) {
         for (id profile in profiles) {
-            id currentState = [emptyProfiles objectForKey:[(Profile *) profile id]];
+            NSString *profileId = (NSString *) (BUProfile *) profile[@"id"];
+            id currentState = emptyProfiles[profileId];
             if (currentState != nil) {
-                [newProfiles setObject:currentState forKey:[(Profile *)profile id]];
+                newProfiles[profileId] = currentState;
             } else {
-                [newProfiles setObject:[NSNumber numberWithBool:YES] forKey:[(Profile *)profile id]];
+                newProfiles[profileId] = @YES;
             }
         }
         [emptyProfiles removeAllObjects];
@@ -72,10 +73,10 @@
 }
 
 - (void)pendingUpdatesLoaded:(NSNotification *) notification {
-    NSString *profileId = [notification.userInfo objectForKey:@"profileId"];
+    NSString *profileId = (notification.userInfo)[@"profileId"];
     NSArray *updates = notification.object;
     BOOL empty = updates == nil || [updates count] == 0;
-    [emptyProfiles setObject:[NSNumber numberWithBool:empty] forKey:profileId];
+    emptyProfiles[profileId] = @(empty);
     [self updateStatus];
 }
 

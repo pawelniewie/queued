@@ -10,8 +10,10 @@
             <connections>
                 <action selector="cancel:" destination="41" id="95"/>
                 <action selector="send:" destination="37" id="96"/>
+                <outlet property="cancelButton" destination="41" id="tpM-Uu-Bdx"/>
                 <outlet property="profilesCollectionView" destination="J3h-I6-gKN" id="bmd-CK-iue"/>
                 <outlet property="sendButton" destination="37" id="94"/>
+                <outlet property="sendingProgressIndicator" destination="cJA-YU-nDj" id="pGE-Jt-0up"/>
                 <outlet property="text" destination="103" id="Eqh-PV-iyO"/>
                 <outlet property="window" destination="1" id="3"/>
             </connections>
@@ -110,6 +112,10 @@ Gw
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
+                    <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="cJA-YU-nDj">
+                        <rect key="frame" x="210" y="97" width="32" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    </progressIndicator>
                 </subviews>
                 <constraints>
                     <constraint firstItem="37" firstAttribute="leading" secondItem="41" secondAttribute="trailing" constant="12" symbolic="YES" id="43"/>
@@ -168,43 +174,4 @@ Gw
         </arrayController>
         <userDefaultsController id="LIt-LU-SES"/>
     </objects>
-    <classes>
-        <class className="NSCollectionViewItem">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSCollectionViewItem.h"/>
-            <relationships>
-                <relationship kind="outlet" name="imageView" candidateClass="NSImageView"/>
-                <relationship kind="outlet" name="textField" candidateClass="NSTextField"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="NSTextView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSTextView.h"/>
-            <relationships>
-                <relationship kind="action" name="orderFrontSharingServicePicker:"/>
-                <relationship kind="action" name="toggleQuickLookPreviewPanel:"/>
-            </relationships>
-        </class>
-        <class className="QUPostUpdateWindowController" superclassName="NSWindowController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/QUPostUpdateWindowController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancel:"/>
-                <relationship kind="action" name="send:"/>
-                <relationship kind="outlet" name="profiles" candidateClass="NSArrayController"/>
-                <relationship kind="outlet" name="profilesCollectionView" candidateClass="NSCollectionView"/>
-                <relationship kind="outlet" name="sendButton" candidateClass="NSButton"/>
-                <relationship kind="outlet" name="text" candidateClass="NSTextView"/>
-            </relationships>
-        </class>
-        <class className="QUProfileView" superclassName="NSView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/QUProfileView.h"/>
-        </class>
-        <class className="QUProfilesCollectionViewItem" superclassName="NSCollectionViewItem">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/QUProfilesCollectionViewItem.h"/>
-        </class>
-        <class className="QUSelectableImageView" superclassName="NSImageView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/QUSelectableImageView.h"/>
-        </class>
-    </classes>
 </document>

@@ -10,6 +10,7 @@
 #import <BUProfilesMonitor.h>
 
 #import "QUPostUpdateWindowController.h"
+#import "QUAppDelegate.h"
 
 @interface QUPostUpdateWindowController ()
 
@@ -21,7 +22,7 @@
 
     self = [super initWithWindowNibName:@"QUPostUpdateWindowController"];
     if (self) {
-        _profiles = [NSArrayController new];
+        self.profiles = [NSArrayController new];
         _buffered = buffered;
         _profilesMonitor = profilesMonitor;
     }
@@ -30,23 +31,35 @@
 
 - (void) dealloc {
     [_profilesMonitor removeObserver:self forKeyPath:@"profiles"];
+    [self.profilesCollectionView removeObserver:self forKeyPath:@"selectionIndexes"];
 }
 
 - (void)windowDidLoad
 {
     [super windowDidLoad];
     [self.window setAnimationBehavior:NSWindowAnimationBehaviorDocumentWindow];
-    [_profiles setContent:_profilesMonitor.profiles];
+    [self.profiles setContent:_profilesMonitor.profiles];
     [_profilesMonitor addObserver:self forKeyPath:@"profiles" options:NSKeyValueObservingOptionNew context:nil];
+    [self.profilesCollectionView addObserver:self forKeyPath:@"selectionIndexes" options:NSKeyValueObservingOptionNew context:nil];
+    [self.sendingProgressIndicator setHidden:YES];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([@"profiles" isEqualToString:keyPath]) {
         @synchronized(self) {
-            NSArray * profiles = [change objectForKey:NSKeyValueChangeNewKey];
+            NSArray * profiles = change[NSKeyValueChangeNewKey];
             
             [self.profiles setContent:profiles];
         }
+    } else if ([@"selectionIndexes" isEqualToString:keyPath] && object == self.profilesCollectionView) {
+        __block BOOL twitterSelected = NO;
+        [[[self.profiles arrangedObjects] objectsAtIndexes:self.profilesCollectionView.selectionIndexes] enumerateObjectsUsingBlock:^(BUProfile* profile, NSUInteger idx, BOOL *stop) {
+            if ([profile isTwitter]) {
+                twitterSelected = YES;
+                *stop = YES;
+            }
+        }];
+        self.twitterSelected = twitterSelected;
     }
 }
 
@@ -56,13 +69,21 @@
 
 - (IBAction)send:(id)sender {
     [self.sendButton setEnabled:NO];
+    [self.cancelButton setEnabled:NO];
+    [self.sendingProgressIndicator setHidden:NO];
+    [self.sendingProgressIndicator startAnimation:self];
     NSArray *profiles = [self.profiles.arrangedObjects objectsAtIndexes: [self.profilesCollectionView selectionIndexes]];
+    
     [_buffered createUpdate:[BUNewUpdate updateWithText:self.text.string andProfiles:profiles] withCompletionHandler:^(NSError *error) {
         [self.sendButton setEnabled:YES];
+        [self.cancelButton setEnabled:YES];
+        [self.sendingProgressIndicator setHidden:YES];
+        [self.sendingProgressIndicator stopAnimation:self];
         if (error == nil) {
             self.text.string = @"";
             [self.profilesCollectionView setSelectionIndexes:[NSIndexSet indexSet]];
             [self.window orderOut:self];
+            [[QUAppDelegate instance] reloadPendingUpdates:self];
         }
     }];
 }

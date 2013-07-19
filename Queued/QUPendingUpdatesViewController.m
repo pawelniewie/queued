@@ -9,12 +9,14 @@
 
 #import <Buffered.h>
 #import <QUPendingTableCellView.h>
-#import <BUPendingUpdatesViewController.h>
 #import <BUPendingUpdatesMonitor.h>
 
 #import "QUPendingUpdatesViewController.h"
 #import "QUPendingUpdatesRowView.h"
 #import "QUAppDelegate.h"
+
+NSString * const QUProfilesLoadedNotification = @"QUProfilesLoadedNotification";
+NSString * const QUPendingUpdatesLoadedNotification = @"QUPendingUpdatesLoadedNotification";
 
 @interface QUPendingUpdatesViewController ()
 
@@ -29,7 +31,6 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
     self = [super initWithNibName:@"QUPendingUpdatesViewController" bundle:[self bufferedBundle]];
     if (self) {
         // Initialization code here.
-        _updatesContent = [NSArrayController new];
         _profiles = [NSArrayController new];
         _updates = [NSMutableDictionary new];
         _buffered = buffered;
@@ -42,11 +43,11 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
         _updatesHandler = ^(NSString *profileId, NSArray *pending, NSError *error) {
             QUPendingUpdatesViewController *updatesViewController = noRetain;
             if (updatesViewController != nil) {
-                [[NSNotificationCenter defaultCenter] postNotificationName:BUPendingUpdatesLoadedNotification object:pending userInfo:@{ @"profileId" : profileId }];
+                [[NSNotificationCenter defaultCenter] postNotificationName:QUPendingUpdatesLoadedNotification object:pending userInfo:@{ @"profileId" : profileId }];
                 if (pending != nil) {
                     @synchronized(updatesViewController) {
                         NSMutableArray *copy = [NSMutableArray arrayWithArray:pending];
-                        [updatesViewController.updates setObject:copy forKey:profileId];
+                        (updatesViewController.updates)[profileId] = copy;
                     }
                     [updatesViewController performSelectorOnMainThread:@selector(updateTable) withObject:nil waitUntilDone:NO];
                 }
@@ -54,8 +55,8 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
         };
         
         _removeHandler = ^(NSString *profileId) {
-            [noRetain.profiles.arrangedObjects enumerateObjectsUsingBlock:^(Profile* obj, NSUInteger idx, BOOL *stop) {
-                if ([profileId isEqualToString:obj.id]) {
+            [noRetain.profiles.arrangedObjects enumerateObjectsUsingBlock:^(BUProfile* obj, NSUInteger idx, BOOL *stop) {
+                if ([profileId isEqualToString:obj[@"id"]]) {
                     [obj.updatesMonitor refresh];
                     *stop = YES;
                 }
@@ -67,7 +68,7 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
 }
 
 - (void) dealloc {
-    [_profilesMonitor.profiles enumerateObjectsUsingBlock:^(Profile* obj, NSUInteger idx, BOOL *stop) {
+    [_profilesMonitor.profiles enumerateObjectsUsingBlock:^(BUProfile* obj, NSUInteger idx, BOOL *stop) {
         [obj.updatesMonitor removeObserver:self forKeyPath:@"pendingUpdates"];
     }];
     [_profilesMonitor removeObserver:self forKeyPath:@"profiles"];
@@ -116,9 +117,9 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
 
 - (void) updateTable {
     NSMutableArray *newContent = [NSMutableArray new];
-    for (Profile *profile in self.profiles.arrangedObjects) {
+    for (BUProfile *profile in self.profiles.arrangedObjects) {
         [newContent addObject:profile];
-        NSArray *updates = [self.updates objectForKey:profile.id];
+        NSArray *updates = (self.updates)[profile[@"id"]];
         [newContent addObjectsFromArray:updates];
     }
     self.updatesContent.content = newContent;
@@ -128,16 +129,16 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
 }
 
 - (NSDictionary *) entityForRow: (NSInteger) row {
-    return [self.updatesContent.arrangedObjects objectAtIndex:row];
+    return (self.updatesContent.arrangedObjects)[row];
 }
 
-- (Profile *)profileEntityForRow:(NSInteger)row {
-    id result = row != -1 ? [self.updatesContent.arrangedObjects objectAtIndex:row] : nil;
+- (BUProfile *)profileEntityForRow:(NSInteger)row {
+    id result = row != -1 ? (self.updatesContent.arrangedObjects)[row] : nil;
     return [self isProfileEntity: result] ? result : nil;
 }
 
 - (BOOL) isProfileEntity: (NSObject *) object {
-    return [object isKindOfClass:[Profile class]];
+    return [object isKindOfClass:[BUProfile class]];
 }
 
 #pragma mark KVO
@@ -146,37 +147,37 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
         // Find the row and reload it.
         // Note that KVO notifications may be sent from a background thread (in this case, we know they will be)
         // We should only update the UI on the main thread, and in addition, we use NSRunLoopCommonModes to make sure the UI updates when a modal window is up.
-        [self performSelectorOnMainThread:@selector(_reloadRowForEntity:) withObject:object waitUntilDone:NO modes:[NSArray arrayWithObject:NSRunLoopCommonModes]];
+        [self performSelectorOnMainThread:@selector(_reloadRowForEntity:) withObject:object waitUntilDone:NO modes:@[NSRunLoopCommonModes]];
     } else if ([@"profiles" isEqualToString:keyPath]) {
         @synchronized(self) {
-            NSArray * profiles = [change objectForKey:NSKeyValueChangeNewKey];
+            NSArray * profiles = change[NSKeyValueChangeNewKey];
         
             [self.progress stopAnimation:self];
             [self.progress setHidden:YES];
         
             [self.profiles setContent:profiles];
         
-            [profiles enumerateObjectsUsingBlock:^(Profile* profile, NSUInteger idx, BOOL *stop) {
+            [profiles enumerateObjectsUsingBlock:^(BUProfile* profile, NSUInteger idx, BOOL *stop) {
                 NSInteger index = profile ? [_observedVisibleItems indexOfObject:profile] : NSNotFound;
                 if (index == NSNotFound) {
-                    [profile.updatesMonitor addObserver:self forKeyPath:@"pendingUpdates" options:NSKeyValueObservingOptionNew context:(__bridge void *)(profile.id)];
+                    [profile.updatesMonitor addObserver:self forKeyPath:@"pendingUpdates" options:NSKeyValueObservingOptionNew context:(__bridge void *)(profile[@"id"])];
                     [profile addObserver:self forKeyPath:@"avatarImage" options:NSKeyValueObservingOptionNew context:nil];
                     
                     [_observedVisibleItems addObject:profile];
                 }
 
                 if (profile.updatesMonitor.pendingUpdates != nil) {
-                    [self.updates setObject:profile.updatesMonitor.pendingUpdates forKey:profile.id];
+                    (self.updates)[profile[@"id"]] = profile.updatesMonitor.pendingUpdates;
                 }
             }];
         }
         
         [self performSelectorOnMainThread:@selector(updateTable) withObject:nil waitUntilDone:NO];
     } else if ([@"pendingUpdates" isEqualToString:keyPath]) {
-        NSArray * updates = [change objectForKey:NSKeyValueChangeNewKey];
+        NSArray * updates = change[NSKeyValueChangeNewKey];
         _updatesHandler((__bridge NSString*) context, updates, nil);
     } else if ([@"isLaunchAtLoginEnabled" isEqualToString:keyPath]) {
-        BOOL launchIsEnabled = [[change objectForKey:NSKeyValueChangeNewKey] boolValue];
+        BOOL launchIsEnabled = [change[NSKeyValueChangeNewKey] boolValue];
         self.launchAtLoginMenuItem.state = launchIsEnabled ? NSOnState : NSOffState;
     }
 }
@@ -219,14 +220,14 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
 - (NSTableRowView *)tableView:(NSTableView *)tableView rowViewForRow:(NSInteger)row {
     // Make the row view keep track of our main model object
     QUPendingUpdatesRowView *result = [[QUPendingUpdatesRowView alloc] initWithFrame:NSMakeRect(0, 0, 100, 100)];
-    result.objectValue = [self.updatesContent.arrangedObjects objectAtIndex:row];
+    result.objectValue = (self.updatesContent.arrangedObjects)[row];
     return result;
 }
 
 - (void)_reloadRowForEntity:(id)object {
     NSInteger row = [self.updatesContent.arrangedObjects indexOfObject:object];
     if (row != NSNotFound) {
-        Profile *entity = [self profileEntityForRow:row];
+        BUProfile *entity = [self profileEntityForRow:row];
         QUPendingTableCellView *cellView = [self.updatesTable viewAtColumn:0 row:row makeIfNecessary:NO];
         if (cellView) {
             cellView.imageView.image = [self resizeImage:entity.avatarImage size:[cellView.imageView bounds].size];
@@ -239,12 +240,12 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
     if (![self isProfileEntity:entity]) {
         QUUpdateTableCellView *cell = [tableView makeViewWithIdentifier:@"Update" owner:self];
         
-        [cell.dayText setToolTip:[NSString stringWithFormat:@"%@ at %@", [entity objectForKey:@"day"], [entity objectForKey:@"due_time"]]];
+        [cell.dayText setToolTip:[NSString stringWithFormat:@"%@ at %@", entity[@"day"], entity[@"due_time"]]];
         
         return cell;
     } else {
         QUPendingTableCellView *cell = [tableView makeViewWithIdentifier:@"Profile" owner:self];
-        Profile *profile = (Profile *) entity;
+        BUProfile *profile = (BUProfile *) entity;
         
         if (profile.avatarImage != nil) {
             [cell.imageView setImage:[self resizeImage:profile.avatarImage size:[cell.imageView bounds].size]];
@@ -269,7 +270,7 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
                    fraction:1.0              //alpha (transparency) value
              respectFlipped:YES              //coordinate system
                       hints:@{NSImageHintInterpolation:
-     [NSNumber numberWithInt:NSImageInterpolationMedium]}];
+     @(NSImageInterpolationMedium)}];
     
     [targetImage unlockFocus];
     
@@ -295,7 +296,7 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
 
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
     if (tableView == self.updatesTable) {
-        return [self.updatesContent.arrangedObjects objectAtIndex:row];
+        return (self.updatesContent.arrangedObjects)[row];
     }
     return nil;
 }
@@ -309,7 +310,7 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
     }] == NSNotFound) {
         // Copy the row numbers to the pasteboard.
         NSData *zNSIndexSetData = [NSKeyedArchiver archivedDataWithRootObject:rowIndexes];
-        [pboard declareTypes:[NSArray arrayWithObject:DRAG_AND_DROP_TYPE] owner:self];
+        [pboard declareTypes:@[DRAG_AND_DROP_TYPE] owner:self];
         [pboard setData:zNSIndexSetData forType:DRAG_AND_DROP_TYPE];
         return YES;
     }
@@ -368,7 +369,7 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
 		[self.updatesContent setSelectionIndexes:rowIndexes];
 		[self.updatesTable reloadData];
         NSDictionary * updatedProfile = [self updatesForRow:row];
-        [_buffered reorderPendingUpdatesForProfile:[[updatedProfile allKeys] objectAtIndex:0] withOrder:[[updatedProfile allValues] objectAtIndex:0] withCompletionHandler:_updatesHandler];
+        [_buffered reorderPendingUpdatesForProfile:[updatedProfile allKeys][0] withOrder:[updatedProfile allValues][0] withCompletionHandler:_updatesHandler];
 		return YES;
     }
 	
@@ -381,28 +382,28 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
 - (NSDictionary*)updatesForRow:(NSUInteger)row
 {
     NSMutableArray * updates = [NSMutableArray new];
-    Profile * profile = nil;
+    BUProfile * profile = nil;
     for (NSInteger i = row; i >= 0; --i) {
-        NSObject *rowContent = [[self.updatesContent arrangedObjects] objectAtIndex:i];
+        NSObject *rowContent = [self.updatesContent arrangedObjects][i];
         if ([self isProfileEntity:rowContent]) {
-            profile = (Profile *) rowContent;
+            profile = (BUProfile *) rowContent;
             break;
         } else {
-            [updates addObject:[(NSDictionary *)rowContent objectForKey: @"id"]];
+            [updates addObject:((NSDictionary *)rowContent)[@"id"]];
         }
     }
     updates = [NSMutableArray arrayWithArray:[[updates reverseObjectEnumerator] allObjects]];
     if (row + 1 < [[self.updatesContent arrangedObjects] count]) {
         for (NSInteger i = row + 1, s = [[self.updatesContent arrangedObjects] count]; i < s; ++i) {
-            NSObject *rowContent = [[self.updatesContent arrangedObjects] objectAtIndex:i];
+            NSObject *rowContent = [self.updatesContent arrangedObjects][i];
             if ([self isProfileEntity:rowContent]) {
                 break;
             } else {
-                [updates addObject:[(NSDictionary *)rowContent objectForKey: @"id"]];
+                [updates addObject:((NSDictionary *)rowContent)[@"id"]];
             }
         }
     }
-    return @{[profile id] : updates};
+    return @{profile[@"id"] : updates};
 }
 
 // RSRTVArrayController.m
@@ -468,7 +469,7 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
 		}
 		
 		// Get the object we're moving
-		object = [objects objectAtIndex:removeIndex];
+		object = objects[removeIndex];
         
 		// In case nobody else is retaining the object, we need to keep it alive while we move it
 		[self.updatesContent removeObjectAtArrangedObjectIndex:removeIndex];
