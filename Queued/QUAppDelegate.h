@@ -28,7 +28,7 @@
 - (void) showSignInWindow;
 -(IBAction)toggleLaunchAtLogin:(id)sender;
 
-+ (QUAppDelegate *) instance;
++ (instancetype) instance;
 
 @end
 

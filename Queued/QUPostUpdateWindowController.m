@@ -44,6 +44,15 @@
     [self.sendingProgressIndicator setHidden:YES];
 }
 
+- (void) windowDidBecomeKey:(NSNotification *)notification {
+    [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
+    [self.window makeFirstResponder:self.text];
+}
+
+- (void) windowWillClose:(NSNotification *)notification {
+    [NSApp setActivationPolicy:NSApplicationActivationPolicyProhibited];
+}
+
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([@"profiles" isEqualToString:keyPath]) {
         @synchronized(self) {
@@ -89,7 +98,19 @@
 }
 
 #pragma mark -
-#pragma mark NSCollectionView
-
+#pragma mark NSTextView Delegate
+- (BOOL)textView:(NSTextView *)aTextView doCommandBySelector:(SEL)aSelector {
+    if (aTextView == self.text) {
+        if (aSelector == @selector(insertTab:)) {
+            [[aTextView window] selectNextKeyView:self];
+            return YES;
+        }
+        if (aSelector == @selector(insertBacktab:)) {
+            [[aTextView window] selectPreviousKeyView:self];
+            return YES;
+        }
+    }
+    return NO;
+}
 #pragma mark -
 @end

@@ -21,7 +21,7 @@
 
 @synthesize hasSignedIn = _hasSignedIn;
 
-+ (QUAppDelegate *) instance {
++(instancetype) instance {
     return (QUAppDelegate *) [[NSApplication sharedApplication] delegate];
 }
 
@@ -161,8 +161,9 @@ void *kContextActivePanel = &kContextActivePanel;
         _postUpdateWindow = [[QUPostUpdateWindowController alloc] initWithBuffered:self.buffered andProfilesMonitor:self.profilesMonitor];
     }
     if (![_postUpdateWindow.window isVisible]) {
-        [_postUpdateWindow.window center];
-        [_postUpdateWindow.window makeKeyAndOrderFront:self];
+        [self.postUpdateWindow.window center];
+        [self.postUpdateWindow.window makeKeyAndOrderFront:self];
+        [NSApp activateIgnoringOtherApps:YES];
     }
 }
 

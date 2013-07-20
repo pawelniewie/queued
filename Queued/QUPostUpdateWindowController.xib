@@ -71,6 +71,9 @@ Gw
                                     <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <size key="minSize" width="395" height="107"/>
                                     <size key="maxSize" width="463" height="10000000"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-2" id="wXj-5u-iPB"/>
+                                    </connections>
                                 </textView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -84,17 +87,17 @@ Gw
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
-                    <scrollView autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sia-1E-cCt">
+                    <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sia-1E-cCt">
                         <rect key="frame" x="20" y="163" width="412" height="57"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <clipView key="contentView" id="idJ-lw-mhO">
-                            <rect key="frame" x="1" y="1" width="410" height="55"/>
+                        <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="idJ-lw-mhO">
+                            <rect key="frame" x="0.0" y="0.0" width="412" height="57"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <collectionView selectable="YES" allowsMultipleSelection="YES" id="J3h-I6-gKN">
-                                    <rect key="frame" x="0.0" y="0.0" width="410" height="55"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="412" height="57"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="primaryBackgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
                                     <connections>
                                         <binding destination="zqv-Jh-Lu1" name="content" keyPath="arrangedObjects" id="MS9-C6-1et"/>
                                         <outlet property="delegate" destination="-2" id="yn7-hO-ZKt"/>
@@ -102,6 +105,7 @@ Gw
                                     </connections>
                                 </collectionView>
                             </subviews>
+                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </clipView>
                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" id="aoZ-NP-CWU">
                             <rect key="frame" x="1" y="144" width="233" height="15"/>
@@ -147,20 +151,41 @@ Gw
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Uyo-uE-NdK" customClass="QUSelectableImageView">
-                    <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
+                    <rect key="frame" x="2" y="2" width="42" height="42"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="vPA-Hf-IfP"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="groove" id="vPA-Hf-IfP"/>
                     <connections>
+                        <binding destination="TpE-bp-psU" name="hidden" keyPath="representedObject.avatarImage" id="M9N-op-cYn">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">NSIsNil</string>
+                            </dictionary>
+                        </binding>
                         <binding destination="TpE-bp-psU" name="value" keyPath="representedObject.avatarImage" id="LvN-dJ-4SP"/>
                         <binding destination="TpE-bp-psU" name="toolTip" keyPath="representedObject.json.formatted_username" id="4H1-m3-D4a"/>
                     </connections>
                 </imageView>
+                <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="tXn-in-Qbu">
+                    <rect key="frame" x="7" y="7" width="32" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <connections>
+                        <binding destination="TpE-bp-psU" name="animate" keyPath="representedObject.avatarImage" id="CR3-q4-RRY">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">NSIsNil</string>
+                            </dictionary>
+                        </binding>
+                        <binding destination="TpE-bp-psU" name="hidden" keyPath="representedObject.avatarImage" id="PwM-IS-nId">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">NSIsNotNil</string>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </progressIndicator>
             </subviews>
             <constraints>
-                <constraint firstItem="Uyo-uE-NdK" firstAttribute="centerX" secondItem="uXW-xw-vsw" secondAttribute="centerX" id="92Q-wO-WQ2"/>
-                <constraint firstItem="Uyo-uE-NdK" firstAttribute="top" secondItem="uXW-xw-vsw" secondAttribute="top" constant="3" id="IGP-Gg-UEN"/>
-                <constraint firstItem="Uyo-uE-NdK" firstAttribute="leading" secondItem="uXW-xw-vsw" secondAttribute="leading" constant="3" id="ayF-Ss-nzI"/>
-                <constraint firstItem="Uyo-uE-NdK" firstAttribute="centerY" secondItem="uXW-xw-vsw" secondAttribute="centerY" id="crV-xH-Bav"/>
+                <constraint firstItem="Uyo-uE-NdK" firstAttribute="leading" secondItem="uXW-xw-vsw" secondAttribute="leading" constant="5" id="GGI-fO-GmW"/>
+                <constraint firstAttribute="bottom" secondItem="Uyo-uE-NdK" secondAttribute="bottom" constant="5" id="HDU-0V-Ikl"/>
+                <constraint firstItem="Uyo-uE-NdK" firstAttribute="top" secondItem="uXW-xw-vsw" secondAttribute="top" constant="5" id="VQ6-Tj-6pB"/>
+                <constraint firstAttribute="trailing" secondItem="Uyo-uE-NdK" secondAttribute="trailing" constant="5" id="ksM-Kh-AS4"/>
             </constraints>
         </view>
         <arrayController objectClassName="Profile" editable="NO" id="zqv-Jh-Lu1">
@@ -174,4 +199,45 @@ Gw
         </arrayController>
         <userDefaultsController id="LIt-LU-SES"/>
     </objects>
+    <classes>
+        <class className="NSCollectionViewItem">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSCollectionViewItem.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imageView" candidateClass="NSImageView"/>
+                <relationship kind="outlet" name="textField" candidateClass="NSTextField"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="NSTextView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSTextView.h"/>
+            <relationships>
+                <relationship kind="action" name="orderFrontSharingServicePicker:"/>
+                <relationship kind="action" name="toggleQuickLookPreviewPanel:"/>
+            </relationships>
+        </class>
+        <class className="QUPostUpdateWindowController" superclassName="NSWindowController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/QUPostUpdateWindowController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="action" name="send:"/>
+                <relationship kind="outlet" name="cancelButton" candidateClass="NSButton"/>
+                <relationship kind="outlet" name="profiles" candidateClass="NSArrayController"/>
+                <relationship kind="outlet" name="profilesCollectionView" candidateClass="NSCollectionView"/>
+                <relationship kind="outlet" name="sendButton" candidateClass="NSButton"/>
+                <relationship kind="outlet" name="sendingProgressIndicator" candidateClass="NSProgressIndicator"/>
+                <relationship kind="outlet" name="text" candidateClass="NSTextView"/>
+            </relationships>
+        </class>
+        <class className="QUProfileView" superclassName="NSView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/QUProfileView.h"/>
+        </class>
+        <class className="QUProfilesCollectionViewItem" superclassName="NSCollectionViewItem">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/QUProfilesCollectionViewItem.h"/>
+        </class>
+        <class className="QUSelectableImageView" superclassName="NSImageView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/QUSelectableImageView.h"/>
+        </class>
+    </classes>
 </document>

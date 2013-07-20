@@ -10,7 +10,7 @@
 
 @class Buffered, BUProfilesMonitor;
 
-@interface QUPostUpdateWindowController : NSWindowController<NSCollectionViewDelegate> {
+@interface QUPostUpdateWindowController : NSWindowController<NSCollectionViewDelegate, NSWindowDelegate, NSTextViewDelegate> {
 @private
     __weak Buffered *_buffered;
     __weak BUProfilesMonitor  *_profilesMonitor;
