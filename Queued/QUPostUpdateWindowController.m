@@ -91,7 +91,7 @@
         if (error == nil) {
             self.text.string = @"";
             [self.profilesCollectionView setSelectionIndexes:[NSIndexSet indexSet]];
-            [self.window orderOut:self];
+            [self.window close];
             [[QUAppDelegate instance] reloadPendingUpdates:self];
         }
     }];

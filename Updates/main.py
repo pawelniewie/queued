@@ -25,5 +25,6 @@ class UpdatesHandler(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([
 	webapp2.Route('/', handler = webapp2.RedirectHandler, defaults = {'_uri' : 'http://pawelniewiadomski.com/queued'}),
+	webapp2.Route('/download', handler = webapp2.RedirectHandler, defaults = {'_uri' : '/binaries/Queued-0.6.1.zip'}),
 	('/updates.xml', UpdatesHandler)
 ], debug=True)
