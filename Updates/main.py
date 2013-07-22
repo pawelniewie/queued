@@ -16,15 +16,22 @@
 #
 import webapp2
 import os
+import feedparser
+
+appcast = os.path.join(os.path.dirname(__file__), 'appcast.xml')
 
 class UpdatesHandler(webapp2.RequestHandler):
 	def get(self):
-		appcast = os.path.join(os.path.dirname(__file__), 'appcast.xml')
 		self.response.headers['Content-Type'] = 'application/rss+xml'
 		self.response.write(file(appcast,'rb').read())
 
+class DownloadHandler(webapp2.RequestHandler):
+	def get(self):
+		feed = feedparser.parse(appcast)
+		return self.redirect(str(feed.entries[0].enclosures[0].href))
+
 app = webapp2.WSGIApplication([
 	webapp2.Route('/', handler = webapp2.RedirectHandler, defaults = {'_uri' : 'http://pawelniewiadomski.com/queued'}),
-	webapp2.Route('/download', handler = webapp2.RedirectHandler, defaults = {'_uri' : '/binaries/Queued-0.6.1.zip'}),
+	('/download', DownloadHandler),
 	('/updates.xml', UpdatesHandler)
 ], debug=True)

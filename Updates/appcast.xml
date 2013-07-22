@@ -5,6 +5,21 @@
 	<description>Buffer helper for your Mac OS X</description>
 	<language>en</language>
 	<item>
+		<title>Version 0.6.2</title>
+		<description><![CDATA[
+			<h2>Post to Buffer!</h2>
+			<p>This version allows you to post updates directly from Queued.</p>
+			<p>I know it looks ugly and it's not yet polished. Facebook integration lacks a bit. I will improve it a lot in following versions. That's my first Mac App ever so bare with me ;-)</p>
+			<h2>Fixed bugs</h2>
+			<ul>
+				<li>Queued icon will correctly disappear after sending an update</li>
+			</ul>
+			]]></description>
+		<sparkle:minimumSystemVersion>10.8.0</sparkle:minimumSystemVersion>
+		<pubDate>Mon, 22 Jul 2013 22:53:15 CEST</pubDate>
+		<enclosure url="http://queuedupdates.appspot.com/binaries/Queued-0.6.2.zip" sparkle:version="64" sparkle:shortVersionString="0.6.2" length="3014020" type="application/octet-stream"/>
+	</item>
+	<item>
 		<title>Version 0.6.1</title>
 		<description><![CDATA[
 			<h2>Post to Buffer!</h2>
