@@ -47,6 +47,7 @@
 		E5A79F8F173AD7CD006DDA1E /* StatusBlack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5A79F8D173AD7CD006DDA1E /* StatusBlack@2x.png */; };
 		E5A79F92173AD8A0006DDA1E /* QUPendingTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A79F91173AD8A0006DDA1E /* QUPendingTableCellView.m */; };
 		E5A79F95173AE30D006DDA1E /* QUPendingUpdatesRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A79F94173AE30D006DDA1E /* QUPendingUpdatesRowView.m */; };
+		E5C56342179E98B400BBB13B /* Media-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5C56341179E98B400BBB13B /* Media-2.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -155,6 +156,7 @@
 		E5A79F91173AD8A0006DDA1E /* QUPendingTableCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QUPendingTableCellView.m; sourceTree = "<group>"; };
 		E5A79F93173AE30D006DDA1E /* QUPendingUpdatesRowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QUPendingUpdatesRowView.h; sourceTree = "<group>"; };
 		E5A79F94173AE30D006DDA1E /* QUPendingUpdatesRowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QUPendingUpdatesRowView.m; sourceTree = "<group>"; };
+		E5C56341179E98B400BBB13B /* Media-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = "Media-2.xcassets"; path = "Queued/Media-2.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +187,7 @@
 		E506290F170CACC300A25452 = {
 			isa = PBXGroup;
 			children = (
+				E5C56341179E98B400BBB13B /* Media-2.xcassets */,
 				E57D729B174D71E300F3F335 /* LaunchAtLoginHelperApp.xcodeproj */,
 				E506296617107B6300A25452 /* Resources */,
 				E5062921170CACC300A25452 /* Queued */,
@@ -462,6 +465,7 @@
 				E5A79F8E173AD7CD006DDA1E /* StatusBlack.png in Resources */,
 				E526CF301792C7F500732FBC /* QUPostUpdateWindowController.xib in Resources */,
 				E5A79F8F173AD7CD006DDA1E /* StatusBlack@2x.png in Resources */,
+				E5C56342179E98B400BBB13B /* Media-2.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -671,6 +675,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 06B06D02289C4589BA52ACB5 /* Pods.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = NO;
 				CODE_SIGN_IDENTITY = "Mac Developer";
@@ -692,6 +697,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 06B06D02289C4589BA52ACB5 /* Pods.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = NO;
 				CODE_SIGN_IDENTITY = "Mac Developer";
