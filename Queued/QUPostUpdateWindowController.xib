@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4457.6" systemVersion="13A510d" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4457.6" systemVersion="13A524d" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1080" identifier="macosx"/>
         <development version="5000" identifier="xcode"/>
@@ -30,12 +30,12 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="37">
-                        <rect key="frame" x="356" y="6" width="82" height="32"/>
+                        <rect key="frame" x="312" y="6" width="126" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="70" id="97"/>
+                            <constraint firstAttribute="width" constant="114" id="97"/>
                         </constraints>
-                        <buttonCell key="cell" type="push" title="Send" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="38">
+                        <buttonCell key="cell" type="push" title="Add to queue" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="38">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                             <string key="keyEquivalent" base64-UTF8="YES">
@@ -45,7 +45,7 @@ DQ
                         </buttonCell>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="41">
-                        <rect key="frame" x="274" y="6" width="82" height="32"/>
+                        <rect key="frame" x="227" y="6" width="82" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="42">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -62,7 +62,7 @@ Gw
                             <rect key="frame" x="1" y="1" width="395" height="107"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <textView importsGraphics="NO" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="103">
+                                <textView importsGraphics="NO" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="103" customClass="QUPostUpdateTextView">
                                     <rect key="frame" x="0.0" y="0.0" width="395" height="107"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -122,7 +122,7 @@ Gw
                     </progressIndicator>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="37" firstAttribute="leading" secondItem="41" secondAttribute="trailing" constant="12" symbolic="YES" id="43"/>
+                    <constraint firstItem="37" firstAttribute="leading" secondItem="41" secondAttribute="trailing" constant="15" id="43"/>
                     <constraint firstItem="37" firstAttribute="baseline" secondItem="41" secondAttribute="baseline" id="80"/>
                     <constraint firstAttribute="bottom" secondItem="41" secondAttribute="bottom" constant="13" id="92"/>
                     <constraint firstItem="99" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="20" symbolic="YES" id="0hy-Dy-oBs"/>
@@ -155,12 +155,12 @@ Gw
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="groove" id="vPA-Hf-IfP"/>
                     <connections>
+                        <binding destination="TpE-bp-psU" name="value" keyPath="representedObject.avatarImage" id="LvN-dJ-4SP"/>
                         <binding destination="TpE-bp-psU" name="hidden" keyPath="representedObject.avatarImage" id="M9N-op-cYn">
                             <dictionary key="options">
                                 <string key="NSValueTransformerName">NSIsNil</string>
                             </dictionary>
                         </binding>
-                        <binding destination="TpE-bp-psU" name="value" keyPath="representedObject.avatarImage" id="LvN-dJ-4SP"/>
                         <binding destination="TpE-bp-psU" name="toolTip" keyPath="representedObject.json.formatted_username" id="4H1-m3-D4a"/>
                     </connections>
                 </imageView>
@@ -199,45 +199,4 @@ Gw
         </arrayController>
         <userDefaultsController id="LIt-LU-SES"/>
     </objects>
-    <classes>
-        <class className="NSCollectionViewItem">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSCollectionViewItem.h"/>
-            <relationships>
-                <relationship kind="outlet" name="imageView" candidateClass="NSImageView"/>
-                <relationship kind="outlet" name="textField" candidateClass="NSTextField"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="NSTextView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSTextView.h"/>
-            <relationships>
-                <relationship kind="action" name="orderFrontSharingServicePicker:"/>
-                <relationship kind="action" name="toggleQuickLookPreviewPanel:"/>
-            </relationships>
-        </class>
-        <class className="QUPostUpdateWindowController" superclassName="NSWindowController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/QUPostUpdateWindowController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancel:"/>
-                <relationship kind="action" name="send:"/>
-                <relationship kind="outlet" name="cancelButton" candidateClass="NSButton"/>
-                <relationship kind="outlet" name="profiles" candidateClass="NSArrayController"/>
-                <relationship kind="outlet" name="profilesCollectionView" candidateClass="NSCollectionView"/>
-                <relationship kind="outlet" name="sendButton" candidateClass="NSButton"/>
-                <relationship kind="outlet" name="sendingProgressIndicator" candidateClass="NSProgressIndicator"/>
-                <relationship kind="outlet" name="text" candidateClass="NSTextView"/>
-            </relationships>
-        </class>
-        <class className="QUProfileView" superclassName="NSView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/QUProfileView.h"/>
-        </class>
-        <class className="QUProfilesCollectionViewItem" superclassName="NSCollectionViewItem">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/QUProfilesCollectionViewItem.h"/>
-        </class>
-        <class className="QUSelectableImageView" superclassName="NSImageView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/QUSelectableImageView.h"/>
-        </class>
-    </classes>
 </document>

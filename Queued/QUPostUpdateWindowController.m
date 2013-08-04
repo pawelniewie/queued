@@ -13,7 +13,8 @@
 #import "QUAppDelegate.h"
 
 @interface QUPostUpdateWindowController ()
-
+@property (assign) BOOL textInAutocomplete;
+@property (assign) BOOL textInCommandHandling;
 @end
 
 @implementation QUPostUpdateWindowController
@@ -99,18 +100,59 @@
 
 #pragma mark -
 #pragma mark NSTextView Delegate
-- (BOOL)textView:(NSTextView *)aTextView doCommandBySelector:(SEL)aSelector {
-    if (aTextView == self.text) {
-        if (aSelector == @selector(insertTab:)) {
-            [[aTextView window] selectNextKeyView:self];
-            return YES;
-        }
-        if (aSelector == @selector(insertBacktab:)) {
-            [[aTextView window] selectPreviousKeyView:self];
-            return YES;
+- (void)textDidChange:(NSNotification *)notification {
+    if(notification.object == self.text)
+    {
+        if (!self.textInAutocomplete && !self.textInCommandHandling) {
+            NSUInteger insertionPoint = [self.text selectedRange].location;
+            __block NSString *string = [self.text string];
+            
+            [string enumerateSubstringsInRange:NSMakeRange(0, string.length) options:NSStringEnumerationByWords|NSStringEnumerationSubstringNotRequired usingBlock:^(NSString *word, NSRange wordRange, NSRange enclosingRange, BOOL *stop) {
+                if (NSLocationInRange(insertionPoint, wordRange) || insertionPoint == wordRange.location + wordRange.length) {
+                    if (wordRange.location > 0 && [string characterAtIndex:wordRange.location - 1] == '@'
+                        && (wordRange.location < 2 || [string characterAtIndex:wordRange.location - 2] != '@')) {
+                        self.textInAutocomplete = YES;
+                        @try {
+                            [self.text complete:self];
+                        } @finally {
+                            self.textInAutocomplete = NO;
+                        }
+                        *stop = YES;
+                    }
+                }
+            }];
         }
     }
-    return NO;
+}
+
+- (NSArray *)textView:(NSTextView *)textView completions:(NSArray *)words forPartialWordRange:(NSRange)charRange indexOfSelectedItem:(NSInteger *)index {
+    if (textView == self.text && charRange.location > 0) {
+        NSString *string = [textView.string substringWithRange:NSMakeRange(charRange.location - 1, charRange.length + 1)];
+        if (string != nil && string.length >= 2 && [string hasPrefix:@"@"]) {
+            return @[@"asdasd", @"xvxcv"];
+        }
+    }
+    return words;
+}
+
+- (BOOL)textView:(NSTextView *)aTextView doCommandBySelector:(SEL)aSelector {
+    self.textInCommandHandling = YES;
+    @try {
+        if (aTextView == self.text) {
+            if (aSelector == @selector(insertTab:)) {
+                [[aTextView window] selectNextKeyView:self];
+                return YES;
+            }
+            if (aSelector == @selector(insertBacktab:)) {
+                [[aTextView window] selectPreviousKeyView:self];
+                return YES;
+            }
+        }
+        return NO;
+    }
+    @finally {
+        self.textInCommandHandling = NO;
+    }
 }
 #pragma mark -
 @end

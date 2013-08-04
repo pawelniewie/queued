@@ -33,6 +33,7 @@
 		E526CF301792C7F500732FBC /* QUPostUpdateWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E526CF2E1792C7F500732FBC /* QUPostUpdateWindowController.xib */; };
 		E526CF351795D6FE00732FBC /* QUProfilesCollectionViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E526CF341795D6FE00732FBC /* QUProfilesCollectionViewItem.m */; };
 		E526CF391795D91600732FBC /* QUProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = E526CF381795D91600732FBC /* QUProfileView.m */; };
+		E55B9A6B17AD534300453A24 /* QUPostUpdateTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = E55B9A6A17AD534300453A24 /* QUPostUpdateTextView.m */; };
 		E55FBF0E1722D5C000AEC024 /* StatusGreen.png in Resources */ = {isa = PBXBuildFile; fileRef = E55FBF0A1722D5C000AEC024 /* StatusGreen.png */; };
 		E55FBF0F1722D5C000AEC024 /* StatusGreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E55FBF0B1722D5C000AEC024 /* StatusGreen@2x.png */; };
 		E55FBF141722D66800AEC024 /* StatusInverted.png in Resources */ = {isa = PBXBuildFile; fileRef = E55FBF121722D66800AEC024 /* StatusInverted.png */; };
@@ -138,6 +139,8 @@
 		E526CF341795D6FE00732FBC /* QUProfilesCollectionViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QUProfilesCollectionViewItem.m; sourceTree = "<group>"; };
 		E526CF371795D91600732FBC /* QUProfileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QUProfileView.h; sourceTree = "<group>"; };
 		E526CF381795D91600732FBC /* QUProfileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QUProfileView.m; sourceTree = "<group>"; };
+		E55B9A6917AD534300453A24 /* QUPostUpdateTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QUPostUpdateTextView.h; sourceTree = "<group>"; };
+		E55B9A6A17AD534300453A24 /* QUPostUpdateTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QUPostUpdateTextView.m; sourceTree = "<group>"; };
 		E55FBF0A1722D5C000AEC024 /* StatusGreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = StatusGreen.png; path = Queued/Resources/StatusGreen.png; sourceTree = "<group>"; };
 		E55FBF0B1722D5C000AEC024 /* StatusGreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "StatusGreen@2x.png"; path = "Queued/Resources/StatusGreen@2x.png"; sourceTree = "<group>"; };
 		E55FBF121722D66800AEC024 /* StatusInverted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = StatusInverted.png; path = Queued/Resources/StatusInverted.png; sourceTree = "<group>"; };
@@ -332,6 +335,8 @@
 				E526CF381795D91600732FBC /* QUProfileView.m */,
 				E581FE2B1795EDC300B1A2AA /* QUSelectableImageView.h */,
 				E581FE2C1795EDC300B1A2AA /* QUSelectableImageView.m */,
+				E55B9A6917AD534300453A24 /* QUPostUpdateTextView.h */,
+				E55B9A6A17AD534300453A24 /* QUPostUpdateTextView.m */,
 			);
 			name = "Post Update Window";
 			sourceTree = "<group>";
@@ -542,6 +547,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E55B9A6B17AD534300453A24 /* QUPostUpdateTextView.m in Sources */,
 				E526CF2F1792C7F500732FBC /* QUPostUpdateWindowController.m in Sources */,
 				E5062928170CACC300A25452 /* main.m in Sources */,
 				E506292F170CACC300A25452 /* QUAppDelegate.m in Sources */,
