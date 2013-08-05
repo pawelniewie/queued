@@ -6,20 +6,29 @@
 //  Copyright (c) 2013 Pawel Niewiadomski. All rights reserved.
 //
 
+@import Accounts;
+@import ServiceManagement;
+@import CoreData;
+
 #import <Buffered.h>
 #import <BUProfilesMonitor.h>
 #import <BUPendingUpdatesMonitor.h>
-#import <ServiceManagement/ServiceManagement.h>
+
+#import <TwitterEngine/TwitterEngine.h>
 
 #import "MenubarController.h"
 #import "QUAppDelegate.h"
 #import "QUSignInWindowController.h"
 #import "QUPostUpdateWindowController.h"
 #import "QUPendingUpdatesViewController.h"
+#import "QUUserSuggestion.h"
 
 @implementation QUAppDelegate
 
 @synthesize hasSignedIn = _hasSignedIn;
+@synthesize managedObjectContext = _managedObjectContext;
+@synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+@synthesize managedObjectModel = _managedObjectModel;
 
 +(instancetype) instance {
     return (QUAppDelegate *) [[NSApplication sharedApplication] delegate];
@@ -93,6 +102,15 @@ void *kContextActivePanel = &kContextActivePanel;
     _panelController = [[PanelController alloc] initWithDelegate:self];
     [_panelController addObserver:self forKeyPath:@"hasActivePanel" options:0 context:kContextActivePanel];
     
+    _accountStore = [self newAccountStore];
+    _twitterType = [[self accountStore] accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+    
+    [self.accountStore requestAccessToAccountsWithType:self.twitterType options:nil completion:^(BOOL granted, NSError *error) {
+        if (granted) {
+            [self performSelectorOnMainThread:@selector(updateTwitterAccounts) withObject:nil waitUntilDone:NO];
+        }
+    }];
+
     _buffered = [[Buffered alloc] initApplication:@"Queued" withId:@"51607a104dbf08a338000006" andSecret:@"18b6c94f175555674bfd5274c9a3f3a0"];
     _profilesMonitor = [[BUProfilesMonitor alloc] initWithBuffered: _buffered];
     [_profilesMonitor addObserver:self forKeyPath:@"profiles" options:NSKeyValueObservingOptionNew context:nil];
@@ -102,6 +120,34 @@ void *kContextActivePanel = &kContextActivePanel;
     if (!self.hasSignedIn) {
         [self showSignInWindow];
     }
+}
+
+- (ACAccountStore*) newAccountStore {
+    return [ACAccountStore new];
+}
+
+- (void) updateTwitterAccounts {
+    __block TwitterEngine *engine = [TwitterEngine new];
+    NSArray *twitterAccounts = [self.accountStore accountsWithAccountType:self.twitterType];
+    [twitterAccounts enumerateObjectsUsingBlock:^(ACAccount* account, NSUInteger idx, BOOL *stop) {
+        [engine getFriends:account completion:^(ACAccount *account, NSDictionary *cursor, NSError *error) {
+            if (cursor && cursor[@"users"] != nil) {
+                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                    [cursor[@"users"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                        NSManagedObjectContext *context = [self managedObjectContext];
+                        QUUserSuggestion *userSuggestion = [NSEntityDescription
+                                                           insertNewObjectForEntityForName:@"UserSuggestion"
+                                                           inManagedObjectContext:context];
+                        userSuggestion.username = obj[@"screen_name"];
+                        NSError *error;
+                        if (![context save:&error]) {
+                            NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+                        }
+                    }];
+                }];
+            }
+        }];
+    }];
 }
 
 - (BOOL) hasSignedIn {
@@ -204,5 +250,95 @@ void *kContextActivePanel = &kContextActivePanel;
         [obj.updatesMonitor refresh];
     }];
 }
+
+#pragma mark -
+#pragma mark Core Data
+- (NSURL *)applicationDocumentsDirectory
+{
+    return [[[[NSFileManager defaultManager] URLsForDirectory:NSLibraryDirectory inDomains:NSUserDomainMask] lastObject] URLByAppendingPathComponent:@"Queued"];
+}
+
+- (void)saveContext
+{
+    NSError *error = nil;
+    NSManagedObjectContext *objectContext = self.managedObjectContext;
+    if (objectContext != nil)
+    {
+        if ([objectContext hasChanges] && ![objectContext save:&error])
+        {
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            abort();
+        }
+    }
+}
+
+/**
+ Returns the managed object context for the application.
+ If the context doesn't already exist, it is created and bound to the persistent store coordinator for the application.
+ */
+- (NSManagedObjectContext *)managedObjectContext
+{
+    if (_managedObjectContext != nil)
+    {
+        return _managedObjectContext;
+    }
+    
+    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
+    if (coordinator != nil)
+    {
+        _managedObjectContext = [[NSManagedObjectContext alloc] init];
+        [_managedObjectContext setPersistentStoreCoordinator:coordinator];
+    }
+    return _managedObjectContext;
+}
+
+/**
+ Returns the managed object model for the application.
+ If the model doesn't already exist, it is created from the application's model.
+ */
+- (NSManagedObjectModel *)managedObjectModel
+{
+    if (_managedObjectModel != nil)
+    {
+        return _managedObjectModel;
+    }
+    
+    _managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];
+    
+    return _managedObjectModel;
+}
+
+/**
+ Returns the persistent store coordinator for the application.
+ If the coordinator doesn't already exist, it is created and the application's store added to it.
+ */
+- (NSPersistentStoreCoordinator *)persistentStoreCoordinator
+{
+    if (_persistentStoreCoordinator != nil)
+    {
+        return _persistentStoreCoordinator;
+    }
+    
+    NSURL *documentsDir = [self applicationDocumentsDirectory];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    if(![fileManager fileExistsAtPath:documentsDir.path])
+        if(![fileManager createDirectoryAtPath:documentsDir.path withIntermediateDirectories:YES attributes:nil error:NULL])
+            NSLog(@"Error: Create folder failed %@", documentsDir);
+    
+    NSURL *storeURL = [documentsDir URLByAppendingPathComponent:@"Queued.sqlite"];
+    
+    NSError *error = nil;
+    
+    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error])
+    {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+    
+    return _persistentStoreCoordinator;
+}
+#pragma mark -
 
 @end

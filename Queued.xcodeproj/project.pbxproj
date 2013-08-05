@@ -29,6 +29,8 @@
 		E50629631710784000A25452 /* PanelController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E50629621710784000A25452 /* PanelController.xib */; };
 		E50629751711756000A25452 /* QUSignInWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = E50629731711755F00A25452 /* QUSignInWindowController.m */; };
 		E50629761711756000A25452 /* QUSignInWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E50629741711756000A25452 /* QUSignInWindowController.xib */; };
+		E51F38AD17B03E1500098F6F /* QueuedModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E51F38AB17B03E1500098F6F /* QueuedModel.xcdatamodeld */; };
+		E51F38B117B03EA200098F6F /* QUUserSuggestion.m in Sources */ = {isa = PBXBuildFile; fileRef = E51F38B017B03EA200098F6F /* QUUserSuggestion.m */; };
 		E526CF2F1792C7F500732FBC /* QUPostUpdateWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = E526CF2D1792C7F500732FBC /* QUPostUpdateWindowController.m */; };
 		E526CF301792C7F500732FBC /* QUPostUpdateWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E526CF2E1792C7F500732FBC /* QUPostUpdateWindowController.xib */; };
 		E526CF351795D6FE00732FBC /* QUProfilesCollectionViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E526CF341795D6FE00732FBC /* QUProfilesCollectionViewItem.m */; };
@@ -132,6 +134,10 @@
 		E50629721711755F00A25452 /* QUSignInWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QUSignInWindowController.h; sourceTree = "<group>"; };
 		E50629731711755F00A25452 /* QUSignInWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QUSignInWindowController.m; sourceTree = "<group>"; };
 		E50629741711756000A25452 /* QUSignInWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QUSignInWindowController.xib; sourceTree = "<group>"; };
+		E51F38A817AEE2E900098F6F /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		E51F38AC17B03E1500098F6F /* QueuedModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QueuedModel.xcdatamodel; sourceTree = "<group>"; };
+		E51F38AF17B03EA200098F6F /* QUUserSuggestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QUUserSuggestion.h; sourceTree = "<group>"; };
+		E51F38B017B03EA200098F6F /* QUUserSuggestion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QUUserSuggestion.m; sourceTree = "<group>"; };
 		E526CF2C1792C7F500732FBC /* QUPostUpdateWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QUPostUpdateWindowController.h; sourceTree = "<group>"; };
 		E526CF2D1792C7F500732FBC /* QUPostUpdateWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QUPostUpdateWindowController.m; sourceTree = "<group>"; };
 		E526CF2E1792C7F500732FBC /* QUPostUpdateWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QUPostUpdateWindowController.xib; sourceTree = "<group>"; };
@@ -214,6 +220,7 @@
 		E506291A170CACC300A25452 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E51F38A817AEE2E900098F6F /* Accounts.framework */,
 				E50573121772541700392726 /* Sparkle.framework */,
 				E57D72A3174D72F700F3F335 /* ServiceManagement.framework */,
 				E506291B170CACC300A25452 /* Cocoa.framework */,
@@ -238,6 +245,7 @@
 		E5062921170CACC300A25452 /* Queued */ = {
 			isa = PBXGroup;
 			children = (
+				E51F38AE17B03E1A00098F6F /* Core Data */,
 				E526CF361795D8CF00732FBC /* Post Update Window */,
 				E5A79F96173AE314006DDA1E /* Pending Updates Table */,
 				E50629641710785A00A25452 /* Views */,
@@ -321,6 +329,16 @@
 				E55FBF0B1722D5C000AEC024 /* StatusGreen@2x.png */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		E51F38AE17B03E1A00098F6F /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				E51F38AB17B03E1500098F6F /* QueuedModel.xcdatamodeld */,
+				E51F38AF17B03EA200098F6F /* QUUserSuggestion.h */,
+				E51F38B017B03EA200098F6F /* QUUserSuggestion.m */,
+			);
+			name = "Core Data";
 			sourceTree = "<group>";
 		};
 		E526CF361795D8CF00732FBC /* Post Update Window */ = {
@@ -553,7 +571,9 @@
 				E506292F170CACC300A25452 /* QUAppDelegate.m in Sources */,
 				E5062957171077F500A25452 /* MenubarController.m in Sources */,
 				E5062958171077F500A25452 /* PanelController.m in Sources */,
+				E51F38B117B03EA200098F6F /* QUUserSuggestion.m in Sources */,
 				E506295F1710783300A25452 /* Panel.m in Sources */,
+				E51F38AD17B03E1500098F6F /* QueuedModel.xcdatamodeld in Sources */,
 				E50629601710783300A25452 /* StatusItemView.m in Sources */,
 				E50629611710783300A25452 /* BackgroundView.m in Sources */,
 				E50629751711756000A25452 /* QUSignInWindowController.m in Sources */,
@@ -683,6 +703,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = NO;
+				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = NO;
 				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = NO;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -705,6 +727,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = NO;
+				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = NO;
 				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = NO;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -790,6 +814,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E51F38AB17B03E1500098F6F /* QueuedModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E51F38AC17B03E1500098F6F /* QueuedModel.xcdatamodel */,
+			);
+			currentVersion = E51F38AC17B03E1500098F6F /* QueuedModel.xcdatamodel */;
+			path = QueuedModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E5062910170CACC300A25452 /* Project object */;
 }
