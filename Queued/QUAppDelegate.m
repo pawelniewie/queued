@@ -133,17 +133,32 @@ void *kContextActivePanel = &kContextActivePanel;
         [engine getFriends:account completion:^(ACAccount *account, NSDictionary *cursor, NSError *error) {
             if (cursor && cursor[@"users"] != nil) {
                 [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                    [cursor[@"users"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                        NSManagedObjectContext *context = [self managedObjectContext];
-                        QUUserSuggestion *userSuggestion = [NSEntityDescription
-                                                           insertNewObjectForEntityForName:@"UserSuggestion"
-                                                           inManagedObjectContext:context];
-                        userSuggestion.username = obj[@"screen_name"];
-                        NSError *error;
-                        if (![context save:&error]) {
-                            NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-                        }
-                    }];
+                    NSManagedObjectContext *context = [self managedObjectContext];
+                    NSMutableSet *names = [NSMutableSet setWithArray:[cursor[@"users"] valueForKey:@"screen_name"]];
+                    NSFetchRequest *request = [NSFetchRequest new];
+                    request.entity = [NSEntityDescription entityForName:@"UserSuggestion" inManagedObjectContext:context];
+                    request.predicate = [NSPredicate predicateWithFormat:@"(username IN %@)", names];
+                    request.sortDescriptors = @[[[NSSortDescriptor alloc] initWithKey: @"username" ascending:YES]];
+                    
+                    NSError *error;
+                    NSArray *fetchedNames = [context executeFetchRequest:request error:&error];
+                    
+                    if (error == nil) {
+                        NSSet *storedUsernames = [NSSet setWithArray:[fetchedNames valueForKey:@"username"]];
+                        
+                        [names minusSet:storedUsernames];
+                        
+                        [names enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
+                            QUUserSuggestion *userSuggestion = [NSEntityDescription
+                                                                insertNewObjectForEntityForName:@"UserSuggestion"
+                                                                inManagedObjectContext:context];
+                            userSuggestion.username = obj;
+                            NSError *error;
+                            if (![context save:&error]) {
+                                NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+                            }
+                        }];
+                    }
                 }];
             }
         }];
