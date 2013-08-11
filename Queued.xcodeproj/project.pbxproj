@@ -31,6 +31,9 @@
 		E50629761711756000A25452 /* QUSignInWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E50629741711756000A25452 /* QUSignInWindowController.xib */; };
 		E51F38AD17B03E1500098F6F /* QueuedModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E51F38AB17B03E1500098F6F /* QueuedModel.xcdatamodeld */; };
 		E51F38B117B03EA200098F6F /* QUUserSuggestion.m in Sources */ = {isa = PBXBuildFile; fileRef = E51F38B017B03EA200098F6F /* QUUserSuggestion.m */; };
+		E5264B1117B7A7E9006FC221 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5264B1017B7A7E9006FC221 /* Social.framework */; };
+		E5264B1217B7A7EF006FC221 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E51F38A817AEE2E900098F6F /* Accounts.framework */; };
+		E5264B1517B82AFE006FC221 /* QUFriendsFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = E5264B1417B82AFE006FC221 /* QUFriendsFetcher.m */; };
 		E526CF2F1792C7F500732FBC /* QUPostUpdateWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = E526CF2D1792C7F500732FBC /* QUPostUpdateWindowController.m */; };
 		E526CF301792C7F500732FBC /* QUPostUpdateWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E526CF2E1792C7F500732FBC /* QUPostUpdateWindowController.xib */; };
 		E526CF351795D6FE00732FBC /* QUProfilesCollectionViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E526CF341795D6FE00732FBC /* QUProfilesCollectionViewItem.m */; };
@@ -138,6 +141,9 @@
 		E51F38AC17B03E1500098F6F /* QueuedModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QueuedModel.xcdatamodel; sourceTree = "<group>"; };
 		E51F38AF17B03EA200098F6F /* QUUserSuggestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QUUserSuggestion.h; sourceTree = "<group>"; };
 		E51F38B017B03EA200098F6F /* QUUserSuggestion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QUUserSuggestion.m; sourceTree = "<group>"; };
+		E5264B1017B7A7E9006FC221 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		E5264B1317B82AFE006FC221 /* QUFriendsFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QUFriendsFetcher.h; sourceTree = "<group>"; };
+		E5264B1417B82AFE006FC221 /* QUFriendsFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QUFriendsFetcher.m; sourceTree = "<group>"; };
 		E526CF2C1792C7F500732FBC /* QUPostUpdateWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QUPostUpdateWindowController.h; sourceTree = "<group>"; };
 		E526CF2D1792C7F500732FBC /* QUPostUpdateWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QUPostUpdateWindowController.m; sourceTree = "<group>"; };
 		E526CF2E1792C7F500732FBC /* QUPostUpdateWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QUPostUpdateWindowController.xib; sourceTree = "<group>"; };
@@ -173,9 +179,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7498224BF6FD46EDA10835DE /* libPods.a in Frameworks */,
+				E5264B1217B7A7EF006FC221 /* Accounts.framework in Frameworks */,
+				E5264B1117B7A7E9006FC221 /* Social.framework in Frameworks */,
 				E57D72A4174D72F700F3F335 /* ServiceManagement.framework in Frameworks */,
 				E506291C170CACC300A25452 /* Cocoa.framework in Frameworks */,
-				7498224BF6FD46EDA10835DE /* libPods.a in Frameworks */,
 				E50573131772541700392726 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -220,6 +228,7 @@
 		E506291A170CACC300A25452 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E5264B1017B7A7E9006FC221 /* Social.framework */,
 				E51F38A817AEE2E900098F6F /* Accounts.framework */,
 				E50573121772541700392726 /* Sparkle.framework */,
 				E57D72A3174D72F700F3F335 /* ServiceManagement.framework */,
@@ -252,6 +261,8 @@
 				E50629651710787B00A25452 /* Controllers */,
 				E506292D170CACC300A25452 /* QUAppDelegate.h */,
 				E506292E170CACC300A25452 /* QUAppDelegate.m */,
+				E5264B1317B82AFE006FC221 /* QUFriendsFetcher.h */,
+				E5264B1417B82AFE006FC221 /* QUFriendsFetcher.m */,
 				E50629721711755F00A25452 /* QUSignInWindowController.h */,
 				E50629731711755F00A25452 /* QUSignInWindowController.m */,
 				E50629741711756000A25452 /* QUSignInWindowController.xib */,
@@ -573,6 +584,7 @@
 				E5062958171077F500A25452 /* PanelController.m in Sources */,
 				E51F38B117B03EA200098F6F /* QUUserSuggestion.m in Sources */,
 				E506295F1710783300A25452 /* Panel.m in Sources */,
+				E5264B1517B82AFE006FC221 /* QUFriendsFetcher.m in Sources */,
 				E51F38AD17B03E1500098F6F /* QueuedModel.xcdatamodeld in Sources */,
 				E50629601710783300A25452 /* StatusItemView.m in Sources */,
 				E50629611710783300A25452 /* BackgroundView.m in Sources */,
@@ -715,6 +727,19 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Queued/Queued-Prefix.pch";
 				INFOPLIST_FILE = "Queued/Queued-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+					"-lffi",
+					"-framework",
+					Cocoa,
+					"-framework",
+					Security,
+					"-framework",
+					SystemConfiguration,
+					"-framework",
+					WebKit,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -739,6 +764,19 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Queued/Queued-Prefix.pch";
 				INFOPLIST_FILE = "Queued/Queued-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+					"-lffi",
+					"-framework",
+					Cocoa,
+					"-framework",
+					Security,
+					"-framework",
+					SystemConfiguration,
+					"-framework",
+					WebKit,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;

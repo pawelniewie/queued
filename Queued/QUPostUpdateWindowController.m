@@ -126,10 +126,21 @@
 }
 
 - (NSArray *)textView:(NSTextView *)textView completions:(NSArray *)words forPartialWordRange:(NSRange)charRange indexOfSelectedItem:(NSInteger *)index {
-    if (textView == self.text && charRange.location > 0) {
-        NSString *string = [textView.string substringWithRange:NSMakeRange(charRange.location - 1, charRange.length + 1)];
-        if (string != nil && string.length >= 2 && [string hasPrefix:@"@"]) {
-            return @[@"asdasd", @"xvxcv"];
+    if (textView == self.text && charRange.location > 0 && [textView.string characterAtIndex:charRange.location - 1] == '@') {
+        NSString *string = [textView.string substringWithRange:NSMakeRange(charRange.location, charRange.length)];
+        if (string != nil && string.length >= 2) {
+            NSManagedObjectContext *context = [[QUAppDelegate instance] managedObjectContext];
+            NSFetchRequest *request = [NSFetchRequest new];
+            request.entity = [NSEntityDescription entityForName:@"UserSuggestion" inManagedObjectContext:context];
+            request.predicate = [NSPredicate predicateWithFormat:@"username BEGINSWITH[cd] %@", string];
+            request.sortDescriptors = @[[[NSSortDescriptor alloc] initWithKey: @"username" ascending:YES]];
+            
+            NSError *error;
+            NSArray *fetchedNames = [context executeFetchRequest:request error:&error];
+            
+            if (error == nil) {
+                return [fetchedNames valueForKey:@"username"];
+            }
         }
     }
     return words;

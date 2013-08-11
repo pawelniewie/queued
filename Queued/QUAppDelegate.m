@@ -14,14 +14,20 @@
 #import <BUProfilesMonitor.h>
 #import <BUPendingUpdatesMonitor.h>
 
-#import <TwitterEngine/TwitterEngine.h>
+#import <STTwitter/STTwitterAPI.h>
 
 #import "MenubarController.h"
 #import "QUAppDelegate.h"
 #import "QUSignInWindowController.h"
 #import "QUPostUpdateWindowController.h"
 #import "QUPendingUpdatesViewController.h"
-#import "QUUserSuggestion.h"
+#import "QUFriendsFetcher.h"
+
+@interface QUAppDelegate()
+
+@property (strong) NSMutableArray *friendsFetchers;
+
+@end
 
 @implementation QUAppDelegate
 
@@ -127,41 +133,17 @@ void *kContextActivePanel = &kContextActivePanel;
 }
 
 - (void) updateTwitterAccounts {
-    __block TwitterEngine *engine = [TwitterEngine new];
+    if (self.friendsFetchers == nil) {
+        self.friendsFetchers = [@[] mutableCopy];
+    }
+    
     NSArray *twitterAccounts = [self.accountStore accountsWithAccountType:self.twitterType];
     [twitterAccounts enumerateObjectsUsingBlock:^(ACAccount* account, NSUInteger idx, BOOL *stop) {
-        [engine getFriends:account completion:^(ACAccount *account, NSDictionary *cursor, NSError *error) {
-            if (cursor && cursor[@"users"] != nil) {
-                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                    NSManagedObjectContext *context = [self managedObjectContext];
-                    NSMutableSet *names = [NSMutableSet setWithArray:[cursor[@"users"] valueForKey:@"screen_name"]];
-                    NSFetchRequest *request = [NSFetchRequest new];
-                    request.entity = [NSEntityDescription entityForName:@"UserSuggestion" inManagedObjectContext:context];
-                    request.predicate = [NSPredicate predicateWithFormat:@"(username IN %@)", names];
-                    request.sortDescriptors = @[[[NSSortDescriptor alloc] initWithKey: @"username" ascending:YES]];
-                    
-                    NSError *error;
-                    NSArray *fetchedNames = [context executeFetchRequest:request error:&error];
-                    
-                    if (error == nil) {
-                        NSSet *storedUsernames = [NSSet setWithArray:[fetchedNames valueForKey:@"username"]];
-                        
-                        [names minusSet:storedUsernames];
-                        
-                        [names enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
-                            QUUserSuggestion *userSuggestion = [NSEntityDescription
-                                                                insertNewObjectForEntityForName:@"UserSuggestion"
-                                                                inManagedObjectContext:context];
-                            userSuggestion.username = obj;
-                            NSError *error;
-                            if (![context save:&error]) {
-                                NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-                            }
-                        }];
-                    }
-                }];
-            }
-        }];
+        QUFriendsFetcher *fetcher = [[QUFriendsFetcher alloc] initWithAccount: account];
+
+        [fetcher startFetching];
+        [self.friendsFetchers addObject:fetcher];
+        
     }];
 }
 
