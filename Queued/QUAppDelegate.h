@@ -11,6 +11,8 @@
 
 @class MenubarController, Buffered, QUSignInWindowController, BUProfilesMonitor, QUPostUpdateWindowController, ACAccountStore, ACAccountType, NSManagedObjectContext, NSManagedObjectModel, NSPersistentStoreCoordinator;
 
+
+
 @interface QUAppDelegate : NSObject <NSApplicationDelegate, PanelControllerDelegate>
 
 @property (nonatomic, strong) MenubarController *menubarController;

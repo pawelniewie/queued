@@ -38,7 +38,7 @@
     self = [self init];
     if (self) {
         self.account = account;
-        self.twitterApi = [STTwitterAPI twitterAPIWithAccount:account];
+        self.twitterApi = [STTwitterAPI twitterAPIOSWithAccount:account];
 
         __weak QUFriendsFetcher * weakSelf = self;
         
@@ -49,34 +49,35 @@
         self.friendsHandler = [^(NSArray *friends, NSString *previousCursor, NSString *nextCursor) {
             NSLog(@"Received friends for %@", weakSelf.account.username);
             if (friends != nil) {
-                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                    NSManagedObjectContext *context = [[QUAppDelegate instance] managedObjectContext];
-                    NSMutableSet *names = [NSMutableSet setWithArray:[friends valueForKey:@"screen_name"]];
-                    NSFetchRequest *request = [NSFetchRequest new];
-                    request.entity = [NSEntityDescription entityForName:@"UserSuggestion" inManagedObjectContext:context];
-                    request.predicate = [NSPredicate predicateWithFormat:@"(username IN %@)", names];
-                    request.sortDescriptors = @[[[NSSortDescriptor alloc] initWithKey: @"username" ascending:YES]];
+                NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSConfinementConcurrencyType];
+                context.parentContext = [[QUAppDelegate instance] managedObjectContext];
+                NSMutableSet *names = [NSMutableSet setWithArray:[friends valueForKey:@"screen_name"]];
+                NSFetchRequest *request = [NSFetchRequest new];
+                request.entity = [NSEntityDescription entityForName:@"UserSuggestion" inManagedObjectContext:context];
+                request.predicate = [NSPredicate predicateWithFormat:@"(username IN %@)", names];
+                request.sortDescriptors = @[[[NSSortDescriptor alloc] initWithKey: @"username" ascending:YES]];
+                
+                NSError *error;
+                NSArray *fetchedNames = [context executeFetchRequest:request error:&error];
+                
+                if (error == nil) {
+                    NSSet *storedUsernames = [NSSet setWithArray:[fetchedNames valueForKey:@"username"]];
+                    
+                    [names minusSet:storedUsernames];
+                    
+                    [names enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
+                        QUUserSuggestion *userSuggestion = [NSEntityDescription
+                                                            insertNewObjectForEntityForName:@"UserSuggestion"
+                                                            inManagedObjectContext:context];
+                        userSuggestion.username = obj;
+                    }];
                     
                     NSError *error;
-                    NSArray *fetchedNames = [context executeFetchRequest:request error:&error];
-                    
-                    if (error == nil) {
-                        NSSet *storedUsernames = [NSSet setWithArray:[fetchedNames valueForKey:@"username"]];
-                        
-                        [names minusSet:storedUsernames];
-                        
-                        [names enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
-                            QUUserSuggestion *userSuggestion = [NSEntityDescription
-                                                                insertNewObjectForEntityForName:@"UserSuggestion"
-                                                                inManagedObjectContext:context];
-                            userSuggestion.username = obj;
-                            NSError *error;
-                            if (![context save:&error]) {
-                                NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-                            }
-                        }];
+                    if (![context save:&error]) {
+                        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
                     }
-                }];
+                    [[QUAppDelegate instance] saveContext];
+                }
             }
             
             if (nextCursor != nil && [@"0" isEqualToString:nextCursor] == NO) {

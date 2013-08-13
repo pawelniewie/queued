@@ -3,7 +3,8 @@ xcodeproj "Queued.xcodeproj"
 
 #pod 'Buffered', :git => "https://github.com/pawelniewie/buffered.git"
 pod 'Buffered', :path => "/Users/pawel/Development/Buffered"
-pod 'TwitterEngine', :path => "/Users/pawel/Development/TwitterEngine"
+pod 'STTwitter', :path => "/Users/pawel/Development/STTwitter"
+pod 'BlocksKit'
 pod 'TransformerKit'
 
 target :QueuedTests, :exclusive => true do

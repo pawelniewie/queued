@@ -257,15 +257,16 @@ void *kContextActivePanel = &kContextActivePanel;
 
 - (void)saveContext
 {
-    NSError *error = nil;
     NSManagedObjectContext *objectContext = self.managedObjectContext;
     if (objectContext != nil)
     {
-        if ([objectContext hasChanges] && ![objectContext save:&error])
-        {
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
-        }
+        [objectContext performBlock:^{
+            NSError *error = nil;
+            if ([objectContext hasChanges] && ![objectContext save:&error])
+            {
+                NSLog(@"Unresolved error saving data %@, %@", error, [error userInfo]);
+            }
+        }];
     }
 }
 
@@ -283,7 +284,7 @@ void *kContextActivePanel = &kContextActivePanel;
     NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
     if (coordinator != nil)
     {
-        _managedObjectContext = [[NSManagedObjectContext alloc] init];
+        _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
         [_managedObjectContext setPersistentStoreCoordinator:coordinator];
     }
     return _managedObjectContext;
