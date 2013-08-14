@@ -8,7 +8,35 @@
 
 #import "QUPostUpdateTextView.h"
 
+@interface QUPostUpdateTextView()
+
+@property (assign) BOOL textInAutocomplete;
+
+@end
+
 @implementation QUPostUpdateTextView
+
+-  (void)insertCompletion:(NSString *)word forPartialWordRange:(NSRange)charRange movement:(NSInteger)movement isFinal:(BOOL)flag {
+//    NSLog(@"Movement %ld, isFinal %ld, textInAutocomplete %ld", (long)movement, (long)flag, (long)self.textInAutocomplete);
+
+    // If we suggest completions whilst typing, don't insert the completion unless the user has specifically chosen it!
+	if (self.textInAutocomplete)
+	{
+		if (flag == NO || (flag == YES && movement == NSOtherTextMovement))
+			return;
+	}
+    
+    return [super insertCompletion:word forPartialWordRange:charRange movement:movement isFinal:flag];
+}
+
+- (void) complete:(id)sender {
+    self.textInAutocomplete = YES;
+    @try {
+        return [super complete:sender];
+    } @finally {
+        self.textInAutocomplete = NO;
+    }
+}
 
 //- (NSRange) rangeForUserCompletion {
 //    NSRange range = [super rangeForUserCompletion];
