@@ -5,6 +5,16 @@
 	<description>Buffer helper for your Mac OS X</description>
 	<language>en</language>
 	<item>
+		<title>Version 0.7</title>
+		<description><![CDATA[
+			<h2>New features</h2>
+			<div>Queued will automatically complete Twitter usernames!</div>
+			]]></description>
+		<sparkle:minimumSystemVersion>10.8.0</sparkle:minimumSystemVersion>
+		<pubDate>Wed, 14 Aug 2013 20:33:15 CEST</pubDate>
+		<enclosure url="http://queuedupdates.appspot.com/binaries/Queued-0.7.zip" sparkle:version="74" sparkle:shortVersionString="0.7" length="3144432" type="application/octet-stream"/>
+	</item>
+	<item>
 		<title>Version 0.6.2</title>
 		<description><![CDATA[
 			<h2>Post to Buffer!</h2>
