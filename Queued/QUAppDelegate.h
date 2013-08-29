@@ -20,6 +20,7 @@
 @property (nonatomic, strong, readonly) Buffered *buffered;
 @property (nonatomic, strong, readonly) BUProfilesMonitor *profilesMonitor;
 @property (nonatomic, strong, readonly) QUPostUpdateWindowController *postUpdateWindow;
+@property (nonatomic, strong, readonly) NSWindowController *preferencesWindowController;
 
 @property (assign) BOOL hasSignedIn;
 @property (assign) BOOL hasSignInWindowOpen;

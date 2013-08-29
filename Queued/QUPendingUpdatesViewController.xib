@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4457.6" systemVersion="13A538g" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4457.6" systemVersion="13A558" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment version="1070" defaultVersion="1080" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4457.6"/>
@@ -24,6 +24,7 @@
                 <action selector="postUpdate:" destination="593" id="606"/>
                 <action selector="reloadPendingUpdates:" destination="306" id="323"/>
                 <action selector="sendFeedback:" destination="582" id="587"/>
+                <action selector="showPreferences:" destination="FfL-Gi-T69" id="DCP-ip-v8T"/>
                 <action selector="terminate:" destination="584" id="586"/>
                 <action selector="toggleLaunchAtLogin:" destination="590" id="591"/>
             </connections>
@@ -291,7 +292,7 @@ CA
                     <constraints>
                         <constraint firstAttribute="width" constant="41" id="578"/>
                     </constraints>
-                    <popUpButtonCell key="cell" type="push" bezelStyle="rounded" imagePosition="only" alignment="left" alternateImage="NSActionTemplate" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" pullsDown="YES" selectedItem="570" id="568">
+                    <popUpButtonCell key="cell" type="push" bezelStyle="rounded" imagePosition="only" alignment="left" alternateImage="NSActionTemplate" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" pullsDown="YES" selectedItem="FfL-Gi-T69" id="568">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
                         <menu key="menu" title="OtherViews" id="569">
@@ -301,6 +302,9 @@ CA
                                     <modifierMask key="keyEquivalentModifierMask"/>
                                 </menuItem>
                                 <menuItem title="Check for updates" id="581">
+                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                </menuItem>
+                                <menuItem title="Preferences..." id="FfL-Gi-T69">
                                     <modifierMask key="keyEquivalentModifierMask"/>
                                 </menuItem>
                                 <menuItem title="Send feedback" id="582">
@@ -370,50 +374,7 @@ CA
                 <relationship kind="action" name="postUpdate:"/>
                 <relationship kind="action" name="reloadPendingUpdates:"/>
                 <relationship kind="action" name="sendFeedback:"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="QUAppDelegate" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/QUAppDelegate.h"/>
-            <relationships>
-                <relationship kind="action" name="reloadPendingUpdates:"/>
-                <relationship kind="action" name="toggleLaunchAtLogin:"/>
-                <relationship kind="action" name="togglePanel:"/>
-            </relationships>
-        </class>
-        <class className="QUPendingTableCellView" superclassName="NSTableCellView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/QUPendingTableCellView.h"/>
-            <relationships>
-                <relationship kind="outlet" name="avatarLoadingIndicator" candidateClass="NSProgressIndicator"/>
-                <relationship kind="outlet" name="inProgressIndicator" candidateClass="NSProgressIndicator"/>
-            </relationships>
-        </class>
-        <class className="QUPendingUpdatesViewController" superclassName="NSViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/QUPendingUpdatesViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="launchAtLoginMenuItem" candidateClass="NSMenuItem"/>
-                <relationship kind="outlet" name="progress" candidateClass="NSProgressIndicator"/>
-                <relationship kind="outlet" name="reloadButton" candidateClass="NSButton"/>
-                <relationship kind="outlet" name="removeButton" candidateClass="NSButton"/>
-                <relationship kind="outlet" name="updatesContent" candidateClass="NSArrayController"/>
-                <relationship kind="outlet" name="updatesTable" candidateClass="NSTableView"/>
-            </relationships>
-        </class>
-        <class className="QUUpdateTableCellView" superclassName="NSTableCellView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/QUUpdateTableCellView.h"/>
-            <relationships>
-                <relationship kind="outlet" name="dayText" candidateClass="NSTextField"/>
-                <relationship kind="outlet" name="publishButton" candidateClass="NSButton"/>
-                <relationship kind="outlet" name="removeButton" candidateClass="NSButton"/>
-            </relationships>
-        </class>
-        <class className="SUUpdater" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SUUpdater.h"/>
-            <relationships>
-                <relationship kind="action" name="checkForUpdates:"/>
-                <relationship kind="outlet" name="delegate"/>
+                <relationship kind="action" name="showPreferences:"/>
             </relationships>
         </class>
     </classes>

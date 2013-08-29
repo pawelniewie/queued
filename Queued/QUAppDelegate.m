@@ -13,6 +13,7 @@
 #import <Buffered.h>
 #import <BUProfilesMonitor.h>
 #import <BUPendingUpdatesMonitor.h>
+#import <MASPreferences/MASPreferencesWindowController.h>
 
 #import <STTwitter/STTwitterAPI.h>
 
@@ -22,6 +23,7 @@
 #import "QUPostUpdateWindowController.h"
 #import "QUPendingUpdatesViewController.h"
 #import "QUFriendsFetcher.h"
+#import "GeneralPreferencesViewController.h"
 
 @interface QUAppDelegate()
 
@@ -35,6 +37,7 @@
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 @synthesize managedObjectModel = _managedObjectModel;
+@synthesize preferencesWindowController = _preferencesWindowController;
 
 +(instancetype) instance {
     return (QUAppDelegate *) [[NSApplication sharedApplication] delegate];
@@ -338,5 +341,27 @@ void *kContextActivePanel = &kContextActivePanel;
     return _persistentStoreCoordinator;
 }
 #pragma mark -
+#pragma mark Preferences
+- (NSWindowController *)preferencesWindowController
+{
+    if (_preferencesWindowController == nil)
+    {
+        NSViewController *generalViewController = [GeneralPreferencesViewController new];
+        NSArray *controllers = @[generalViewController];
+        
+        // To add a flexible space between General and Advanced preference panes insert [NSNull null]:
+        //     NSArray *controllers = [[NSArray alloc] initWithObjects:generalViewController, [NSNull null], advancedViewController, nil];
+        
+        NSString *title = NSLocalizedString(@"Preferences", @"Common title for Preferences window");
+        _preferencesWindowController = [[MASPreferencesWindowController alloc] initWithViewControllers:controllers title:title];
+    }
+    return _preferencesWindowController;
+}
 
+- (IBAction)showPreferences:(id)sender
+{
+    [self.preferencesWindowController showWindow:nil];
+}
+
+#pragma mark -
 @end

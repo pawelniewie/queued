@@ -29,6 +29,9 @@
 		E50629631710784000A25452 /* PanelController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E50629621710784000A25452 /* PanelController.xib */; };
 		E50629751711756000A25452 /* QUSignInWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = E50629731711755F00A25452 /* QUSignInWindowController.m */; };
 		E50629761711756000A25452 /* QUSignInWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E50629741711756000A25452 /* QUSignInWindowController.xib */; };
+		E50EE69B17CF116F008C67EB /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E50EE69A17CF116F008C67EB /* Carbon.framework */; };
+		E50EE6A117CF14B7008C67EB /* GeneralPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E50EE69F17CF14B7008C67EB /* GeneralPreferencesViewController.m */; };
+		E50EE6A217CF14B7008C67EB /* GeneralPreferencesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E50EE6A017CF14B7008C67EB /* GeneralPreferencesView.xib */; };
 		E51F38AD17B03E1500098F6F /* QueuedModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E51F38AB17B03E1500098F6F /* QueuedModel.xcdatamodeld */; };
 		E51F38B117B03EA200098F6F /* QUUserSuggestion.m in Sources */ = {isa = PBXBuildFile; fileRef = E51F38B017B03EA200098F6F /* QUUserSuggestion.m */; };
 		E5264B1117B7A7E9006FC221 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5264B1017B7A7E9006FC221 /* Social.framework */; };
@@ -137,6 +140,11 @@
 		E50629721711755F00A25452 /* QUSignInWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QUSignInWindowController.h; sourceTree = "<group>"; };
 		E50629731711755F00A25452 /* QUSignInWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QUSignInWindowController.m; sourceTree = "<group>"; };
 		E50629741711756000A25452 /* QUSignInWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QUSignInWindowController.xib; sourceTree = "<group>"; };
+		E50EE69717CF10EE008C67EB /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		E50EE69A17CF116F008C67EB /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
+		E50EE69E17CF14B7008C67EB /* GeneralPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralPreferencesViewController.h; sourceTree = "<group>"; };
+		E50EE69F17CF14B7008C67EB /* GeneralPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneralPreferencesViewController.m; sourceTree = "<group>"; };
+		E50EE6A017CF14B7008C67EB /* GeneralPreferencesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GeneralPreferencesView.xib; sourceTree = "<group>"; };
 		E51F38A817AEE2E900098F6F /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		E51F38AC17B03E1500098F6F /* QueuedModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QueuedModel.xcdatamodel; sourceTree = "<group>"; };
 		E51F38AF17B03EA200098F6F /* QUUserSuggestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QUUserSuggestion.h; sourceTree = "<group>"; };
@@ -179,6 +187,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E50EE69B17CF116F008C67EB /* Carbon.framework in Frameworks */,
 				7498224BF6FD46EDA10835DE /* libPods.a in Frameworks */,
 				E5264B1217B7A7EF006FC221 /* Accounts.framework in Frameworks */,
 				E5264B1117B7A7E9006FC221 /* Social.framework in Frameworks */,
@@ -228,6 +237,8 @@
 		E506291A170CACC300A25452 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E50EE69A17CF116F008C67EB /* Carbon.framework */,
+				E50EE69717CF10EE008C67EB /* EventKit.framework */,
 				E5264B1017B7A7E9006FC221 /* Social.framework */,
 				E51F38A817AEE2E900098F6F /* Accounts.framework */,
 				E50573121772541700392726 /* Sparkle.framework */,
@@ -254,18 +265,17 @@
 		E5062921170CACC300A25452 /* Queued */ = {
 			isa = PBXGroup;
 			children = (
+				E50EE69D17CF1498008C67EB /* Preferences */,
+				E50EE69C17CF1380008C67EB /* Sign In Window */,
 				E51F38AE17B03E1A00098F6F /* Core Data */,
 				E526CF361795D8CF00732FBC /* Post Update Window */,
 				E5A79F96173AE314006DDA1E /* Pending Updates Table */,
-				E50629641710785A00A25452 /* Views */,
-				E50629651710787B00A25452 /* Controllers */,
+				E50629641710785A00A25452 /* Menu Bar Panel */,
+				E50629651710787B00A25452 /* Menu Bar */,
 				E506292D170CACC300A25452 /* QUAppDelegate.h */,
 				E506292E170CACC300A25452 /* QUAppDelegate.m */,
 				E5264B1317B82AFE006FC221 /* QUFriendsFetcher.h */,
 				E5264B1417B82AFE006FC221 /* QUFriendsFetcher.m */,
-				E50629721711755F00A25452 /* QUSignInWindowController.h */,
-				E50629731711755F00A25452 /* QUSignInWindowController.m */,
-				E50629741711756000A25452 /* QUSignInWindowController.xib */,
 				E5062930170CACC300A25452 /* MainMenu.xib */,
 				E5062922170CACC300A25452 /* Supporting Files */,
 			);
@@ -303,7 +313,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		E50629641710785A00A25452 /* Views */ = {
+		E50629641710785A00A25452 /* Menu Bar Panel */ = {
 			isa = PBXGroup;
 			children = (
 				E50629621710784000A25452 /* PanelController.xib */,
@@ -316,17 +326,17 @@
 				E506295D1710783300A25452 /* BackgroundView.h */,
 				E506295E1710783300A25452 /* BackgroundView.m */,
 			);
-			name = Views;
+			name = "Menu Bar Panel";
 			sourceTree = "<group>";
 		};
-		E50629651710787B00A25452 /* Controllers */ = {
+		E50629651710787B00A25452 /* Menu Bar */ = {
 			isa = PBXGroup;
 			children = (
 				E5062953171077F500A25452 /* MenubarController.h */,
 				E5062954171077F500A25452 /* MenubarController.m */,
 				E55FBF16172733A600AEC024 /* MenubarController.xib */,
 			);
-			name = Controllers;
+			name = "Menu Bar";
 			sourceTree = "<group>";
 		};
 		E506296617107B6300A25452 /* Resources */ = {
@@ -340,6 +350,26 @@
 				E55FBF0B1722D5C000AEC024 /* StatusGreen@2x.png */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		E50EE69C17CF1380008C67EB /* Sign In Window */ = {
+			isa = PBXGroup;
+			children = (
+				E50629721711755F00A25452 /* QUSignInWindowController.h */,
+				E50629731711755F00A25452 /* QUSignInWindowController.m */,
+				E50629741711756000A25452 /* QUSignInWindowController.xib */,
+			);
+			name = "Sign In Window";
+			sourceTree = "<group>";
+		};
+		E50EE69D17CF1498008C67EB /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				E50EE69E17CF14B7008C67EB /* GeneralPreferencesViewController.h */,
+				E50EE69F17CF14B7008C67EB /* GeneralPreferencesViewController.m */,
+				E50EE6A017CF14B7008C67EB /* GeneralPreferencesView.xib */,
+			);
+			name = Preferences;
 			sourceTree = "<group>";
 		};
 		E51F38AE17B03E1A00098F6F /* Core Data */ = {
@@ -491,6 +521,7 @@
 				E50629631710784000A25452 /* PanelController.xib in Resources */,
 				E50629761711756000A25452 /* QUSignInWindowController.xib in Resources */,
 				E55FBF0E1722D5C000AEC024 /* StatusGreen.png in Resources */,
+				E50EE6A217CF14B7008C67EB /* GeneralPreferencesView.xib in Resources */,
 				E55FBF0F1722D5C000AEC024 /* StatusGreen@2x.png in Resources */,
 				E55FBF141722D66800AEC024 /* StatusInverted.png in Resources */,
 				E55FBF151722D66800AEC024 /* StatusInverted@2x.png in Resources */,
@@ -576,6 +607,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E50EE6A117CF14B7008C67EB /* GeneralPreferencesViewController.m in Sources */,
 				E55B9A6B17AD534300453A24 /* QUPostUpdateTextView.m in Sources */,
 				E526CF2F1792C7F500732FBC /* QUPostUpdateWindowController.m in Sources */,
 				E5062928170CACC300A25452 /* main.m in Sources */,
