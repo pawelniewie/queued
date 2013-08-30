@@ -15,7 +15,7 @@
 #import <BUPendingUpdatesMonitor.h>
 #import <MASPreferences/MASPreferencesWindowController.h>
 #import <MASShortcut/MASShortcut+UserDefaults.h>
-
+#import <Sparkle/Sparkle.h>
 #import <STTwitter/STTwitterAPI.h>
 
 #import "MenubarController.h"
@@ -105,6 +105,8 @@ void *kContextActivePanel = &kContextActivePanel;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
+    [SUUpdater sharedUpdater].sendsSystemProfile = YES;
+    
     // Install icon into the menu bar
     self.menubarController = [MenubarController new];
     

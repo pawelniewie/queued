@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+
 #import "PanelController.h"
 
 @class MenubarController, Buffered, QUSignInWindowController, BUProfilesMonitor, QUPostUpdateWindowController, ACAccountStore, ACAccountType, NSManagedObjectContext, NSManagedObjectModel, NSPersistentStoreCoordinator;
