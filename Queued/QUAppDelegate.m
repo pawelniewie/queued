@@ -360,7 +360,11 @@ void *kContextActivePanel = &kContextActivePanel;
 
 - (IBAction)showPreferences:(id)sender
 {
-    [self.preferencesWindowController showWindow:nil];
+    if (![self.preferencesWindowController.window isVisible]) {
+        [self.preferencesWindowController.window center];
+        [self.preferencesWindowController.window makeKeyAndOrderFront:self];
+        [NSApp activateIgnoringOtherApps:YES];
+    }
 }
 
 #pragma mark -
