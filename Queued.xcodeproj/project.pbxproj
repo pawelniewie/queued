@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		26C1F1A2D6C04E8B829ACEB3 /* libPods-QueuedTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB75A76F3BE4481AA7F86492 /* libPods-QueuedTests.a */; };
 		7498224BF6FD46EDA10835DE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 69B5A34BEE184D338F9F560C /* libPods.a */; };
-		E50573131772541700392726 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E50573121772541700392726 /* Sparkle.framework */; };
-		E50573141772544400392726 /* Sparkle.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = E50573121772541700392726 /* Sparkle.framework */; };
 		E506291C170CACC300A25452 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E506291B170CACC300A25452 /* Cocoa.framework */; };
 		E5062926170CACC300A25452 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E5062924170CACC300A25452 /* InfoPlist.strings */; };
 		E5062928170CACC300A25452 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5062927170CACC300A25452 /* main.m */; };
@@ -50,6 +48,8 @@
 		E57D72A2174D727200F3F335 /* Queued Helper.app in Copy LaunchAtLoginHelperApp */ = {isa = PBXBuildFile; fileRef = E57D72A0174D71E400F3F335 /* Queued Helper.app */; };
 		E57D72A4174D72F700F3F335 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E57D72A3174D72F700F3F335 /* ServiceManagement.framework */; };
 		E581FE2D1795EDC300B1A2AA /* QUSelectableImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = E581FE2C1795EDC300B1A2AA /* QUSelectableImageView.m */; };
+		E5A31AB317D11FEA005DAD50 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A31AB217D11FEA005DAD50 /* Sparkle.framework */; };
+		E5A31AB417D11FF5005DAD50 /* Sparkle.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = E5A31AB217D11FEA005DAD50 /* Sparkle.framework */; };
 		E5A79F8A17399525006DDA1E /* QUPendingUpdatesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A79F8817399525006DDA1E /* QUPendingUpdatesViewController.m */; };
 		E5A79F8B17399525006DDA1E /* QUPendingUpdatesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5A79F8917399525006DDA1E /* QUPendingUpdatesViewController.xib */; };
 		E5A79F8E173AD7CD006DDA1E /* StatusBlack.png in Resources */ = {isa = PBXBuildFile; fileRef = E5A79F8C173AD7CD006DDA1E /* StatusBlack.png */; };
@@ -83,7 +83,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E50573141772544400392726 /* Sparkle.framework in Copy Frameworks */,
+				E5A31AB417D11FF5005DAD50 /* Sparkle.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -106,7 +106,6 @@
 		69B5A34BEE184D338F9F560C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB75A76F3BE4481AA7F86492 /* libPods-QueuedTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QueuedTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B61CDDC0E3FA46D88F66B8CA /* Pods-QueuedTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QueuedTests.xcconfig"; path = "Pods/Pods-QueuedTests.xcconfig"; sourceTree = SOURCE_ROOT; };
-		E50573121772541700392726 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		E5062918170CACC300A25452 /* Queued.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Queued.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E506291B170CACC300A25452 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		E506291E170CACC300A25452 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -170,6 +169,7 @@
 		E57D72A3174D72F700F3F335 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		E581FE2B1795EDC300B1A2AA /* QUSelectableImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QUSelectableImageView.h; sourceTree = "<group>"; };
 		E581FE2C1795EDC300B1A2AA /* QUSelectableImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QUSelectableImageView.m; sourceTree = "<group>"; };
+		E5A31AB217D11FEA005DAD50 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		E5A79F8717399525006DDA1E /* QUPendingUpdatesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QUPendingUpdatesViewController.h; sourceTree = "<group>"; };
 		E5A79F8817399525006DDA1E /* QUPendingUpdatesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QUPendingUpdatesViewController.m; sourceTree = "<group>"; };
 		E5A79F8917399525006DDA1E /* QUPendingUpdatesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QUPendingUpdatesViewController.xib; sourceTree = "<group>"; };
@@ -190,10 +190,10 @@
 				E50EE69B17CF116F008C67EB /* Carbon.framework in Frameworks */,
 				7498224BF6FD46EDA10835DE /* libPods.a in Frameworks */,
 				E5264B1217B7A7EF006FC221 /* Accounts.framework in Frameworks */,
+				E5A31AB317D11FEA005DAD50 /* Sparkle.framework in Frameworks */,
 				E5264B1117B7A7E9006FC221 /* Social.framework in Frameworks */,
 				E57D72A4174D72F700F3F335 /* ServiceManagement.framework in Frameworks */,
 				E506291C170CACC300A25452 /* Cocoa.framework in Frameworks */,
-				E50573131772541700392726 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,11 +237,11 @@
 		E506291A170CACC300A25452 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E5A31AB217D11FEA005DAD50 /* Sparkle.framework */,
 				E50EE69A17CF116F008C67EB /* Carbon.framework */,
 				E50EE69717CF10EE008C67EB /* EventKit.framework */,
 				E5264B1017B7A7E9006FC221 /* Social.framework */,
 				E51F38A817AEE2E900098F6F /* Accounts.framework */,
-				E50573121772541700392726 /* Sparkle.framework */,
 				E57D72A3174D72F700F3F335 /* ServiceManagement.framework */,
 				E506291B170CACC300A25452 /* Cocoa.framework */,
 				E5062939170CACC400A25452 /* SenTestingKit.framework */,

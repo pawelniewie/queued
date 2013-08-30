@@ -77,10 +77,12 @@ void *kContextActivePanel = &kContextActivePanel;
 
 #pragma mark - NSApplicationDelegate
 
+-(void) applicationWillFinishLaunching:(NSNotification *)notification {
+    [SUUpdater sharedUpdater].sendsSystemProfile = YES;
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
-    [SUUpdater sharedUpdater].sendsSystemProfile = YES;
-    
     // Install icon into the menu bar
     self.menubarController = [MenubarController new];
     
