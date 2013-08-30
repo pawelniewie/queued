@@ -1,3 +1,5 @@
+@import ServiceManagement;
+
 #import <MASShortcut/MASShortcutView+UserDefaults.h>
 
 #import "GeneralPreferencesViewController.h"
@@ -30,6 +32,27 @@ NSString *const kPreferenceGlobalShortcut = @"GlobalShortcut";
     [super loadView];
     
     self.shortcutView.associatedUserDefaultsKey = kPreferenceGlobalShortcut;
+}
+
+-(BOOL)startAutomatically {
+    NSDictionary *dict = (NSDictionary*) CFBridgingRelease(SMJobCopyDictionary(kSMDomainUserLaunchd,
+                                                                               CFSTR("com.pawelniewiadomski.Queued-Helper")));
+    return (dict != NULL);
+}
+
+-(void)setStartAutomatically:(BOOL)startAutomatically {
+    NSString *const potentialError = startAutomatically
+            ? @"Couldn't add Helper App to launch at login item list." : @"Couldn't remove Helper App from launch at login item list.";
+    
+    // Turn on launch at login
+    if (!SMLoginItemSetEnabled ((__bridge CFStringRef)@"com.pawelniewiadomski.Queued-Helper", startAutomatically)) {
+        NSAlert *alert = [NSAlert alertWithMessageText:@"An error ocurred"
+                                         defaultButton:@"OK"
+                                       alternateButton:nil
+                                           otherButton:nil
+                             informativeTextWithFormat:potentialError];
+        [alert runModal];
+    }
 }
 
 @end

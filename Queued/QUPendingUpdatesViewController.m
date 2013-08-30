@@ -36,8 +36,6 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
         _buffered = buffered;
         _profilesMonitor = profilesMonitor;
         _observedVisibleItems = [NSMutableArray new];
-
-        [[QUAppDelegate instance] addObserver:self forKeyPath:@"isLaunchAtLoginEnabled" options:NSKeyValueObservingOptionNew context:nil];
         
         __weak QUPendingUpdatesViewController * noRetain = self; // http://stackoverflow.com/questions/7853915/how-do-i-avoid-capturing-self-in-blocks-when-implementing-an-api
         _updatesHandler = ^(NSString *profileId, NSArray *pending, NSError *error) {
@@ -72,7 +70,6 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
         [obj.updatesMonitor removeObserver:self forKeyPath:@"pendingUpdates"];
     }];
     [_profilesMonitor removeObserver:self forKeyPath:@"profiles"];
-    [[QUAppDelegate instance] removeObserver:self forKeyPath:@"isLaunchAtLoginEnabled"];
 }
 
 - (void) loadView {
@@ -81,8 +78,6 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
     [self.updatesTable registerForDraggedTypes:@[DRAG_AND_DROP_TYPE]];
     
     [self.progress startAnimation:self];
-    
-    self.launchAtLoginMenuItem.state = [QUAppDelegate instance].isLaunchAtLoginEnabled ? NSOnState : NSOffState;
     
     [_profilesMonitor addObserver:self forKeyPath:@"profiles" options:NSKeyValueObservingOptionNew context:nil];
     
@@ -176,9 +171,6 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
     } else if ([@"pendingUpdates" isEqualToString:keyPath]) {
         NSArray * updates = change[NSKeyValueChangeNewKey];
         _updatesHandler((__bridge NSString*) context, updates, nil);
-    } else if ([@"isLaunchAtLoginEnabled" isEqualToString:keyPath]) {
-        BOOL launchIsEnabled = [change[NSKeyValueChangeNewKey] boolValue];
-        self.launchAtLoginMenuItem.state = launchIsEnabled ? NSOnState : NSOffState;
     }
 }
 #pragma mark -

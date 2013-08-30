@@ -25,7 +25,6 @@
 
 @property (assign) BOOL hasSignedIn;
 @property (assign) BOOL hasSignInWindowOpen;
-@property (assign, readonly) BOOL isLaunchAtLoginEnabled;
 
 @property (strong,readonly) ACAccountType* twitterType;
 @property (strong,readonly) ACAccountStore* accountStore;
@@ -40,7 +39,6 @@
 - (IBAction)togglePanel:(id)sender;
 - (IBAction)reloadPendingUpdates:(id)sender;
 - (void) showSignInWindow;
--(IBAction)toggleLaunchAtLogin:(id)sender;
 
 + (instancetype) instance;
 

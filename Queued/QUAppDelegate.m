@@ -7,7 +7,6 @@
 //
 
 @import Accounts;
-@import ServiceManagement;
 @import CoreData;
 
 #import <Buffered.h>
@@ -52,31 +51,6 @@
     [_panelController removeObserver:self forKeyPath:@"hasActivePanel"];
 }
 
-#pragma mark -
-#pragma mark Start At Login
--(BOOL)isLaunchAtLoginEnabled {
-    NSDictionary *dict = (NSDictionary*) CFBridgingRelease(SMJobCopyDictionary(kSMDomainUserLaunchd,
-                                                            CFSTR("com.pawelniewiadomski.Queued-Helper")));
-    return (dict != NULL);
-}
-
--(IBAction)toggleLaunchAtLogin:(NSMenuItem *)sender
-{
-    BOOL shouldLaunchAtLoginBeEnabled = !self.isLaunchAtLoginEnabled;
-    NSString *const potentialError = shouldLaunchAtLoginBeEnabled ? @"Couldn't add Helper App to launch at login item list." : @"Couldn't remove Helper App from launch at login item list.";
-
-    // Turn on launch at login
-    [self willChangeValueForKey:@"isLaunchAtLoginEnabled"];
-    if (!SMLoginItemSetEnabled ((__bridge CFStringRef)@"com.pawelniewiadomski.Queued-Helper", shouldLaunchAtLoginBeEnabled)) {
-        NSAlert *alert = [NSAlert alertWithMessageText:@"An error ocurred"
-                                         defaultButton:@"OK"
-                                       alternateButton:nil
-                                           otherButton:nil
-                             informativeTextWithFormat:potentialError];
-        [alert runModal];
-    }
-    [self didChangeValueForKey:@"isLaunchAtLoginEnabled"];
-}
 #pragma mark -
 #pragma mark KVO
 void *kContextActivePanel = &kContextActivePanel;
