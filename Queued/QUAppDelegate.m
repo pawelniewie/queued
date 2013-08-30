@@ -14,6 +14,7 @@
 #import <BUProfilesMonitor.h>
 #import <BUPendingUpdatesMonitor.h>
 #import <MASPreferences/MASPreferencesWindowController.h>
+#import <MASShortcut/MASShortcut+UserDefaults.h>
 
 #import <STTwitter/STTwitterAPI.h>
 
@@ -95,8 +96,7 @@ void *kContextActivePanel = &kContextActivePanel;
             }
         }];
         [[NSNotificationCenter defaultCenter] postNotificationName:QUProfilesLoadedNotification object:profiles userInfo:nil];
-    }
-    else {
+    } else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
 }
@@ -110,6 +110,12 @@ void *kContextActivePanel = &kContextActivePanel;
     
     _panelController = [[PanelController alloc] initWithDelegate:self];
     [_panelController addObserver:self forKeyPath:@"hasActivePanel" options:0 context:kContextActivePanel];
+    
+    // Execute your block of code automatically when user triggers a shortcut from preferences
+    [MASShortcut registerGlobalShortcutWithUserDefaultsKey:kPreferenceGlobalShortcut handler:^{
+//        _panelController.hasActivePanel = YES;
+        [self postUpdate:self];
+    }];
     
     _accountStore = [self newAccountStore];
     _twitterType = [[self accountStore] accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
@@ -129,7 +135,7 @@ void *kContextActivePanel = &kContextActivePanel;
     if (!self.hasSignedIn) {
         [self showSignInWindow];
     }
-}
+    }
 
 - (ACAccountStore*) newAccountStore {
     return [ACAccountStore new];
@@ -206,11 +212,9 @@ void *kContextActivePanel = &kContextActivePanel;
     if (_postUpdateWindow == nil) {
         _postUpdateWindow = [[QUPostUpdateWindowController alloc] initWithBuffered:self.buffered andProfilesMonitor:self.profilesMonitor];
     }
-    if (![_postUpdateWindow.window isVisible]) {
-        [self.postUpdateWindow.window center];
-        [self.postUpdateWindow.window makeKeyAndOrderFront:self];
-        [NSApp activateIgnoringOtherApps:YES];
-    }
+    [_postUpdateWindow.window center];
+    [_postUpdateWindow showWindow:self];
+    [_postUpdateWindow.window setLevel:NSFloatingWindowLevel];
 }
 
 - (IBAction)togglePanel:(id)sender
@@ -360,11 +364,9 @@ void *kContextActivePanel = &kContextActivePanel;
 
 - (IBAction)showPreferences:(id)sender
 {
-    if (![self.preferencesWindowController.window isVisible]) {
-        [self.preferencesWindowController.window center];
-        [self.preferencesWindowController.window makeKeyAndOrderFront:self];
-        [NSApp activateIgnoringOtherApps:YES];
-    }
+    [self.preferencesWindowController.window center];
+    [self.preferencesWindowController showWindow:self];
+    [self.preferencesWindowController.window setLevel:NSFloatingWindowLevel];
 }
 
 #pragma mark -

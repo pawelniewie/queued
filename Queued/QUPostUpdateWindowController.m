@@ -45,15 +45,6 @@
     [self.sendingProgressIndicator setHidden:YES];
 }
 
-- (void) windowDidBecomeKey:(NSNotification *)notification {
-    [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
-    [self.window makeFirstResponder:self.text];
-}
-
-- (void) windowWillClose:(NSNotification *)notification {
-    [NSApp setActivationPolicy:NSApplicationActivationPolicyProhibited];
-}
-
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([@"profiles" isEqualToString:keyPath]) {
         @synchronized(self) {

@@ -1,5 +1,8 @@
+#import <MASShortcut/MASShortcutView+UserDefaults.h>
 
 #import "GeneralPreferencesViewController.h"
+
+NSString *const kPreferenceGlobalShortcut = @"GlobalShortcut";
 
 @implementation GeneralPreferencesViewController
 
@@ -7,9 +10,6 @@
 {
     return [super initWithNibName:@"GeneralPreferencesView" bundle:nil];
 }
-
-#pragma mark -
-#pragma mark MASPreferencesViewController
 
 - (NSString *)identifier
 {
@@ -24,6 +24,12 @@
 - (NSString *)toolbarItemLabel
 {
     return NSLocalizedString(@"General", @"Toolbar item name for the General preference pane");
+}
+
+- (void) loadView {
+    [super loadView];
+    
+    self.shortcutView.associatedUserDefaultsKey = kPreferenceGlobalShortcut;
 }
 
 @end
