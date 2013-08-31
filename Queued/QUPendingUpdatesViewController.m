@@ -14,6 +14,7 @@
 #import "QUPendingUpdatesViewController.h"
 #import "QUPendingUpdatesRowView.h"
 #import "QUAppDelegate.h"
+#import "NSImage+Resize.h"
 
 NSString * const QUProfilesLoadedNotification = @"QUProfilesLoadedNotification";
 NSString * const QUPendingUpdatesLoadedNotification = @"QUPendingUpdatesLoadedNotification";
@@ -222,7 +223,7 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
         BUProfile *entity = [self profileEntityForRow:row];
         QUPendingTableCellView *cellView = [self.updatesTable viewAtColumn:0 row:row makeIfNecessary:NO];
         if (cellView) {
-            cellView.imageView.image = [self resizeImage:entity.avatarImage size:[cellView.imageView bounds].size];
+            cellView.imageView.image = [entity.avatarImage resizeToSize:[cellView.imageView bounds].size];
         }
     }
 }
@@ -240,33 +241,13 @@ static NSString *DRAG_AND_DROP_TYPE = @"Update Data";
         BUProfile *profile = (BUProfile *) entity;
         
         if (profile.avatarImage != nil) {
-            [cell.imageView setImage:[self resizeImage:profile.avatarImage size:[cell.imageView bounds].size]];
+            [cell.imageView setImage:[profile.avatarImage resizeToSize:[cell.imageView bounds].size]];
         } else {
             // KVO will update the avatar when it's loaded
             [profile loadAvatar];
         }
         return cell;
     }
-}
-
-- (NSImage*) resizeImage:(NSImage*)sourceImage size:(NSSize)size
-{
-    NSRect targetFrame = NSMakeRect(0, 0, size.width, size.height);
-    NSImage*  targetImage = [[NSImage alloc] initWithSize:size];
-    
-    [targetImage lockFocus];
-    
-    [sourceImage drawInRect:targetFrame
-                   fromRect:NSZeroRect       //portion of source image to draw
-                  operation:NSCompositeCopy  //compositing operation
-                   fraction:1.0              //alpha (transparency) value
-             respectFlipped:YES              //coordinate system
-                      hints:@{NSImageHintInterpolation:
-     @(NSImageInterpolationMedium)}];
-    
-    [targetImage unlockFocus];
-    
-    return targetImage;
 }
 
 // We want to make "group rows" for the folders

@@ -50,6 +50,9 @@
 		E581FE2D1795EDC300B1A2AA /* QUSelectableImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = E581FE2C1795EDC300B1A2AA /* QUSelectableImageView.m */; };
 		E5A31AB317D11FEA005DAD50 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A31AB217D11FEA005DAD50 /* Sparkle.framework */; };
 		E5A31AB417D11FF5005DAD50 /* Sparkle.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = E5A31AB217D11FEA005DAD50 /* Sparkle.framework */; };
+		E5A31AB717D128F6005DAD50 /* NSImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A31AB617D128F5005DAD50 /* NSImage+Resize.m */; };
+		E5A31ABA17D1F66B005DAD50 /* StatusRed.png in Resources */ = {isa = PBXBuildFile; fileRef = E5A31AB817D1F66B005DAD50 /* StatusRed.png */; };
+		E5A31ABB17D1F66B005DAD50 /* StatusRed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5A31AB917D1F66B005DAD50 /* StatusRed@2x.png */; };
 		E5A79F8A17399525006DDA1E /* QUPendingUpdatesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A79F8817399525006DDA1E /* QUPendingUpdatesViewController.m */; };
 		E5A79F8B17399525006DDA1E /* QUPendingUpdatesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5A79F8917399525006DDA1E /* QUPendingUpdatesViewController.xib */; };
 		E5A79F8E173AD7CD006DDA1E /* StatusBlack.png in Resources */ = {isa = PBXBuildFile; fileRef = E5A79F8C173AD7CD006DDA1E /* StatusBlack.png */; };
@@ -170,6 +173,10 @@
 		E581FE2B1795EDC300B1A2AA /* QUSelectableImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QUSelectableImageView.h; sourceTree = "<group>"; };
 		E581FE2C1795EDC300B1A2AA /* QUSelectableImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QUSelectableImageView.m; sourceTree = "<group>"; };
 		E5A31AB217D11FEA005DAD50 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
+		E5A31AB517D128F5005DAD50 /* NSImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+Resize.h"; sourceTree = "<group>"; };
+		E5A31AB617D128F5005DAD50 /* NSImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+Resize.m"; sourceTree = "<group>"; };
+		E5A31AB817D1F66B005DAD50 /* StatusRed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = StatusRed.png; path = Queued/Resources/StatusRed.png; sourceTree = "<group>"; };
+		E5A31AB917D1F66B005DAD50 /* StatusRed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "StatusRed@2x.png"; path = "Queued/Resources/StatusRed@2x.png"; sourceTree = "<group>"; };
 		E5A79F8717399525006DDA1E /* QUPendingUpdatesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QUPendingUpdatesViewController.h; sourceTree = "<group>"; };
 		E5A79F8817399525006DDA1E /* QUPendingUpdatesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QUPendingUpdatesViewController.m; sourceTree = "<group>"; };
 		E5A79F8917399525006DDA1E /* QUPendingUpdatesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QUPendingUpdatesViewController.xib; sourceTree = "<group>"; };
@@ -342,6 +349,8 @@
 		E506296617107B6300A25452 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E5A31AB817D1F66B005DAD50 /* StatusRed.png */,
+				E5A31AB917D1F66B005DAD50 /* StatusRed@2x.png */,
 				E5A79F8C173AD7CD006DDA1E /* StatusBlack.png */,
 				E5A79F8D173AD7CD006DDA1E /* StatusBlack@2x.png */,
 				E55FBF121722D66800AEC024 /* StatusInverted.png */,
@@ -413,6 +422,8 @@
 			children = (
 				E5A79F8717399525006DDA1E /* QUPendingUpdatesViewController.h */,
 				E5A79F8817399525006DDA1E /* QUPendingUpdatesViewController.m */,
+				E5A31AB517D128F5005DAD50 /* NSImage+Resize.h */,
+				E5A31AB617D128F5005DAD50 /* NSImage+Resize.m */,
 				E5A79F8917399525006DDA1E /* QUPendingUpdatesViewController.xib */,
 				E5A79F93173AE30D006DDA1E /* QUPendingUpdatesRowView.h */,
 				E5A79F94173AE30D006DDA1E /* QUPendingUpdatesRowView.m */,
@@ -518,12 +529,14 @@
 				E5062926170CACC300A25452 /* InfoPlist.strings in Resources */,
 				E506292C170CACC300A25452 /* Credits.rtf in Resources */,
 				E5062932170CACC300A25452 /* MainMenu.xib in Resources */,
+				E5A31ABA17D1F66B005DAD50 /* StatusRed.png in Resources */,
 				E50629631710784000A25452 /* PanelController.xib in Resources */,
 				E50629761711756000A25452 /* QUSignInWindowController.xib in Resources */,
 				E55FBF0E1722D5C000AEC024 /* StatusGreen.png in Resources */,
 				E50EE6A217CF14B7008C67EB /* GeneralPreferencesView.xib in Resources */,
 				E55FBF0F1722D5C000AEC024 /* StatusGreen@2x.png in Resources */,
 				E55FBF141722D66800AEC024 /* StatusInverted.png in Resources */,
+				E5A31ABB17D1F66B005DAD50 /* StatusRed@2x.png in Resources */,
 				E55FBF151722D66800AEC024 /* StatusInverted@2x.png in Resources */,
 				E55FBF17172733A600AEC024 /* MenubarController.xib in Resources */,
 				E5A79F8B17399525006DDA1E /* QUPendingUpdatesViewController.xib in Resources */,
@@ -607,6 +620,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5A31AB717D128F6005DAD50 /* NSImage+Resize.m in Sources */,
 				E50EE6A117CF14B7008C67EB /* GeneralPreferencesViewController.m in Sources */,
 				E55B9A6B17AD534300453A24 /* QUPostUpdateTextView.m in Sources */,
 				E526CF2F1792C7F500732FBC /* QUPostUpdateWindowController.m in Sources */,
