@@ -5,6 +5,18 @@
 	<description>Buffer helper for your Mac OS X</description>
 	<language>en</language>
 	<item>
+	<title>Version 0.8</title>
+	<description><![CDATA[
+		<h2>What's new!</h2>
+		<p>You can now <strong>post updates from anywhere</strong> - you need to define a global keyboard shortcut in Preferences to use this feature.</p>
+		<p>Queued will not break when there's a problem downloading the avatar.</p>
+	]]></description>
+	<sparkle:minimumSystemVersion>10.8.0</sparkle:minimumSystemVersion>
+	<pubDate>Sat, 31 Aug 2013 14:48:40 +02:00</pubDate>
+	<enclosure url="http://queuedupdates.appspot.com/binaries/Queued-0.8.zip"
+	sparkle:version="83" sparkle:shortVersionString="0.8" length="3615851" type="application/octet-stream"/>
+	</item>
+	<item>
 		<title>Version 0.7</title>
 		<description><![CDATA[
 			<h2>New features</h2>
