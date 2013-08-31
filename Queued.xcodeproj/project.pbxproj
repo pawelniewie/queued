@@ -60,6 +60,9 @@
 		E5A79F92173AD8A0006DDA1E /* QUPendingTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A79F91173AD8A0006DDA1E /* QUPendingTableCellView.m */; };
 		E5A79F95173AE30D006DDA1E /* QUPendingUpdatesRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A79F94173AE30D006DDA1E /* QUPendingUpdatesRowView.m */; };
 		E5C56342179E98B400BBB13B /* Media-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5C56341179E98B400BBB13B /* Media-2.xcassets */; };
+		E5EC0C7E17D226FD0063D64B /* QUBufferPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5EC0C7C17D226FD0063D64B /* QUBufferPreferencesViewController.m */; };
+		E5EC0C7F17D226FD0063D64B /* QUBufferPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5EC0C7D17D226FD0063D64B /* QUBufferPreferencesViewController.xib */; };
+		E5EC0C8017D228AF0063D64B /* BufferLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = E5ED833C17D2246200A471BE /* BufferLogo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -187,7 +190,10 @@
 		E5A79F93173AE30D006DDA1E /* QUPendingUpdatesRowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QUPendingUpdatesRowView.h; sourceTree = "<group>"; };
 		E5A79F94173AE30D006DDA1E /* QUPendingUpdatesRowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QUPendingUpdatesRowView.m; sourceTree = "<group>"; };
 		E5C56341179E98B400BBB13B /* Media-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = "Media-2.xcassets"; path = "Queued/Media-2.xcassets"; sourceTree = "<group>"; };
-		E5ED833C17D2246200A471BE /* buffer-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "buffer-512.png"; path = "Queued/Resources/buffer-512.png"; sourceTree = "<group>"; };
+		E5EC0C7B17D226FD0063D64B /* QUBufferPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QUBufferPreferencesViewController.h; sourceTree = "<group>"; };
+		E5EC0C7C17D226FD0063D64B /* QUBufferPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QUBufferPreferencesViewController.m; sourceTree = "<group>"; };
+		E5EC0C7D17D226FD0063D64B /* QUBufferPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QUBufferPreferencesViewController.xib; sourceTree = "<group>"; };
+		E5ED833C17D2246200A471BE /* BufferLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BufferLogo.png; path = Queued/Resources/BufferLogo.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -350,7 +356,7 @@
 		E506296617107B6300A25452 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				E5ED833C17D2246200A471BE /* buffer-512.png */,
+				E5ED833C17D2246200A471BE /* BufferLogo.png */,
 				E5A31AB817D1F66B005DAD50 /* StatusRed.png */,
 				E5A31AB917D1F66B005DAD50 /* StatusRed@2x.png */,
 				E5A79F8C173AD7CD006DDA1E /* StatusBlack.png */,
@@ -379,6 +385,9 @@
 				E50EE69E17CF14B7008C67EB /* GeneralPreferencesViewController.h */,
 				E50EE69F17CF14B7008C67EB /* GeneralPreferencesViewController.m */,
 				E50EE6A017CF14B7008C67EB /* GeneralPreferencesView.xib */,
+				E5EC0C7B17D226FD0063D64B /* QUBufferPreferencesViewController.h */,
+				E5EC0C7C17D226FD0063D64B /* QUBufferPreferencesViewController.m */,
+				E5EC0C7D17D226FD0063D64B /* QUBufferPreferencesViewController.xib */,
 			);
 			name = Preferences;
 			sourceTree = "<group>";
@@ -540,11 +549,13 @@
 				E55FBF141722D66800AEC024 /* StatusInverted.png in Resources */,
 				E5A31ABB17D1F66B005DAD50 /* StatusRed@2x.png in Resources */,
 				E55FBF151722D66800AEC024 /* StatusInverted@2x.png in Resources */,
+				E5EC0C8017D228AF0063D64B /* BufferLogo.png in Resources */,
 				E55FBF17172733A600AEC024 /* MenubarController.xib in Resources */,
 				E5A79F8B17399525006DDA1E /* QUPendingUpdatesViewController.xib in Resources */,
 				E5A79F8E173AD7CD006DDA1E /* StatusBlack.png in Resources */,
 				E526CF301792C7F500732FBC /* QUPostUpdateWindowController.xib in Resources */,
 				E5A79F8F173AD7CD006DDA1E /* StatusBlack@2x.png in Resources */,
+				E5EC0C7F17D226FD0063D64B /* QUBufferPreferencesViewController.xib in Resources */,
 				E5C56342179E98B400BBB13B /* Media-2.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -637,6 +648,7 @@
 				E50629601710783300A25452 /* StatusItemView.m in Sources */,
 				E50629611710783300A25452 /* BackgroundView.m in Sources */,
 				E50629751711756000A25452 /* QUSignInWindowController.m in Sources */,
+				E5EC0C7E17D226FD0063D64B /* QUBufferPreferencesViewController.m in Sources */,
 				E5A79F8A17399525006DDA1E /* QUPendingUpdatesViewController.m in Sources */,
 				E5A79F92173AD8A0006DDA1E /* QUPendingTableCellView.m in Sources */,
 				E526CF351795D6FE00732FBC /* QUProfilesCollectionViewItem.m in Sources */,

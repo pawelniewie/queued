@@ -24,6 +24,7 @@
 #import "QUPendingUpdatesViewController.h"
 #import "QUFriendsFetcher.h"
 #import "GeneralPreferencesViewController.h"
+#import "QUBufferPreferencesViewController.h"
 
 @interface QUAppDelegate()
 
@@ -329,7 +330,8 @@ void *kContextActivePanel = &kContextActivePanel;
     if (_preferencesWindowController == nil)
     {
         NSViewController *generalViewController = [GeneralPreferencesViewController new];
-        NSArray *controllers = @[generalViewController];
+        NSViewController *bufferViewController = [QUBufferPreferencesViewController new];
+        NSArray *controllers = @[generalViewController, bufferViewController];
         
         // To add a flexible space between General and Advanced preference panes insert [NSNull null]:
         //     NSArray *controllers = [[NSArray alloc] initWithObjects:generalViewController, [NSNull null], advancedViewController, nil];
