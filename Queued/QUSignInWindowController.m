@@ -27,6 +27,7 @@
 - (void)windowDidLoad
 {
     [super windowDidLoad];
+    [self.window setLevel:NSFloatingWindowLevel];
     [self.window center];
     [self.window makeKeyAndOrderFront:self];
 }

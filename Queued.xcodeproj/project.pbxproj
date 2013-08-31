@@ -187,6 +187,7 @@
 		E5A79F93173AE30D006DDA1E /* QUPendingUpdatesRowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QUPendingUpdatesRowView.h; sourceTree = "<group>"; };
 		E5A79F94173AE30D006DDA1E /* QUPendingUpdatesRowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QUPendingUpdatesRowView.m; sourceTree = "<group>"; };
 		E5C56341179E98B400BBB13B /* Media-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = "Media-2.xcassets"; path = "Queued/Media-2.xcassets"; sourceTree = "<group>"; };
+		E5ED833C17D2246200A471BE /* buffer-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "buffer-512.png"; path = "Queued/Resources/buffer-512.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -349,6 +350,7 @@
 		E506296617107B6300A25452 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E5ED833C17D2246200A471BE /* buffer-512.png */,
 				E5A31AB817D1F66B005DAD50 /* StatusRed.png */,
 				E5A31AB917D1F66B005DAD50 /* StatusRed@2x.png */,
 				E5A79F8C173AD7CD006DDA1E /* StatusBlack.png */,
