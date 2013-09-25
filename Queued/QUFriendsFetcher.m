@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Pawel Niewiadomski. All rights reserved.
 //
 
-@import Accounts;
+#import <Accounts/Accounts.h>
 
 #import <STTwitter/STTwitterAPI.h>
 

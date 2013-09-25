@@ -37,7 +37,7 @@
 	<key>SUEnableSystemProfiling</key>
 	<true/>
 	<key>SUFeedURL</key>
-	<string>http://queuedupdates.appspot.com/updates.xml</string>
+	<string>http://betarun.it/feed/522c084ce9a4c5691a000002</string>
 	<key>SUShowReleaseNotes</key>
 	<true/>
 </dict>

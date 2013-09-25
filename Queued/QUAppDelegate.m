@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 Pawel Niewiadomski. All rights reserved.
 //
 
-@import Accounts;
-@import CoreData;
+#import <Accounts/Accounts.h>
+#import <CoreData/CoreData.h>
 
 #import <Buffered.h>
 #import <BUProfilesMonitor.h>
