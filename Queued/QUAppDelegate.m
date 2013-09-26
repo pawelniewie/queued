@@ -25,6 +25,7 @@
 #import "QUFriendsFetcher.h"
 #import "GeneralPreferencesViewController.h"
 #import "QUBufferPreferencesViewController.h"
+#import "QUBrowserTracker.h"
 
 @interface QUAppDelegate()
 
@@ -84,6 +85,8 @@ void *kContextActivePanel = &kContextActivePanel;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
+    _browserTracker = [QUBrowserTracker new];
+    
     // Install icon into the menu bar
     self.menubarController = [MenubarController new];
     
@@ -92,7 +95,6 @@ void *kContextActivePanel = &kContextActivePanel;
     
     // Execute your block of code automatically when user triggers a shortcut from preferences
     [MASShortcut registerGlobalShortcutWithUserDefaultsKey:kPreferenceGlobalShortcut handler:^{
-//        _panelController.hasActivePanel = YES;
         [self postUpdate:self];
     }];
     
@@ -114,7 +116,7 @@ void *kContextActivePanel = &kContextActivePanel;
     if (!self.hasSignedIn) {
         [self showSignInWindow];
     }
-    }
+}
 
 - (ACAccountStore*) newAccountStore {
     return [ACAccountStore new];

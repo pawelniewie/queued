@@ -39,6 +39,7 @@
 		E526CF301792C7F500732FBC /* QUPostUpdateWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E526CF2E1792C7F500732FBC /* QUPostUpdateWindowController.xib */; };
 		E526CF351795D6FE00732FBC /* QUProfilesCollectionViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E526CF341795D6FE00732FBC /* QUProfilesCollectionViewItem.m */; };
 		E526CF391795D91600732FBC /* QUProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = E526CF381795D91600732FBC /* QUProfileView.m */; };
+		E54DF96717F3F05200A3B080 /* QUBrowserTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = E54DF96617F3F05200A3B080 /* QUBrowserTracker.m */; };
 		E55B9A6B17AD534300453A24 /* QUPostUpdateTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = E55B9A6A17AD534300453A24 /* QUPostUpdateTextView.m */; };
 		E55FBF0E1722D5C000AEC024 /* StatusGreen.png in Resources */ = {isa = PBXBuildFile; fileRef = E55FBF0A1722D5C000AEC024 /* StatusGreen.png */; };
 		E55FBF0F1722D5C000AEC024 /* StatusGreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E55FBF0B1722D5C000AEC024 /* StatusGreen@2x.png */; };
@@ -164,6 +165,8 @@
 		E526CF341795D6FE00732FBC /* QUProfilesCollectionViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QUProfilesCollectionViewItem.m; sourceTree = "<group>"; };
 		E526CF371795D91600732FBC /* QUProfileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QUProfileView.h; sourceTree = "<group>"; };
 		E526CF381795D91600732FBC /* QUProfileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QUProfileView.m; sourceTree = "<group>"; };
+		E54DF96517F3F05200A3B080 /* QUBrowserTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QUBrowserTracker.h; sourceTree = "<group>"; };
+		E54DF96617F3F05200A3B080 /* QUBrowserTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QUBrowserTracker.m; sourceTree = "<group>"; };
 		E55B9A6917AD534300453A24 /* QUPostUpdateTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QUPostUpdateTextView.h; sourceTree = "<group>"; };
 		E55B9A6A17AD534300453A24 /* QUPostUpdateTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QUPostUpdateTextView.m; sourceTree = "<group>"; };
 		E55FBF0A1722D5C000AEC024 /* StatusGreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = StatusGreen.png; path = Queued/Resources/StatusGreen.png; sourceTree = "<group>"; };
@@ -416,6 +419,8 @@
 				E581FE2C1795EDC300B1A2AA /* QUSelectableImageView.m */,
 				E55B9A6917AD534300453A24 /* QUPostUpdateTextView.h */,
 				E55B9A6A17AD534300453A24 /* QUPostUpdateTextView.m */,
+				E54DF96517F3F05200A3B080 /* QUBrowserTracker.h */,
+				E54DF96617F3F05200A3B080 /* QUBrowserTracker.m */,
 			);
 			name = "Post Update Window";
 			sourceTree = "<group>";
@@ -655,6 +660,7 @@
 				E581FE2D1795EDC300B1A2AA /* QUSelectableImageView.m in Sources */,
 				E5A79F95173AE30D006DDA1E /* QUPendingUpdatesRowView.m in Sources */,
 				E526CF391795D91600732FBC /* QUProfileView.m in Sources */,
+				E54DF96717F3F05200A3B080 /* QUBrowserTracker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

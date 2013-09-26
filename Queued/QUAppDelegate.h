@@ -10,8 +10,8 @@
 
 #import "PanelController.h"
 
-@class MenubarController, Buffered, QUSignInWindowController, BUProfilesMonitor, QUPostUpdateWindowController, ACAccountStore, ACAccountType, NSManagedObjectContext, NSManagedObjectModel, NSPersistentStoreCoordinator;
-
+@class MenubarController, Buffered, QUSignInWindowController, BUProfilesMonitor, QUPostUpdateWindowController, QUBrowserTracker;
+@class ACAccountStore, ACAccountType, NSManagedObjectContext, NSManagedObjectModel, NSPersistentStoreCoordinator;
 
 
 @interface QUAppDelegate : NSObject <NSApplicationDelegate, PanelControllerDelegate>
@@ -28,6 +28,7 @@
 
 @property (strong,readonly) ACAccountType* twitterType;
 @property (strong,readonly) ACAccountStore* accountStore;
+@property (strong,readonly) QUBrowserTracker* browserTracker;
 
 @property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;
