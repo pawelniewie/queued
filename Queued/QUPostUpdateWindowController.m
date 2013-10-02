@@ -11,6 +11,7 @@
 
 #import "QUPostUpdateWindowController.h"
 #import "QUAppDelegate.h"
+#import "QUBrowserTracker.h"
 
 @interface QUPostUpdateWindowController ()
 @property (assign) BOOL textInAutocomplete;
@@ -43,6 +44,19 @@
     [_profilesMonitor addObserver:self forKeyPath:@"profiles" options:NSKeyValueObservingOptionNew context:nil];
     [self.profilesCollectionView addObserver:self forKeyPath:@"selectionIndexes" options:NSKeyValueObservingOptionNew context:nil];
     [self.sendingProgressIndicator setHidden:YES];
+}
+
+- (void)windowWillClose:(NSNotification *)notification {
+    [[QUAppDelegate instance] activatePreviousApplication];
+}
+
+- (void)windowDidBecomeKey:(NSNotification *)notification {
+    if ([QUAppDelegate instance].browserTracker.hasSwitchedFromBrowser
+        && [QUAppDelegate instance].browserTracker.browserActiveUrl != nil) {
+        if ([self.text.string length] == 0) {
+            self.text.string = [QUAppDelegate instance].browserTracker.browserActiveUrl;
+        }
+    }
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {

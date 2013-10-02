@@ -6,7 +6,12 @@
 //  Copyright (c) 2013 Pawel Niewiadomski. All rights reserved.
 //
 
+#import "Scripting Bridge/GoogleChrome.h"
+#import "Scripting Bridge/Safari.h"
 #import "QUBrowserTracker.h"
+
+NSString* const SafariBundleId = @"com.apple.Safari";
+NSString* const ChromeBundleId = @"com.google.Chrome";
 
 @implementation QUBrowserTracker
 
@@ -29,14 +34,26 @@
         return;
     }
     self.hasSwitchedFromBrowser = NO;
-    _browserBundleIdentifier = nil;
-    if ([@"com.apple.Safari" isEqualToString: application.bundleIdentifier]) {
+    _browserActiveUrl = nil;
+    if ([SafariBundleId isEqualToString: application.bundleIdentifier]) {
         self.hasSwitchedFromBrowser = YES;
-        _browserBundleIdentifier = @"com.apple.Safari";
+        SafariApplication* safari = [SBApplication applicationWithBundleIdentifier:SafariBundleId];
+        for (SafariWindow *window in safari.windows) {
+            if ([window visible]) {
+                _browserActiveUrl = window.currentTab.URL;
+                break;
+            }
+        }
     }
-    if ([@"com.google.Chrome" isEqualToString:application.bundleIdentifier]) {
+    if ([ChromeBundleId isEqualToString:application.bundleIdentifier]) {
         self.hasSwitchedFromBrowser = YES;
-        _browserBundleIdentifier = @"com.google.Chrome";
+        GoogleChromeApplication *application = [SBApplication applicationWithBundleIdentifier:ChromeBundleId];
+        for (GoogleChromeWindow *window in application.windows) {
+            if ([window visible]) {
+                _browserActiveUrl = ((GoogleChromeTab *)window.tabs[window.activeTabIndex]).URL;
+                break;
+            }
+        }
     }
 }
 

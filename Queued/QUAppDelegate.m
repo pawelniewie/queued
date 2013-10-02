@@ -188,14 +188,23 @@ void *kContextActivePanel = &kContextActivePanel;
 
 #pragma mark - Actions
 
+- (void)activatePreviousApplication {
+    if (self.previousApplication != nil) {
+        [self.previousApplication activateWithOptions:NSApplicationActivateIgnoringOtherApps];
+        _previousApplication = nil;
+    }
+}
+
 - (IBAction)postUpdate:(id)sender
 {
+    _previousApplication = [[NSWorkspace sharedWorkspace] frontmostApplication];
     if (_postUpdateWindow == nil) {
         _postUpdateWindow = [[QUPostUpdateWindowController alloc] initWithBuffered:self.buffered andProfilesMonitor:self.profilesMonitor];
     }
     [_postUpdateWindow.window center];
     [_postUpdateWindow showWindow:self];
     [_postUpdateWindow.window setLevel:NSFloatingWindowLevel];
+    [NSApp activateIgnoringOtherApps:YES];
 }
 
 - (IBAction)togglePanel:(id)sender

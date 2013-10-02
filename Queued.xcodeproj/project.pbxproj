@@ -167,6 +167,8 @@
 		E526CF381795D91600732FBC /* QUProfileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QUProfileView.m; sourceTree = "<group>"; };
 		E54DF96517F3F05200A3B080 /* QUBrowserTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QUBrowserTracker.h; sourceTree = "<group>"; };
 		E54DF96617F3F05200A3B080 /* QUBrowserTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QUBrowserTracker.m; sourceTree = "<group>"; };
+		E54DF96A17F3F2C700A3B080 /* GoogleChrome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleChrome.h; sourceTree = "<group>"; };
+		E54DF96B17F3F2C700A3B080 /* Safari.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Safari.h; sourceTree = "<group>"; };
 		E55B9A6917AD534300453A24 /* QUPostUpdateTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QUPostUpdateTextView.h; sourceTree = "<group>"; };
 		E55B9A6A17AD534300453A24 /* QUPostUpdateTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QUPostUpdateTextView.m; sourceTree = "<group>"; };
 		E55FBF0A1722D5C000AEC024 /* StatusGreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = StatusGreen.png; path = Queued/Resources/StatusGreen.png; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 		E5062921170CACC300A25452 /* Queued */ = {
 			isa = PBXGroup;
 			children = (
+				E54DF96917F3F2C700A3B080 /* Scripting Bridge */,
 				E50EE69D17CF1498008C67EB /* Preferences */,
 				E50EE69C17CF1380008C67EB /* Sign In Window */,
 				E51F38AE17B03E1A00098F6F /* Core Data */,
@@ -423,6 +426,15 @@
 				E54DF96617F3F05200A3B080 /* QUBrowserTracker.m */,
 			);
 			name = "Post Update Window";
+			sourceTree = "<group>";
+		};
+		E54DF96917F3F2C700A3B080 /* Scripting Bridge */ = {
+			isa = PBXGroup;
+			children = (
+				E54DF96A17F3F2C700A3B080 /* GoogleChrome.h */,
+				E54DF96B17F3F2C700A3B080 /* Safari.h */,
+			);
+			path = "Scripting Bridge";
 			sourceTree = "<group>";
 		};
 		E57D729C174D71E300F3F335 /* Products */ = {

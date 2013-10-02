@@ -29,6 +29,7 @@
 @property (strong,readonly) ACAccountType* twitterType;
 @property (strong,readonly) ACAccountStore* accountStore;
 @property (strong,readonly) QUBrowserTracker* browserTracker;
+@property (strong,readonly) NSRunningApplication* previousApplication;
 
 @property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;
@@ -40,6 +41,8 @@
 - (IBAction)togglePanel:(id)sender;
 - (IBAction)reloadPendingUpdates:(id)sender;
 - (void) showSignInWindow;
+
+- (void) activatePreviousApplication;
 
 + (instancetype) instance;
 

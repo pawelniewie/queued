@@ -8,9 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+NSString* const SafariBundleId;
+NSString* const ChromeBundleId;
+
 @interface QUBrowserTracker : NSObject
 
 @property (assign) BOOL hasSwitchedFromBrowser;
-@property (strong, readonly) NSString* browserBundleIdentifier;
+@property (strong, readonly) NSString* browserActiveUrl;
 
 @end
