@@ -29,4 +29,6 @@
 
 - (instancetype) initWithBuffered: (Buffered *) buffered andProfilesMonitor: (BUProfilesMonitor *) profilesMonitor;
 
+- (void)showWindow:(id)sender withUrl: (NSString*) url;
+
 @end

@@ -13,7 +13,6 @@ NSString* const ChromeBundleId;
 
 @interface QUBrowserTracker : NSObject
 
-@property (assign) BOOL hasSwitchedFromBrowser;
-@property (strong, readonly) NSString* browserActiveUrl;
++ (NSString*) browserActiveUrl: (NSRunningApplication *) application;
 
 @end

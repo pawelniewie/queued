@@ -201,9 +201,14 @@ void *kContextActivePanel = &kContextActivePanel;
     if (_postUpdateWindow == nil) {
         _postUpdateWindow = [[QUPostUpdateWindowController alloc] initWithBuffered:self.buffered andProfilesMonitor:self.profilesMonitor];
     }
-    [_postUpdateWindow.window center];
-    [_postUpdateWindow showWindow:self];
-    [_postUpdateWindow.window setLevel:NSFloatingWindowLevel];
+    
+    NSString *browserUrl = [QUBrowserTracker browserActiveUrl:self.previousApplication];
+    if (browserUrl != nil && browserUrl.length > 0) {
+        [_postUpdateWindow showWindow:self withUrl:browserUrl];
+    } else {
+        [_postUpdateWindow showWindow:self];
+    }
+    
     [NSApp activateIgnoringOtherApps:YES];
 }
 
