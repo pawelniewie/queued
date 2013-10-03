@@ -39,6 +39,7 @@
     [self.window center];
     [super showWindow:sender];
     [self.window setLevel:NSFloatingWindowLevel];
+    self.text.string = @"";
 }
 
 - (void)showWindow:(id)sender withUrl: (NSString*) url {
