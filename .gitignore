@@ -1,2 +1,6 @@
 Queued.xcworkspace/xcshareddata/
 *.pyc
+Pods
+LaunchAtLoginHelperApp.xcodeproj/xcuserdata/
+Queued.xcodeproj/xcuserdata/
+Queued.xcworkspace/xcuserdata/

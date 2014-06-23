@@ -8,7 +8,7 @@
 
 
 #import <Buffered.h>
-#import <QUPendingTableCellView.h>
+#import "QUPendingTableCellView.h"
 #import <BUPendingUpdatesMonitor.h>
 
 #import "QUPendingUpdatesViewController.h"

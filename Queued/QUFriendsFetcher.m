@@ -13,6 +13,7 @@
 #import "QUFriendsFetcher.h"
 #import "QUUserSuggestion.h"
 #import "QUAppDelegate.h"
+#import "NSTimer+Blocks.h"
 
 @interface QUFriendsFetcher()
 

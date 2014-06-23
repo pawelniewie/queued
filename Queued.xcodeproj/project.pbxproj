@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		26C1F1A2D6C04E8B829ACEB3 /* libPods-QueuedTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB75A76F3BE4481AA7F86492 /* libPods-QueuedTests.a */; };
 		7498224BF6FD46EDA10835DE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 69B5A34BEE184D338F9F560C /* libPods.a */; };
+		A76C305E194CABE90078B6C1 /* NSTimer+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = A76C305D194CABE90078B6C1 /* NSTimer+Blocks.m */; };
 		E506291C170CACC300A25452 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E506291B170CACC300A25452 /* Cocoa.framework */; };
 		E5062926170CACC300A25452 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E5062924170CACC300A25452 /* InfoPlist.strings */; };
 		E5062928170CACC300A25452 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5062927170CACC300A25452 /* main.m */; };
@@ -111,6 +112,8 @@
 /* Begin PBXFileReference section */
 		06B06D02289C4589BA52ACB5 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		69B5A34BEE184D338F9F560C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A76C305C194CABE90078B6C1 /* NSTimer+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+Blocks.h"; sourceTree = "<group>"; };
+		A76C305D194CABE90078B6C1 /* NSTimer+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+Blocks.m"; sourceTree = "<group>"; };
 		AB75A76F3BE4481AA7F86492 /* libPods-QueuedTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QueuedTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B61CDDC0E3FA46D88F66B8CA /* Pods-QueuedTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QueuedTests.xcconfig"; path = "Pods/Pods-QueuedTests.xcconfig"; sourceTree = SOURCE_ROOT; };
 		E5062918170CACC300A25452 /* Queued.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Queued.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -298,6 +301,8 @@
 				E5264B1417B82AFE006FC221 /* QUFriendsFetcher.m */,
 				E5062930170CACC300A25452 /* MainMenu.xib */,
 				E5062922170CACC300A25452 /* Supporting Files */,
+				A76C305C194CABE90078B6C1 /* NSTimer+Blocks.h */,
+				A76C305D194CABE90078B6C1 /* NSTimer+Blocks.m */,
 			);
 			path = Queued;
 			sourceTree = "<group>";
@@ -503,7 +508,7 @@
 			name = QueuedTests;
 			productName = QueuedTests;
 			productReference = E5062938170CACC400A25452 /* QueuedTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.ocunit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -650,6 +655,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A76C305E194CABE90078B6C1 /* NSTimer+Blocks.m in Sources */,
 				E5A31AB717D128F6005DAD50 /* NSImage+Resize.m in Sources */,
 				E50EE6A117CF14B7008C67EB /* GeneralPreferencesViewController.m in Sources */,
 				E55B9A6B17AD534300453A24 /* QUPostUpdateTextView.m in Sources */,

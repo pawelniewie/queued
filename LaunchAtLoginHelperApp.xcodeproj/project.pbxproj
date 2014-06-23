@@ -133,6 +133,11 @@
 				CLASSPREFIX = TS;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Tim Schröder";
+				TargetAttributes = {
+					2247EC0015A2300E00A5C034 = {
+						DevelopmentTeam = JA5W62VHS5;
+					};
+				};
 			};
 			buildConfigurationList = 2247EBFB15A2300E00A5C034 /* Build configuration list for PBXProject "LaunchAtLoginHelperApp" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -264,11 +269,13 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = LaunchAtLoginHelperApp/LaunchAtLoginHelperApp.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LaunchAtLoginHelperApp/LaunchAtLoginHelperApp-Prefix.pch";
 				INFOPLIST_FILE = "LaunchAtLoginHelperApp/LaunchAtLoginHelperApp-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -278,7 +285,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = LaunchAtLoginHelperApp/LaunchAtLoginHelperApp.entitlements;
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LaunchAtLoginHelperApp/LaunchAtLoginHelperApp-Prefix.pch";
