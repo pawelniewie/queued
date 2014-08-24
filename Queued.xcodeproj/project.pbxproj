@@ -10,7 +10,6 @@
 		26C1F1A2D6C04E8B829ACEB3 /* libPods-QueuedTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB75A76F3BE4481AA7F86492 /* libPods-QueuedTests.a */; };
 		7498224BF6FD46EDA10835DE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 69B5A34BEE184D338F9F560C /* libPods.a */; };
 		A76C305E194CABE90078B6C1 /* NSTimer+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = A76C305D194CABE90078B6C1 /* NSTimer+Blocks.m */; };
-		A7891A5819AA4CFE00C713B9 /* Buffered-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A7891A4619AA4CFE00C713B9 /* Buffered-Info.plist */; };
 		A7891A5919AA4CFE00C713B9 /* Buffered.m in Sources */ = {isa = PBXBuildFile; fileRef = A7891A4919AA4CFE00C713B9 /* Buffered.m */; };
 		A7891A5A19AA4CFE00C713B9 /* BufferOAuthAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = A7891A4B19AA4CFE00C713B9 /* BufferOAuthAuthentication.m */; };
 		A7891A5B19AA4CFE00C713B9 /* BUMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = A7891A4D19AA4CFE00C713B9 /* BUMonitor.m */; };
@@ -122,8 +121,6 @@
 		69B5A34BEE184D338F9F560C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A76C305C194CABE90078B6C1 /* NSTimer+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+Blocks.h"; sourceTree = "<group>"; };
 		A76C305D194CABE90078B6C1 /* NSTimer+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+Blocks.m"; sourceTree = "<group>"; };
-		A7891A4619AA4CFE00C713B9 /* Buffered-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Buffered-Info.plist"; sourceTree = "<group>"; };
-		A7891A4719AA4CFE00C713B9 /* Buffered-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Buffered-Prefix.pch"; sourceTree = "<group>"; };
 		A7891A4819AA4CFE00C713B9 /* Buffered.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Buffered.h; sourceTree = "<group>"; };
 		A7891A4919AA4CFE00C713B9 /* Buffered.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Buffered.m; sourceTree = "<group>"; };
 		A7891A4A19AA4CFE00C713B9 /* BufferOAuthAuthentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BufferOAuthAuthentication.h; sourceTree = "<group>"; };
@@ -259,8 +256,6 @@
 		A7891A4519AA4CFE00C713B9 /* Buffered */ = {
 			isa = PBXGroup;
 			children = (
-				A7891A4619AA4CFE00C713B9 /* Buffered-Info.plist */,
-				A7891A4719AA4CFE00C713B9 /* Buffered-Prefix.pch */,
 				A7891A4819AA4CFE00C713B9 /* Buffered.h */,
 				A7891A4919AA4CFE00C713B9 /* Buffered.m */,
 				A7891A4A19AA4CFE00C713B9 /* BufferOAuthAuthentication.h */,
@@ -625,7 +620,6 @@
 				E5A79F8E173AD7CD006DDA1E /* StatusBlack.png in Resources */,
 				E526CF301792C7F500732FBC /* QUPostUpdateWindowController.xib in Resources */,
 				E5A79F8F173AD7CD006DDA1E /* StatusBlack@2x.png in Resources */,
-				A7891A5819AA4CFE00C713B9 /* Buffered-Info.plist in Resources */,
 				E5EC0C7F17D226FD0063D64B /* QUBufferPreferencesViewController.xib in Resources */,
 				E5C56342179E98B400BBB13B /* Media-2.xcassets in Resources */,
 			);
