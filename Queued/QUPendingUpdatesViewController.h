@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <BUProfilesMonitor.h>
+#import "BUProfilesMonitor.h"
 
 FOUNDATION_EXPORT NSString * const QUProfilesLoadedNotification;
 FOUNDATION_EXPORT NSString * const QUPendingUpdatesLoadedNotification;

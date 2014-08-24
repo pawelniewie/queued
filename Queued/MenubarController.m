@@ -1,5 +1,5 @@
-#import <Buffered.h>
-#import <Model.h>
+#import "Buffered.h"
+#import "Model.h"
 
 #import "MenubarController.h"
 #import "StatusItemView.h"

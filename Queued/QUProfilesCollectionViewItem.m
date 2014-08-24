@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Pawel Niewiadomski. All rights reserved.
 //
 
-#import <Buffered.h>
+#import "Buffered.h"
 
 #import "QUProfilesCollectionViewItem.h"
 #import "QUProfileView.h"

@@ -9,9 +9,9 @@
 #import <Accounts/Accounts.h>
 #import <CoreData/CoreData.h>
 
-#import <Buffered.h>
-#import <BUProfilesMonitor.h>
-#import <BUPendingUpdatesMonitor.h>
+#import "Buffered.h"
+#import "BUProfilesMonitor.h"
+#import "BUPendingUpdatesMonitor.h"
 #import <MASPreferences/MASPreferencesWindowController.h>
 #import <MASShortcut/MASShortcut+UserDefaults.h>
 #import <Sparkle/Sparkle.h>

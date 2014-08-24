@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 Pawel Niewiadomski. All rights reserved.
 //
 
-#import <Buffered.h>
-#import <BUProfilesMonitor.h>
+#import "Buffered.h"
+#import "BUProfilesMonitor.h"
 
 #import "QUPostUpdateWindowController.h"
 #import "QUAppDelegate.h"
