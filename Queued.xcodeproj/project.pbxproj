@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		26C1F1A2D6C04E8B829ACEB3 /* libPods-QueuedTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB75A76F3BE4481AA7F86492 /* libPods-QueuedTests.a */; };
-		7498224BF6FD46EDA10835DE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 69B5A34BEE184D338F9F560C /* libPods.a */; };
 		A76C305E194CABE90078B6C1 /* NSTimer+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = A76C305D194CABE90078B6C1 /* NSTimer+Blocks.m */; };
 		A7891A5919AA4CFE00C713B9 /* Buffered.m in Sources */ = {isa = PBXBuildFile; fileRef = A7891A4919AA4CFE00C713B9 /* Buffered.m */; };
 		A7891A5A19AA4CFE00C713B9 /* BufferOAuthAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = A7891A4B19AA4CFE00C713B9 /* BufferOAuthAuthentication.m */; };
@@ -17,16 +15,13 @@
 		A7891A5D19AA4CFE00C713B9 /* BUPendingUpdatesMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = A7891A5119AA4CFE00C713B9 /* BUPendingUpdatesMonitor.m */; };
 		A7891A5E19AA4CFE00C713B9 /* BUProfilesMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = A7891A5319AA4CFE00C713B9 /* BUProfilesMonitor.m */; };
 		A7891A6019AA4CFE00C713B9 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = A7891A5719AA4CFE00C713B9 /* Model.m */; };
+		AFE73A7EF05805A6E4DE06EA /* libPods-Queued.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35DA55EF7DB94BBB0B09EE64 /* libPods-Queued.a */; };
 		E506291C170CACC300A25452 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E506291B170CACC300A25452 /* Cocoa.framework */; };
 		E5062926170CACC300A25452 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E5062924170CACC300A25452 /* InfoPlist.strings */; };
 		E5062928170CACC300A25452 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5062927170CACC300A25452 /* main.m */; };
 		E506292C170CACC300A25452 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = E506292A170CACC300A25452 /* Credits.rtf */; };
 		E506292F170CACC300A25452 /* QUAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E506292E170CACC300A25452 /* QUAppDelegate.m */; };
 		E5062932170CACC300A25452 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5062930170CACC300A25452 /* MainMenu.xib */; };
-		E506293A170CACC400A25452 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5062939170CACC400A25452 /* SenTestingKit.framework */; };
-		E506293B170CACC400A25452 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E506291B170CACC300A25452 /* Cocoa.framework */; };
-		E5062943170CACC400A25452 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E5062941170CACC400A25452 /* InfoPlist.strings */; };
-		E5062946170CACC400A25452 /* QueuedTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E5062945170CACC400A25452 /* QueuedTests.m */; };
 		E5062957171077F500A25452 /* MenubarController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5062954171077F500A25452 /* MenubarController.m */; };
 		E5062958171077F500A25452 /* PanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5062956171077F500A25452 /* PanelController.m */; };
 		E506295F1710783300A25452 /* Panel.m in Sources */ = {isa = PBXBuildFile; fileRef = E506295A1710783300A25452 /* Panel.m */; };
@@ -75,13 +70,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		E506293C170CACC400A25452 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E5062910170CACC300A25452 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E5062917170CACC300A25452;
-			remoteInfo = Queued;
-		};
 		E57D729F174D71E400F3F335 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E57D729B174D71E300F3F335 /* LaunchAtLoginHelperApp.xcodeproj */;
@@ -117,8 +105,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		06B06D02289C4589BA52ACB5 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
-		69B5A34BEE184D338F9F560C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		31B5138C7C29E58937A0A02C /* Pods-Queued.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Queued.release.xcconfig"; path = "Pods/Target Support Files/Pods-Queued/Pods-Queued.release.xcconfig"; sourceTree = "<group>"; };
+		35DA55EF7DB94BBB0B09EE64 /* libPods-Queued.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Queued.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5253D0FFF512CFF2042D245B /* libPods-QueuedTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QueuedTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A76C305C194CABE90078B6C1 /* NSTimer+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+Blocks.h"; sourceTree = "<group>"; };
 		A76C305D194CABE90078B6C1 /* NSTimer+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+Blocks.m"; sourceTree = "<group>"; };
 		A7891A4819AA4CFE00C713B9 /* Buffered.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Buffered.h; sourceTree = "<group>"; };
@@ -135,8 +124,6 @@
 		A7891A5319AA4CFE00C713B9 /* BUProfilesMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUProfilesMonitor.m; sourceTree = "<group>"; };
 		A7891A5619AA4CFE00C713B9 /* Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
 		A7891A5719AA4CFE00C713B9 /* Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Model.m; sourceTree = "<group>"; };
-		AB75A76F3BE4481AA7F86492 /* libPods-QueuedTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QueuedTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B61CDDC0E3FA46D88F66B8CA /* Pods-QueuedTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QueuedTests.xcconfig"; path = "Pods/Pods-QueuedTests.xcconfig"; sourceTree = SOURCE_ROOT; };
 		E5062918170CACC300A25452 /* Queued.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Queued.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E506291B170CACC300A25452 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		E506291E170CACC300A25452 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -150,12 +137,7 @@
 		E506292D170CACC300A25452 /* QUAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QUAppDelegate.h; sourceTree = "<group>"; };
 		E506292E170CACC300A25452 /* QUAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QUAppDelegate.m; sourceTree = "<group>"; };
 		E5062931170CACC300A25452 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		E5062938170CACC400A25452 /* QueuedTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QueuedTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5062939170CACC400A25452 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		E5062940170CACC400A25452 /* QueuedTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "QueuedTests-Info.plist"; sourceTree = "<group>"; };
-		E5062942170CACC400A25452 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		E5062944170CACC400A25452 /* QueuedTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QueuedTests.h; sourceTree = "<group>"; };
-		E5062945170CACC400A25452 /* QueuedTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QueuedTests.m; sourceTree = "<group>"; };
 		E5062953171077F500A25452 /* MenubarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenubarController.h; sourceTree = "<group>"; };
 		E5062954171077F500A25452 /* MenubarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenubarController.m; sourceTree = "<group>"; };
 		E5062955171077F500A25452 /* PanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanelController.h; sourceTree = "<group>"; };
@@ -223,6 +205,7 @@
 		E5EC0C7C17D226FD0063D64B /* QUBufferPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QUBufferPreferencesViewController.m; sourceTree = "<group>"; };
 		E5EC0C7D17D226FD0063D64B /* QUBufferPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QUBufferPreferencesViewController.xib; sourceTree = "<group>"; };
 		E5ED833C17D2246200A471BE /* BufferLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BufferLogo.png; path = Queued/Resources/BufferLogo.png; sourceTree = "<group>"; };
+		E80B3CDF188260DF4FD0FDFB /* Pods-Queued.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Queued.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Queued/Pods-Queued.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,28 +214,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				E50EE69B17CF116F008C67EB /* Carbon.framework in Frameworks */,
-				7498224BF6FD46EDA10835DE /* libPods.a in Frameworks */,
 				E5264B1217B7A7EF006FC221 /* Accounts.framework in Frameworks */,
 				E5A31AB317D11FEA005DAD50 /* Sparkle.framework in Frameworks */,
 				E5264B1117B7A7E9006FC221 /* Social.framework in Frameworks */,
 				E57D72A4174D72F700F3F335 /* ServiceManagement.framework in Frameworks */,
 				E506291C170CACC300A25452 /* Cocoa.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E5062934170CACC400A25452 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E506293A170CACC400A25452 /* SenTestingKit.framework in Frameworks */,
-				E506293B170CACC400A25452 /* Cocoa.framework in Frameworks */,
-				26C1F1A2D6C04E8B829ACEB3 /* libPods-QueuedTests.a in Frameworks */,
+				AFE73A7EF05805A6E4DE06EA /* libPods-Queued.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		11DA894E1F36C7059C8FF9DC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E80B3CDF188260DF4FD0FDFB /* Pods-Queued.debug.xcconfig */,
+				31B5138C7C29E58937A0A02C /* Pods-Queued.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		A7891A4519AA4CFE00C713B9 /* Buffered */ = {
 			isa = PBXGroup;
 			children = (
@@ -281,11 +263,9 @@
 				E57D729B174D71E300F3F335 /* LaunchAtLoginHelperApp.xcodeproj */,
 				E506296617107B6300A25452 /* Resources */,
 				E5062921170CACC300A25452 /* Queued */,
-				E506293E170CACC400A25452 /* QueuedTests */,
 				E506291A170CACC300A25452 /* Frameworks */,
 				E5062919170CACC300A25452 /* Products */,
-				B61CDDC0E3FA46D88F66B8CA /* Pods-QueuedTests.xcconfig */,
-				06B06D02289C4589BA52ACB5 /* Pods.xcconfig */,
+				11DA894E1F36C7059C8FF9DC /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -293,7 +273,6 @@
 			isa = PBXGroup;
 			children = (
 				E5062918170CACC300A25452 /* Queued.app */,
-				E5062938170CACC400A25452 /* QueuedTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -310,8 +289,8 @@
 				E506291B170CACC300A25452 /* Cocoa.framework */,
 				E5062939170CACC400A25452 /* SenTestingKit.framework */,
 				E506291D170CACC300A25452 /* Other Frameworks */,
-				AB75A76F3BE4481AA7F86492 /* libPods-QueuedTests.a */,
-				69B5A34BEE184D338F9F560C /* libPods.a */,
+				5253D0FFF512CFF2042D245B /* libPods-QueuedTests.a */,
+				35DA55EF7DB94BBB0B09EE64 /* libPods-Queued.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -358,25 +337,6 @@
 				E5062927170CACC300A25452 /* main.m */,
 				E5062929170CACC300A25452 /* Queued-Prefix.pch */,
 				E506292A170CACC300A25452 /* Credits.rtf */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		E506293E170CACC400A25452 /* QueuedTests */ = {
-			isa = PBXGroup;
-			children = (
-				E5062944170CACC400A25452 /* QueuedTests.h */,
-				E5062945170CACC400A25452 /* QueuedTests.m */,
-				E506293F170CACC400A25452 /* Supporting Files */,
-			);
-			path = QueuedTests;
-			sourceTree = "<group>";
-		};
-		E506293F170CACC400A25452 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				E5062940170CACC400A25452 /* QueuedTests-Info.plist */,
-				E5062941170CACC400A25452 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -516,13 +476,16 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E5062949170CACC400A25452 /* Build configuration list for PBXNativeTarget "Queued" */;
 			buildPhases = (
+				AA637140C0B1EA6C76F1F99F /* 📦 Check Pods Manifest.lock */,
 				E5062914170CACC300A25452 /* Sources */,
 				E5062915170CACC300A25452 /* Frameworks */,
 				E5062916170CACC300A25452 /* Resources */,
 				E55359621732F5460087973E /* Set Build Versions */,
-				233303D341144BF49F6CCE01 /* Copy Pods Resources */,
 				E553595D1732A2CC0087973E /* Copy Frameworks */,
 				E57D72A1174D725100F3F335 /* Copy LaunchAtLoginHelperApp */,
+				78E781411AF5FB732EA74FF1 /* 📦 Embed Pods Frameworks */,
+				F5A124B480CC177BF3FCF320 /* 📦 Copy Pods Resources */,
+				E5F0698B1CA09D99004C2F8B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -533,26 +496,6 @@
 			productReference = E5062918170CACC300A25452 /* Queued.app */;
 			productType = "com.apple.product-type.application";
 		};
-		E5062937170CACC400A25452 /* QueuedTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E506294C170CACC400A25452 /* Build configuration list for PBXNativeTarget "QueuedTests" */;
-			buildPhases = (
-				E5062933170CACC400A25452 /* Sources */,
-				E5062934170CACC400A25452 /* Frameworks */,
-				E5062935170CACC400A25452 /* Resources */,
-				E5062936170CACC400A25452 /* ShellScript */,
-				097C84912D7C479DAA18FE0E /* Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				E506293D170CACC400A25452 /* PBXTargetDependency */,
-			);
-			name = QueuedTests;
-			productName = QueuedTests;
-			productReference = E5062938170CACC400A25452 /* QueuedTests.octest */;
-			productType = "com.apple.product-type.bundle.ocunit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -562,6 +505,11 @@
 				CLASSPREFIX = QU;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Pawel Niewiadomski";
+				TargetAttributes = {
+					E5062917170CACC300A25452 = {
+						DevelopmentTeam = WS5JK9MLTF;
+					};
+				};
 			};
 			buildConfigurationList = E5062913170CACC300A25452 /* Build configuration list for PBXProject "Queued" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -582,7 +530,6 @@
 			projectRoot = "";
 			targets = (
 				E5062917170CACC300A25452 /* Queued */,
-				E5062937170CACC400A25452 /* QueuedTests */,
 			);
 		};
 /* End PBXProject section */
@@ -625,57 +572,38 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E5062935170CACC400A25452 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E5062943170CACC400A25452 /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		097C84912D7C479DAA18FE0E /* Copy Pods Resources */ = {
+		78E781411AF5FB732EA74FF1 /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "📦 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-QueuedTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Queued/Pods-Queued-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
-		233303D341144BF49F6CCE01 /* Copy Pods Resources */ = {
+		AA637140C0B1EA6C76F1F99F /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
-		};
-		E5062936170CACC400A25452 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
 		};
 		E55359621732F5460087973E /* Set Build Versions */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -690,6 +618,34 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/xcode-git-version.sh\"\n";
+		};
+		E5F0698B1CA09D99004C2F8B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "LOCATION=\"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}\"\n\n# Usually set by Xcode\nCODE_SIGN_IDENTITY=\"Mac Developer: 11110000b@gmail.com (4F566R25E2)\"\n\ncodesign --verbose --force --sign \"$CODE_SIGN_IDENTITY\" \"$LOCATION/Sparkle.framework/Versions/A\"";
+		};
+		F5A124B480CC177BF3FCF320 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Queued/Pods-Queued-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -732,23 +688,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E5062933170CACC400A25452 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E5062946170CACC400A25452 /* QueuedTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		E506293D170CACC400A25452 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E5062917170CACC300A25452 /* Queued */;
-			targetProxy = E506293C170CACC400A25452 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		E5062924170CACC300A25452 /* InfoPlist.strings */ = {
@@ -773,14 +713,6 @@
 				E5062931170CACC300A25452 /* en */,
 			);
 			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-		E5062941170CACC400A25452 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E5062942170CACC400A25452 /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -845,7 +777,7 @@
 		};
 		E506294A170CACC400A25452 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 06B06D02289C4589BA52ACB5 /* Pods.xcconfig */;
+			baseConfigurationReference = E80B3CDF188260DF4FD0FDFB /* Pods-Queued.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -853,6 +785,7 @@
 				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = NO;
 				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = NO;
 				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -861,19 +794,6 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Queued/Queued-Prefix.pch";
 				INFOPLIST_FILE = "Queued/Queued-Info.plist";
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-all_load",
-					"-lffi",
-					"-framework",
-					Cocoa,
-					"-framework",
-					Security,
-					"-framework",
-					SystemConfiguration,
-					"-framework",
-					WebKit,
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -882,7 +802,7 @@
 		};
 		E506294B170CACC400A25452 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 06B06D02289C4589BA52ACB5 /* Pods.xcconfig */;
+			baseConfigurationReference = 31B5138C7C29E58937A0A02C /* Pods-Queued.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -890,6 +810,7 @@
 				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = NO;
 				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = NO;
 				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -898,60 +819,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Queued/Queued-Prefix.pch";
 				INFOPLIST_FILE = "Queued/Queued-Info.plist";
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-all_load",
-					"-lffi",
-					"-framework",
-					Cocoa,
-					"-framework",
-					Security,
-					"-framework",
-					SystemConfiguration,
-					"-framework",
-					WebKit,
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
-		E506294D170CACC400A25452 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B61CDDC0E3FA46D88F66B8CA /* Pods-QueuedTests.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Queued.app/Contents/MacOS/Queued";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherit)",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Queued/Queued-Prefix.pch";
-				INFOPLIST_FILE = "QueuedTests/QueuedTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Debug;
-		};
-		E506294E170CACC400A25452 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B61CDDC0E3FA46D88F66B8CA /* Pods-QueuedTests.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Queued.app/Contents/MacOS/Queued";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherit)",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Queued/Queued-Prefix.pch";
-				INFOPLIST_FILE = "QueuedTests/QueuedTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
@@ -972,15 +842,6 @@
 			buildConfigurations = (
 				E506294A170CACC400A25452 /* Debug */,
 				E506294B170CACC400A25452 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E506294C170CACC400A25452 /* Build configuration list for PBXNativeTarget "QueuedTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E506294D170CACC400A25452 /* Debug */,
-				E506294E170CACC400A25452 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

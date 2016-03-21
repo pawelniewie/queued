@@ -1,6 +1,6 @@
 #import <ServiceManagement/ServiceManagement.h>
 
-#import <MASShortcut/MASShortcutView+UserDefaults.h>
+#import <MASShortcut/Shortcut.h>
 
 #import "GeneralPreferencesViewController.h"
 

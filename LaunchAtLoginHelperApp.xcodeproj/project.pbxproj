@@ -13,9 +13,11 @@
 		2247EC1615A2300E00A5C034 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2247EC1415A2300E00A5C034 /* Credits.rtf */; };
 		2247EC1915A2300E00A5C034 /* TSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2247EC1815A2300E00A5C034 /* TSAppDelegate.m */; };
 		2247EC1C15A2300F00A5C034 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2247EC1A15A2300F00A5C034 /* MainMenu.xib */; };
+		F7B2877A9B88C3268545C342 /* libPods-Queued Helper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 69141313031AA56EDB9DE843 /* libPods-Queued Helper.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1ED6D7F76AB67A65DEEBDE47 /* Pods-Queued Helper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Queued Helper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Queued Helper/Pods-Queued Helper.debug.xcconfig"; sourceTree = "<group>"; };
 		2247EC0115A2300E00A5C034 /* Queued Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Queued Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2247EC0515A2300E00A5C034 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		2247EC0815A2300E00A5C034 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -30,6 +32,8 @@
 		2247EC1815A2300E00A5C034 /* TSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSAppDelegate.m; sourceTree = "<group>"; };
 		2247EC1B15A2300F00A5C034 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		2247EC6915A236FC00A5C034 /* LaunchAtLoginHelperApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = LaunchAtLoginHelperApp.entitlements; sourceTree = "<group>"; };
+		69141313031AA56EDB9DE843 /* libPods-Queued Helper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Queued Helper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F33647F0B91F007288E172DE /* Pods-Queued Helper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Queued Helper.release.xcconfig"; path = "Pods/Target Support Files/Pods-Queued Helper/Pods-Queued Helper.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +42,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2247EC0615A2300E00A5C034 /* Cocoa.framework in Frameworks */,
+				F7B2877A9B88C3268545C342 /* libPods-Queued Helper.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +55,7 @@
 				2247EC0B15A2300E00A5C034 /* LaunchAtLoginHelperApp */,
 				2247EC0415A2300E00A5C034 /* Frameworks */,
 				2247EC0215A2300E00A5C034 /* Products */,
+				C334769AA41876366D40BDD1 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -66,6 +72,7 @@
 			children = (
 				2247EC0515A2300E00A5C034 /* Cocoa.framework */,
 				2247EC0715A2300E00A5C034 /* Other Frameworks */,
+				69141313031AA56EDB9DE843 /* libPods-Queued Helper.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -104,6 +111,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		C334769AA41876366D40BDD1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1ED6D7F76AB67A65DEEBDE47 /* Pods-Queued Helper.debug.xcconfig */,
+				F33647F0B91F007288E172DE /* Pods-Queued Helper.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -111,9 +127,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2247EC1F15A2300F00A5C034 /* Build configuration list for PBXNativeTarget "Queued Helper" */;
 			buildPhases = (
+				168D37AACE1A98AD021E7574 /* 📦 Check Pods Manifest.lock */,
 				2247EBFD15A2300E00A5C034 /* Sources */,
 				2247EBFE15A2300E00A5C034 /* Frameworks */,
 				2247EBFF15A2300E00A5C034 /* Resources */,
+				63EA6608ADC7DEF761374860 /* 📦 Embed Pods Frameworks */,
+				A74516880D05C431CD4E31B6 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -135,7 +154,7 @@
 				ORGANIZATIONNAME = "Tim Schröder";
 				TargetAttributes = {
 					2247EC0015A2300E00A5C034 = {
-						DevelopmentTeam = JA5W62VHS5;
+						DevelopmentTeam = WS5JK9MLTF;
 					};
 				};
 			};
@@ -168,6 +187,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		168D37AACE1A98AD021E7574 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		63EA6608ADC7DEF761374860 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Queued Helper/Pods-Queued Helper-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A74516880D05C431CD4E31B6 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Queued Helper/Pods-Queued Helper-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2247EBFD15A2300E00A5C034 /* Sources */ = {
@@ -266,6 +333,7 @@
 		};
 		2247EC2015A2300F00A5C034 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1ED6D7F76AB67A65DEEBDE47 /* Pods-Queued Helper.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = LaunchAtLoginHelperApp/LaunchAtLoginHelperApp.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
@@ -283,6 +351,7 @@
 		};
 		2247EC2115A2300F00A5C034 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F33647F0B91F007288E172DE /* Pods-Queued Helper.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = LaunchAtLoginHelperApp/LaunchAtLoginHelperApp.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";

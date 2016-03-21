@@ -1,6 +1,6 @@
 PODS:
   - BlocksKit (2.2.5):
-    - BlocksKit/All
+    - BlocksKit/All (= 2.2.5)
   - BlocksKit/All (2.2.5):
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
@@ -8,59 +8,54 @@ PODS:
     - BlocksKit/UIKit
   - BlocksKit/Core (2.2.5)
   - BlocksKit/DynamicDelegate (2.2.5)
-  - gtm-oauth2 (0.1.0):
-    - GTMHTTPFetcher
-  - GTMHTTPFetcher (0.1.0)
-  - Kiwi (2.3.0)
-  - MASPreferences (1.1)
-  - MASShortcut (1.2.3)
-  - OCMock (3.1.1)
-  - STTwitter (0.0.4)
-  - TransformerKit (0.5.3):
+  - gtm-http-fetcher (1.0.141)
+  - gtm-oauth2 (1.0.126):
+    - gtm-http-fetcher (~> 1.0.141)
+  - MASPreferences (1.1.2)
+  - MASShortcut (2.3.3)
+  - Sparkle (1.14.0)
+  - STTwitter (0.2.3)
+  - TransformerKit (0.5.4):
+    - TransformerKit/Core (= 0.5.4)
+    - TransformerKit/Cryptography (= 0.5.4)
+    - TransformerKit/Data (= 0.5.4)
+    - TransformerKit/Date (= 0.5.4)
+    - TransformerKit/Image (= 0.5.4)
+    - TransformerKit/JSON (= 0.5.4)
+    - TransformerKit/String (= 0.5.4)
+  - TransformerKit/Core (0.5.4)
+  - TransformerKit/Cryptography (0.5.4):
     - TransformerKit/Core
-    - TransformerKit/Cryptography
-    - TransformerKit/Data
-    - TransformerKit/Date
-    - TransformerKit/Image
-    - TransformerKit/JSON
-    - TransformerKit/String
-  - TransformerKit/Core (0.5.3)
-  - TransformerKit/Cryptography (0.5.3):
+  - TransformerKit/Data (0.5.4):
     - TransformerKit/Core
-  - TransformerKit/Data (0.5.3):
+  - TransformerKit/Date (0.5.4):
     - TransformerKit/Core
-  - TransformerKit/Date (0.5.3):
+  - TransformerKit/Image (0.5.4):
     - TransformerKit/Core
-  - TransformerKit/Image (0.5.3):
+  - TransformerKit/JSON (0.5.4):
     - TransformerKit/Core
-  - TransformerKit/JSON (0.5.3):
-    - TransformerKit/Core
-  - TransformerKit/String (0.5.3):
+  - TransformerKit/String (0.5.4):
     - TransformerKit/Core
 
 DEPENDENCIES:
   - BlocksKit
   - gtm-oauth2
-  - Kiwi
   - MASPreferences
   - MASShortcut
-  - OCMock
-  - STTwitter (from `/Users/pawel/Development/STTwitter`)
+  - Sparkle
+  - STTwitter
   - TransformerKit
 
-EXTERNAL SOURCES:
-  STTwitter:
-    :path: /Users/pawel/Development/STTwitter
-
 SPEC CHECKSUMS:
-  BlocksKit: 4439e7f30a9f90743462ca63545a15c1f4304cef
-  gtm-oauth2: 64f2d404a50676ab63b5437a02a7567da8f8b7fa
-  GTMHTTPFetcher: 0f02d5a5803dd08736462981064de6a7f59cf9bd
-  Kiwi: 54bece5b35564d9b8e03c608d926f1a22fcfc589
-  MASPreferences: 971d03da4b3818f8ea0d0ef10b86b02b2c052d17
-  MASShortcut: e5e47bf0367e77f2c4089b4edc4c8143f3106eed
-  OCMock: f6cb8c162ab9d5620dddf411282c7b2c0ee78854
-  STTwitter: 7b6afdbcce0d7039e585d9edef877040b4dcdf0b
-  TransformerKit: a8aebc6772d867a727bec50134aa706cf0ce5949
+  BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
+  gtm-http-fetcher: 6d4617e7d343b6e4c082b777541c334eb6f5d81e
+  gtm-oauth2: 2a18b824e4f8a02df6cfe987beb59ae9d9697f9d
+  MASPreferences: 32d8a2c5ef1d60b63240f5676b011ff72e194cb1
+  MASShortcut: 38a76c9ea927de770c0a97ae28b15d18d6268b24
+  Sparkle: ccd95233b12a3e3d4eeb55ff01dd4c8bb8188b07
+  STTwitter: 77386cb6f1807fbfc0e321b9233bdecc9786195d
+  TransformerKit: 0a235de1030a23d47c86706c0316b4a0c7105d73
 
-COCOAPODS: 0.33.1
+PODFILE CHECKSUM: 7090fe29acd0c6afb9e615cd8854bc49a8a6cbf8
+
+COCOAPODS: 1.0.0.beta.6

@@ -13,7 +13,7 @@
 #import "BUProfilesMonitor.h"
 #import "BUPendingUpdatesMonitor.h"
 #import <MASPreferences/MASPreferencesWindowController.h>
-#import <MASShortcut/MASShortcut+UserDefaults.h>
+#import <MASShortcut/Shortcut.h>
 #import <Sparkle/Sparkle.h>
 #import <STTwitter/STTwitterAPI.h>
 
@@ -94,7 +94,7 @@ void *kContextActivePanel = &kContextActivePanel;
     [_panelController addObserver:self forKeyPath:@"hasActivePanel" options:0 context:kContextActivePanel];
     
     // Execute your block of code automatically when user triggers a shortcut from preferences
-    [MASShortcut registerGlobalShortcutWithUserDefaultsKey:kPreferenceGlobalShortcut handler:^{
+    [[MASShortcutBinder sharedBinder] bindShortcutWithDefaultsKey:kPreferenceGlobalShortcut toAction:^{
         [self postUpdate:self];
     }];
     

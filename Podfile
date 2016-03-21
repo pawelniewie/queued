@@ -1,14 +1,17 @@
 platform :osx, '10.8'
-xcodeproj "Queued.xcodeproj"
+workspace 'Queued.xcworkspace'
 
-pod 'gtm-oauth2'
-pod 'STTwitter', :path => "/Users/pawel/Development/STTwitter"
-pod 'BlocksKit'
-pod 'TransformerKit'
-pod 'MASShortcut'
-pod 'MASPreferences'
+target :Queued do
+	project 'Queued'
+	pod 'gtm-oauth2'
+	pod 'STTwitter'
+	pod 'BlocksKit'
+	pod 'TransformerKit'
+	pod 'MASShortcut'
+	pod 'MASPreferences'
+	pod 'Sparkle'
+end
 
-target :QueuedTests, :exclusive => true do
-	pod 'OCMock'
-	pod 'Kiwi'
+target 'Queued Helper' do
+	project 'LaunchAtLoginHelperApp'
 end

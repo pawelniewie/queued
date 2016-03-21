@@ -27,12 +27,12 @@
 @implementation QUFriendsFetcher
 
 - (void) startFetching {
-    [self.twitterApi getFriendsListForUserID:nil
-                           orScreenName:self.account.username
-                                 cursor:nil
-                             skipStatus:@(YES)
-                    includeUserEntities:@(NO)
-                           successBlock:self.friendsHandler errorBlock:self.friendsErrorHandler];
+//    [self.twitterApi getFriendsListForUserID:nil
+//                           orScreenName:self.account.username
+//                                 cursor:nil
+//                             skipStatus:@(YES)
+//                    includeUserEntities:@(NO)
+//                           successBlock:self.friendsHandler errorBlock:self.friendsErrorHandler];
 }
 
 - (instancetype) initWithAccount: (ACAccount *) account {
@@ -85,12 +85,12 @@
                 __weak void(^weakHandler)(NSArray *friends, NSString *previousCursor, NSString *nextCursor) = weakSelf.friendsHandler;
                 __weak void(^errorHandler)(NSError *error) = weakSelf.friendsErrorHandler;
                 [NSTimer scheduledTimerWithTimeInterval:61 block:^(NSTimeInterval time) {
-                    [weakSelf.twitterApi getFriendsListForUserID:nil
-                                           orScreenName:account.username
-                                                 cursor:nextCursor
-                                             skipStatus:@(YES)
-                                    includeUserEntities:@(NO)
-                                           successBlock:weakHandler errorBlock:errorHandler];
+//                    [weakSelf.twitterApi getFriendsListForUserID:nil
+//                                           orScreenName:account.username
+//                                                 cursor:nextCursor
+//                                             skipStatus:@(YES)
+//                                    includeUserEntities:@(NO)
+//                                           successBlock:weakHandler errorBlock:errorHandler];
                 } repeats:NO];
             }
         } copy];
