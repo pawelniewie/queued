@@ -8,13 +8,14 @@
 
 #import <Cocoa/Cocoa.h>
 
+#import <Sparkle/Sparkle.h>
+
 #import "PanelController.h"
 
 @class MenubarController, Buffered, QUSignInWindowController, BUProfilesMonitor, QUPostUpdateWindowController, QUBrowserTracker;
 @class ACAccountStore, ACAccountType, NSManagedObjectContext, NSManagedObjectModel, NSPersistentStoreCoordinator;
 
-
-@interface QUAppDelegate : NSObject <NSApplicationDelegate, PanelControllerDelegate>
+@interface QUAppDelegate : NSObject <NSApplicationDelegate, PanelControllerDelegate, SUUpdaterDelegate>
 
 @property (nonatomic, strong) MenubarController *menubarController;
 @property (nonatomic, strong, readonly) PanelController *panelController;

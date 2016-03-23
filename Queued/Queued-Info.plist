@@ -37,7 +37,7 @@
 	<key>SUEnableSystemProfiling</key>
 	<true/>
 	<key>SUFeedURL</key>
-	<string>http://betarun.it/feed/522c084ce9a4c5691a000002</string>
+	<string>https://rink.hockeyapp.net/api/2/apps/40a557d858214c6b804f0dda322c40db</string>
 	<key>SUShowReleaseNotes</key>
 	<true/>
 </dict>

@@ -15,7 +15,6 @@
 
 #import <MASPreferences/MASPreferencesWindowController.h>
 #import <MASShortcut/Shortcut.h>
-#import <Sparkle/Sparkle.h>
 #import <STTwitter/STTwitterAPI.h>
 #import <HockeySDK/HockeySDK.h>
 
@@ -83,6 +82,12 @@ void *kContextActivePanel = &kContextActivePanel;
 
 -(void) applicationWillFinishLaunching:(NSNotification *)notification {
     [SUUpdater sharedUpdater].sendsSystemProfile = YES;
+    [SUUpdater sharedUpdater].delegate = self;
+}
+
+- (NSArray *)feedParametersForUpdater:(SUUpdater *)updater
+                 sendingSystemProfile:(BOOL)sendingProfile {
+    return [[BITSystemProfile sharedSystemProfile] systemUsageData];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
