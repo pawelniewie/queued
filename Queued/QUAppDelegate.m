@@ -12,10 +12,12 @@
 #import "Buffered.h"
 #import "BUProfilesMonitor.h"
 #import "BUPendingUpdatesMonitor.h"
+
 #import <MASPreferences/MASPreferencesWindowController.h>
 #import <MASShortcut/Shortcut.h>
 #import <Sparkle/Sparkle.h>
 #import <STTwitter/STTwitterAPI.h>
+#import <HockeySDK/HockeySDK.h>
 
 #import "MenubarController.h"
 #import "QUAppDelegate.h"
@@ -85,6 +87,9 @@ void *kContextActivePanel = &kContextActivePanel;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
+    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"40a557d858214c6b804f0dda322c40db"];
+    [[BITHockeyManager sharedHockeyManager] startManager];
+    
     _browserTracker = [QUBrowserTracker new];
     
     // Install icon into the menu bar

@@ -42,6 +42,7 @@
 		E526CF301792C7F500732FBC /* QUPostUpdateWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E526CF2E1792C7F500732FBC /* QUPostUpdateWindowController.xib */; };
 		E526CF351795D6FE00732FBC /* QUProfilesCollectionViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E526CF341795D6FE00732FBC /* QUProfilesCollectionViewItem.m */; };
 		E526CF391795D91600732FBC /* QUProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = E526CF381795D91600732FBC /* QUProfileView.m */; };
+		E54B28AE1CA26CBC000B816E /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E54B28AD1CA26CBC000B816E /* HockeySDK.framework */; };
 		E54DF96717F3F05200A3B080 /* QUBrowserTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = E54DF96617F3F05200A3B080 /* QUBrowserTracker.m */; };
 		E55B9A6B17AD534300453A24 /* QUPostUpdateTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = E55B9A6A17AD534300453A24 /* QUPostUpdateTextView.m */; };
 		E55FBF0E1722D5C000AEC024 /* StatusGreen.png in Resources */ = {isa = PBXBuildFile; fileRef = E55FBF0A1722D5C000AEC024 /* StatusGreen.png */; };
@@ -53,7 +54,7 @@
 		E57D72A4174D72F700F3F335 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E57D72A3174D72F700F3F335 /* ServiceManagement.framework */; };
 		E581FE2D1795EDC300B1A2AA /* QUSelectableImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = E581FE2C1795EDC300B1A2AA /* QUSelectableImageView.m */; };
 		E5A31AB317D11FEA005DAD50 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A31AB217D11FEA005DAD50 /* Sparkle.framework */; };
-		E5A31AB417D11FF5005DAD50 /* Sparkle.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = E5A31AB217D11FEA005DAD50 /* Sparkle.framework */; };
+		E5A31AB417D11FF5005DAD50 /* Sparkle.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = E5A31AB217D11FEA005DAD50 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		E5A31AB717D128F6005DAD50 /* NSImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A31AB617D128F5005DAD50 /* NSImage+Resize.m */; };
 		E5A31ABA17D1F66B005DAD50 /* StatusRed.png in Resources */ = {isa = PBXBuildFile; fileRef = E5A31AB817D1F66B005DAD50 /* StatusRed.png */; };
 		E5A31ABB17D1F66B005DAD50 /* StatusRed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5A31AB917D1F66B005DAD50 /* StatusRed@2x.png */; };
@@ -171,6 +172,7 @@
 		E526CF341795D6FE00732FBC /* QUProfilesCollectionViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QUProfilesCollectionViewItem.m; sourceTree = "<group>"; };
 		E526CF371795D91600732FBC /* QUProfileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QUProfileView.h; sourceTree = "<group>"; };
 		E526CF381795D91600732FBC /* QUProfileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QUProfileView.m; sourceTree = "<group>"; };
+		E54B28AD1CA26CBC000B816E /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HockeySDK.framework; path = "HockeySDK-Mac/HockeySDK.framework"; sourceTree = "<group>"; };
 		E54DF96517F3F05200A3B080 /* QUBrowserTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QUBrowserTracker.h; sourceTree = "<group>"; };
 		E54DF96617F3F05200A3B080 /* QUBrowserTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QUBrowserTracker.m; sourceTree = "<group>"; };
 		E54DF96A17F3F2C700A3B080 /* GoogleChrome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleChrome.h; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				E5264B1217B7A7EF006FC221 /* Accounts.framework in Frameworks */,
 				E5A31AB317D11FEA005DAD50 /* Sparkle.framework in Frameworks */,
 				E5264B1117B7A7E9006FC221 /* Social.framework in Frameworks */,
+				E54B28AE1CA26CBC000B816E /* HockeySDK.framework in Frameworks */,
 				E57D72A4174D72F700F3F335 /* ServiceManagement.framework in Frameworks */,
 				E506291C170CACC300A25452 /* Cocoa.framework in Frameworks */,
 				AFE73A7EF05805A6E4DE06EA /* libPods-Queued.a in Frameworks */,
@@ -280,6 +283,7 @@
 		E506291A170CACC300A25452 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E54B28AD1CA26CBC000B816E /* HockeySDK.framework */,
 				E5A31AB217D11FEA005DAD50 /* Sparkle.framework */,
 				E50EE69A17CF116F008C67EB /* Carbon.framework */,
 				E50EE69717CF10EE008C67EB /* EventKit.framework */,
@@ -503,7 +507,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = QU;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Pawel Niewiadomski";
 				TargetAttributes = {
 					E5062917170CACC300A25452 = {
@@ -731,6 +735,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -789,11 +794,13 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					"$(PROJECT_DIR)/HockeySDK-Mac",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Queued/Queued-Prefix.pch";
 				INFOPLIST_FILE = "Queued/Queued-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pawelniewiadomski.Queued;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -814,11 +821,13 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					"$(PROJECT_DIR)/HockeySDK-Mac",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Queued/Queued-Prefix.pch";
 				INFOPLIST_FILE = "Queued/Queued-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pawelniewiadomski.Queued;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;

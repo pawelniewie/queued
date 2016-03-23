@@ -11,6 +11,7 @@ PODS:
   - gtm-http-fetcher (1.0.141)
   - gtm-oauth2 (1.0.126):
     - gtm-http-fetcher (~> 1.0.141)
+  - HockeySDK-Mac (3.2.1)
   - MASPreferences (1.1.2)
   - MASShortcut (2.3.3)
   - Sparkle (1.14.0)
@@ -40,6 +41,7 @@ PODS:
 DEPENDENCIES:
   - BlocksKit
   - gtm-oauth2
+  - HockeySDK-Mac
   - MASPreferences
   - MASShortcut
   - Sparkle
@@ -50,12 +52,13 @@ SPEC CHECKSUMS:
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
   gtm-http-fetcher: 6d4617e7d343b6e4c082b777541c334eb6f5d81e
   gtm-oauth2: 2a18b824e4f8a02df6cfe987beb59ae9d9697f9d
+  HockeySDK-Mac: 60d0dd1784d73e5ab54a577f7b3fd69acb040c1c
   MASPreferences: 32d8a2c5ef1d60b63240f5676b011ff72e194cb1
   MASShortcut: 38a76c9ea927de770c0a97ae28b15d18d6268b24
   Sparkle: ccd95233b12a3e3d4eeb55ff01dd4c8bb8188b07
   STTwitter: 77386cb6f1807fbfc0e321b9233bdecc9786195d
   TransformerKit: 0a235de1030a23d47c86706c0316b4a0c7105d73
 
-PODFILE CHECKSUM: 7090fe29acd0c6afb9e615cd8854bc49a8a6cbf8
+PODFILE CHECKSUM: c8e42a563c58c4a38290f048dc878ca66825ab75
 
 COCOAPODS: 1.0.0.beta.6
