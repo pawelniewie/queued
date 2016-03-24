@@ -11,6 +11,7 @@ target :Queued do
 	pod 'MASPreferences'
 	pod 'Sparkle'
 	pod "HockeySDK-Mac"
+	pod 'UAObfuscatedString'
 end
 
 target 'Queued Helper' do

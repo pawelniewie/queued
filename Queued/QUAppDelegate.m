@@ -17,6 +17,7 @@
 #import <MASShortcut/Shortcut.h>
 #import <STTwitter/STTwitterAPI.h>
 #import <HockeySDK/HockeySDK.h>
+#import <UAObfuscatedString/UAObfuscatedString.h>
 
 #import "MenubarController.h"
 #import "QUAppDelegate.h"
