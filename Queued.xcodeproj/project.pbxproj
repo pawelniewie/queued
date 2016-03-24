@@ -43,6 +43,7 @@
 		E526CF351795D6FE00732FBC /* QUProfilesCollectionViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E526CF341795D6FE00732FBC /* QUProfilesCollectionViewItem.m */; };
 		E526CF391795D91600732FBC /* QUProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = E526CF381795D91600732FBC /* QUProfileView.m */; };
 		E54B28AE1CA26CBC000B816E /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E54B28AD1CA26CBC000B816E /* HockeySDK.framework */; };
+		E54B28BA1CA45A1C000B816E /* QUSecrets.m in Sources */ = {isa = PBXBuildFile; fileRef = E54B28B91CA45A1C000B816E /* QUSecrets.m */; };
 		E54DF96717F3F05200A3B080 /* QUBrowserTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = E54DF96617F3F05200A3B080 /* QUBrowserTracker.m */; };
 		E55B9A6B17AD534300453A24 /* QUPostUpdateTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = E55B9A6A17AD534300453A24 /* QUPostUpdateTextView.m */; };
 		E55FBF0E1722D5C000AEC024 /* StatusGreen.png in Resources */ = {isa = PBXBuildFile; fileRef = E55FBF0A1722D5C000AEC024 /* StatusGreen.png */; };
@@ -173,6 +174,8 @@
 		E526CF371795D91600732FBC /* QUProfileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QUProfileView.h; sourceTree = "<group>"; };
 		E526CF381795D91600732FBC /* QUProfileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QUProfileView.m; sourceTree = "<group>"; };
 		E54B28AD1CA26CBC000B816E /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HockeySDK.framework; path = "HockeySDK-Mac/HockeySDK.framework"; sourceTree = "<group>"; };
+		E54B28B81CA45A1C000B816E /* QUSecrets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QUSecrets.h; sourceTree = "<group>"; };
+		E54B28B91CA45A1C000B816E /* QUSecrets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QUSecrets.m; sourceTree = "<group>"; };
 		E54DF96517F3F05200A3B080 /* QUBrowserTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QUBrowserTracker.h; sourceTree = "<group>"; };
 		E54DF96617F3F05200A3B080 /* QUBrowserTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QUBrowserTracker.m; sourceTree = "<group>"; };
 		E54DF96A17F3F2C700A3B080 /* GoogleChrome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleChrome.h; sourceTree = "<group>"; };
@@ -329,6 +332,8 @@
 				E5062922170CACC300A25452 /* Supporting Files */,
 				A76C305C194CABE90078B6C1 /* NSTimer+Blocks.h */,
 				A76C305D194CABE90078B6C1 /* NSTimer+Blocks.m */,
+				E54B28B81CA45A1C000B816E /* QUSecrets.h */,
+				E54B28B91CA45A1C000B816E /* QUSecrets.m */,
 			);
 			path = Queued;
 			sourceTree = "<group>";
@@ -663,6 +668,7 @@
 				A7891A5C19AA4CFE00C713B9 /* BUPendingTableCellView.m in Sources */,
 				E50EE6A117CF14B7008C67EB /* GeneralPreferencesViewController.m in Sources */,
 				E55B9A6B17AD534300453A24 /* QUPostUpdateTextView.m in Sources */,
+				E54B28BA1CA45A1C000B816E /* QUSecrets.m in Sources */,
 				E526CF2F1792C7F500732FBC /* QUPostUpdateWindowController.m in Sources */,
 				E5062928170CACC300A25452 /* main.m in Sources */,
 				E506292F170CACC300A25452 /* QUAppDelegate.m in Sources */,

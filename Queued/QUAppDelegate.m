@@ -28,6 +28,7 @@
 #import "GeneralPreferencesViewController.h"
 #import "QUBufferPreferencesViewController.h"
 #import "QUBrowserTracker.h"
+#import "QUSecrets.h"
 
 @interface QUAppDelegate()
 
@@ -93,7 +94,7 @@ void *kContextActivePanel = &kContextActivePanel;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
-    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"40a557d858214c6b804f0dda322c40db"];
+    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:[QUSecrets hockeyAppId]];
     [[BITHockeyManager sharedHockeyManager] startManager];
     
     _browserTracker = [QUBrowserTracker new];
@@ -118,7 +119,7 @@ void *kContextActivePanel = &kContextActivePanel;
         }
     }];
 
-    _buffered = [[Buffered alloc] initApplication:@"Queued" withId:@"51607a104dbf08a338000006" andSecret:@"18b6c94f175555674bfd5274c9a3f3a0"];
+    _buffered = [[Buffered alloc] initApplication:@"Queued" withId:[QUSecrets bufferClientId] andSecret:[QUSecrets bufferClientSecret]];
     _profilesMonitor = [[BUProfilesMonitor alloc] initWithBuffered: _buffered];
     [_profilesMonitor addObserver:self forKeyPath:@"profiles" options:NSKeyValueObservingOptionNew context:nil];
     
